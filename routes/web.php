@@ -45,11 +45,27 @@ Route::get('/login', [Forntend::class, 'login'])->name('login');
 
 
 Route::prefix('admin')->group(function () {
-    Route::get('/', [Backend::class, 'index'])->name('admin.home');
-    Route::get('/productadd', [Backend::class, 'productadd'])->name('admin.productadd');
-    Route::get('/productedit', [Backend::class, 'productedit'])->name('admin.productedit');
-    Route::get('/category', [Backend::class, 'category'])->name('admin.category');
-    Route::get('/categoryadd', [Backend::class, 'categoryadd'])->name('admin.categoryadd');
-    Route::get('/categoryedit', [Backend::class, 'categoryedit'])->name('admin.categoryedit');
-    Route::get('/userlist', [Backend::class, 'userlist'])->name('admin.userlist');
+    Route::get('/login', [Backend::class, 'login'])->name('admin.login');
+    Route::get('/', [Backend::class, 'home'])->name('admin.home');
+
+    Route::prefix('product')->group(function () {
+        Route::get('/', [Backend::class, 'productlist'])->name('admin.productlist');
+        Route::get('/add', [Backend::class, 'productadd'])->name('admin.productadd');
+        Route::get('/edit/', [Backend::class, 'productedit'])->name('admin.productedit');
+        Route::get('/show/', [Backend::class, 'productshow'])->name('admin.productshow');
+    });
+    Route::prefix('category')->group(function () {
+        Route::get('/', [Backend::class, 'category'])->name('admin.category');
+        Route::get('/add', [Backend::class, 'categoryadd'])->name('admin.categoryadd');
+        Route::get('/edit', [Backend::class, 'categoryedit'])->name('admin.categoryedit');
+        Route::get('/show', [Backend::class, 'categoryshow'])->name('admin.categoryshow');
+    });
+
+    Route::prefix('user')->group(function () {
+        Route::get('/', [Backend::class, 'userlist'])->name('admin.userlist');
+        Route::get('/show', [Backend::class, 'usershow'])->name('admin.usershow');
+    });
+});
+Route::fallback(function () {
+    dd('Tomar chaoa puron korte parbona.....');
 });

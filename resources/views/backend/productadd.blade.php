@@ -1,207 +1,91 @@
+<x-admin.master>
+    <!-- partial -->
+    <x-slot:title>
 
-@extends('backend')
-@section('content')
+        ADD PEODUCT
+        </x-slot>
 
-    <!-- Main Wrapper -->
-    <div class=" my-container active-cont ">
-        <!-- Top Nav -->
+        <!-- Main Wrapper -->
 
-        <!--End Top Nav -->
+        <!-- Main Wrapper -->
+        <div class="main-panel">
+            <div class="content">
+                <div class="container-fluid">
+                    <h4 class="page-title">Add New Product</h4>
+                    <form action="#" method="post" enctype="multipart/form-data">
 
-        <br>
-        <br>
-        <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <label for="title">Product Name</label>
+                                                    <input type="text" class="form-control" name="title" id="title" placeholder="Enter Product name" value="">
 
-            <div class="main-content ">
-                <div class="mt-5 w-100 text-center p-3">
-                    <div class="card ">
-                        <div class="card-body">
-        
-                            <form class="form-horizontal">
-                                <fieldset>
-        
-                                    <!-- Form Name -->
-                                    <legend>PRODUCT ADD</legend>
-        
-                                    <!-- Text input-->
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label" for="product_id">PRODUCT ID</label>
-                                                <div class="col-md-12 p-4">
-                                                    <input id="product_id" name="product_id" placeholder="PRODUCT ID"
-                                                        class="form-control w-100 text-center" required="" type="text">
-        
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <!-- Text input-->
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>
-                                                <div class="col-md-12 p-4">
-                                                    <input id="product_name" name="product_name" placeholder="PRODUCT NAME"
-                                                        class="form-control input-md" required="" type="text">
-        
+                                                <div class="form-group">
+                                                    <label for="ProcuctDetels">Product Detels</label>
+                                                    <textarea name="ProcuctDetels" id="ProcuctDetels" class="w-100 "></textarea>
+
                                                 </div>
+
+                                            </div>
+                                            <div class="card-action">
+                                                <button class="btn btn-success">Submit</button>
+                                                <button class="btn btn-danger">Cancel</button>
                                             </div>
                                         </div>
                                     </div>
-        
-                                    <!-- Text input-->
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label" for="product_name_fr">PRODUCT DESCRIPTION
-                                                    FR</label>
-                                                <div class="col-md-12 p-4">
-                                                    <input id="product_name_fr" name="product_name_fr"
-                                                        placeholder="PRODUCT DESCRIPTION FR" class="form-control input-md"
-                                                        required="" type="text">
-        
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <label for="category_id">Category</label>
+                                                    <select name="category_id" id="category_id" class="form-control">
+                                                        <option value="" disabled selected>(Select Category)</option>
+
+                                                    </select>
+
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <!-- Select Basic -->
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <select class="form-select" aria-label="Default select example">
-                                                    <option selected>Select Category</option>
-                                                    <option value="1">w90rj</option>
-                                                    <option value="2">vettr</option>
-                                                    <option value="3">eger</option>
-                                                  </select>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <!-- Text input-->
+                                                <div class="form-group">
+                                                    <label for="image">Thumbnail Image</label>
+                                                    <input type="file" name="image" id="image">
 
-        
-                                    <!-- Text input-->
-
-
-                                    <!-- Textarea -->
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label" for="product_name_fr">PRODUCT DESCRIPTION
-                                                    FR</label>
-                                                    <div class="col-md-12 p-4">
-                                                    <textarea class="form-control" id="product_name_fr"
-                                                        name="product_name_fr"></textarea>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <!-- Text input-->
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label" for="percentage_discount">PERCENTAGE
-                                                    DISCOUNT</label>
-                                                    <div class="col-md-12 p-4">
-                                                    <input id="percentage_discount" name="percentage_discount"
-                                                        placeholder="PERCENTAGE DISCOUNT" class="form-control input-md"
-                                                        required="" type="text">
-        
+                                                <div class="form-group">
+                                                    <label for="Image_alt">Image Alt.</label>
+                                                    <input type="text" name="img_alt" id="img_alt" class="form-control" value="#">
+
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-        
+                                                <div class="form-group">
+                                                    <label for="tags">Tags/Keywords</label>
+                                                    <input type="text" name="tags" id="tags" class="form-control" value="#">
 
-
-        
-                                    <!-- Search input-->
-
-
-        
-                                    <!-- Text input-->
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label" for="online_date">ONLINE DATE</label>
-                                                <div class="col-md-12 p-4">
-                                                    <input id="online_date" name="online_date" placeholder="ONLINE DATE"
-                                                        class="form-control input-md" required="" type="date">
-        
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
-        
-
-
-                                    <!-- Text input-->
-                                    <div class="card aligns-items-center justify-content-center card text-center w-100">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label" for="approuved_by">APPROUVED BY</label>
-                                                <div class="col-md-12 p-4">
-                                                    <input id="approuved_by" name="approuved_by" placeholder="APPROUVED BY"
-                                                        class="form-control input-md" required="" type="text">
-        
-                                                    <!-- File Button -->
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <div class="form-group">
-                                                                <label class="col-md-4 control-label"
-                                                                    for="filebutton">main_image</label>
-                                                                    <div class="col-md-12 p-4">
-                                                                    <input id="filebutton" name="filebutton" class="input-file"
-                                                                        type="file">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- File Button -->
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <div class="form-group">
-                                                                <label class="col-md-4 control-label"
-                                                                    for="filebutton">auxiliary_images</label>
-                                                                    <div class="col-md-12 p-4">
-                                                                    <input id="filebutton" name="filebutton" class="input-file"
-                                                                        type="file">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-        
-                                                    <!-- Button -->
-                                                    <div class="form-group">
-                                                        <label class="col-md-4 control-label " for="singlebutton">Single
-                                                            Button</label>
-                                                        <div class="col-md-12 p-4 d-flex justify-content-center">
-                                                            <button id="singlebutton" name="singlebutton"
-                                                                class="btn btn-primary text-center px-5 m-2">Button</button>
-                                                            <button id="singlebutton" name="singlebutton"
-                                                                class="btn btn-danger text-center px-5 m-2">Cancle</button>
-                                                        </div>
-                                                    </div>
-        
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-        
-                                </fieldset>
-                            </form>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
 
 
-    </div>
-    @endsection
+
+
+
+
+        <x-admin.partials.footer />
+
+        </div>
+        </x-admin>

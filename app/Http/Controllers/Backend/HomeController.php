@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function home()
     {
         return view("backend/index");
+    }
+    
+    public function productlist()
+    {
+        return view("backend/productlist");
     }
 
 
@@ -23,6 +28,10 @@ class HomeController extends Controller
     {
         return view("backend/productedit");
     }
+    public function productshow()
+    {
+        return view("backend/productshow");
+    }
 
     public function category()
     {
@@ -33,6 +42,10 @@ class HomeController extends Controller
     {
         return view("backend/categoryadd");
     }
+    public function categoryshow()
+    {
+        return view("backend/categoryshow");
+    }
 
     public function categoryedit()
     {
@@ -41,5 +54,13 @@ class HomeController extends Controller
     public function userlist()
     {
         return view("backend/userlist");
+    }
+    public function usershow()
+    {
+        return view("backend/usershow");
+    }
+    public function login()
+    {
+        return view("backend/login");
     }
 }

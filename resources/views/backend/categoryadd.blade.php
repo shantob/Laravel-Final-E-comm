@@ -1,43 +1,70 @@
-@extends('backend')
-@section('content')
+<x-admin.master>
+    <!-- partial -->
+    <x-slot:title>
 
-    <!-- Main Wrapper -->
-    <div class=" my-container active-cont">
-        <!-- Top Nav -->
+        CATEGORY EDIT
+        </x-slot>
 
-        <!--End Top Nav -->
+        <!-- Main Wrapper -->
 
-        <br>
-        <br>
-        <div class="col-md-10">
+        <div class="main-panel">
+            <div class="content">
+                <div class="container-fluid">
+                    <h4 class="page-title">Category Edit</h4>
+                    <div class="row">
+                        <div class="col-md-10">
 
-            <div class="main-content">
+                            <div class="main-content bg-light">
+                                <!-- Main Wrapper -->
+                                <div class=" my-container active-cont">
+                                    <!-- Top Nav -->
+
+                                    <!--End Top Nav -->
+
+                                    <br>
+                                    <br>
+                                    <div class="col-md-10">
+
+                                        <div class="main-content">
 
 
-                <div class="col-md-12 text-center d-flex">
-                    <div class="col-md-4">
+                                            <div class="col-md-12 text-center d-flex">
+                                                <div class="col-md-4">
 
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card bg-warning">
-                            <div class="card-body ">
-                                <label for="caregory" class="my-4">
-                                    <h2 class="text-center text-light">Type Category</h2>
-                                </label>
-                                <input type="text" name="category" class="form-control" id="category">
-                                <form action="" class="d-flex justify-content-center mt-4 py-4">
-                                    <button type="submit" class="btn btn-light mx-2">Create Category</button>
-                                    <button type="reset" class="btn btn-dark mx-2">Cancle</button>
-                                </form>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card bg-warning">
+                                                        <div class="card-body ">
+                                                            <label for="caregory" class="my-4">
+                                                                <h2 class="text-center text-light">Type Category</h2>
+                                                            </label>
+                                                            <input type="text" name="category" class="form-control" id="category">
+                                                            <form action="" class="d-flex justify-content-center mt-4 py-4">
+                                                                <button type="submit" class="btn btn-light mx-2">Create Category</button>
+                                                                <button type="reset" class="btn btn-dark mx-2">Cancle</button>
+                                                            </form>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
 
                             </div>
                         </div>
                     </div>
+
+
+
                 </div>
-
             </div>
+
+            <x-admin.partials.footer />
+
         </div>
-
-
-    </div>
-    @endsection
+        </x-admin>

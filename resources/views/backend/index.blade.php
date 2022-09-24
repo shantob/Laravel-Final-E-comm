@@ -1,83 +1,300 @@
-@extends('backend')
-@section('content')
+<x-admin.master>
+	<!-- partial -->
+	<x-slot:title>
 
-    <!-- Main Wrapper -->
-    <div class=" my-container active-cont">
-        <!-- Top Nav -->
+		Dashboard
+		</x-slot>
 
-        <!--End Top Nav -->
+		<div class="main-panel">
+			<div class="content">
+				<div class="container-fluid">
+					<h4 class="page-title">Dashboard</h4>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="card card-stats card-warning">
+								<div class="card-body ">
+									<div class="row">
+										<div class="col-5">
+											<div class="icon-big text-center">
+												<i class="la la-users"></i>
+											</div>
+										</div>
+										<div class="col-7 d-flex align-items-center">
+											<div class="numbers">
+												<p class="card-category">Visitors</p>
+												<h4 class="card-title">1,294</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="card card-stats card-success">
+								<div class="card-body ">
+									<div class="row">
+										<div class="col-5">
+											<div class="icon-big text-center">
+												<i class="la la-bar-chart"></i>
+											</div>
+										</div>
+										<div class="col-7 d-flex align-items-center">
+											<div class="numbers">
+												<p class="card-category">Sales</p>
+												<h4 class="card-title">$ 1,345</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="card card-stats card-danger">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-5">
+											<div class="icon-big text-center">
+												<i class="la la-newspaper-o"></i>
+											</div>
+										</div>
+										<div class="col-7 d-flex align-items-center">
+											<div class="numbers">
+												<p class="card-category">Subscribers</p>
+												<h4 class="card-title">1303</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="card card-stats card-primary">
+								<div class="card-body ">
+									<div class="row">
+										<div class="col-5">
+											<div class="icon-big text-center">
+												<i class="la la-check-circle"></i>
+											</div>
+										</div>
+										<div class="col-7 d-flex align-items-center">
+											<div class="numbers">
+												<p class="card-category">Order</p>
+												<h4 class="card-title">576</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="card card-stats">
+								<div class="card-body ">
+									<div class="row">
+										<div class="col-5">
+											<div class="icon-big text-center icon-warning">
+												<i class="la la-pie-chart text-warning"></i>
+											</div>
+										</div>
+										<div class="col-7 d-flex align-items-center">
+											<div class="numbers">
+												<p class="card-category">Number</p>
+												<h4 class="card-title">150GB</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="card card-stats">
+								<div class="card-body ">
+									<div class="row">
+										<div class="col-5">
+											<div class="icon-big text-center">
+												<i class="la la-bar-chart text-success"></i>
+											</div>
+										</div>
+										<div class="col-7 d-flex align-items-center">
+											<div class="numbers">
+												<p class="card-category">Revenue</p>
+												<h4 class="card-title">$ 1,345</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="card card-stats">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-5">
+											<div class="icon-big text-center">
+												<i class="la la-times-circle-o text-danger"></i>
+											</div>
+										</div>
+										<div class="col-7 d-flex align-items-center">
+											<div class="numbers">
+												<p class="card-category">Errors</p>
+												<h4 class="card-title">23</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="card card-stats">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-5">
+											<div class="icon-big text-center">
+												<i class="la la-heart-o text-primary"></i>
+											</div>
+										</div>
+										<div class="col-7 d-flex align-items-center">
+											<div class="numbers">
+												<p class="card-category">Followers</p>
+												<h4 class="card-title">+45K</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="card">
+								<div class="card-header">
+									<h4 class="card-title">Task</h4>
+									<p class="card-category">Complete</p>
+								</div>
+								<div class="card-body">
+									<div id="task-complete" class="chart-circle mt-4 mb-3"></div>
+								</div>
+								<div class="card-footer">
+									<div class="legend"><i class="la la-circle text-primary"></i> Completed</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-9">
+							<div class="card">
+								<div class="card-header">
+									<h4 class="card-title">World Map</h4>
+									<p class="card-category">
+										Map of the distribution of users around the world</p>
+								</div>
+								<div class="card-body">
+									<div class="mapcontainer">
+										<div class="map">
+											<span>Alternative content for the map</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row row-card-no-pd">
+						<div class="col-md-4">
+							<div class="card">
+								<div class="card-body">
+									<p class="fw-bold mt-1">My Balance</p>
+									<h4><b>$ 3,018</b></h4>
+									<a href="#" class="btn btn-primary btn-full text-left mt-3 mb-3"><i class="la la-plus"></i> Add Balance</a>
+								</div>
+								<div class="card-footer">
+									<ul class="nav">
+										<li class="nav-item"><a class="btn btn-default btn-link" href="#"><i class="la la-history"></i> History</a></li>
+										<li class="nav-item ml-auto"><a class="btn btn-default btn-link" href="#"><i class="la la-refresh"></i> Refresh</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-5">
+							<div class="card">
+								<div class="card-body">
+									<div class="progress-card">
+										<div class="d-flex justify-content-between mb-1">
+											<span class="text-muted">Profit</span>
+											<span class="text-muted fw-bold"> $3K</span>
+										</div>
+										<div class="progress mb-2" style="height: 7px;">
+											<div class="progress-bar bg-success" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="78%"></div>
+										</div>
+									</div>
+									<div class="progress-card">
+										<div class="d-flex justify-content-between mb-1">
+											<span class="text-muted">Orders</span>
+											<span class="text-muted fw-bold"> 576</span>
+										</div>
+										<div class="progress mb-2" style="height: 7px;">
+											<div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="65%"></div>
+										</div>
+									</div>
+									<div class="progress-card">
+										<div class="d-flex justify-content-between mb-1">
+											<span class="text-muted">Tasks Complete</span>
+											<span class="text-muted fw-bold"> 70%</span>
+										</div>
+										<div class="progress mb-2" style="height: 7px;">
+											<div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="70%"></div>
+										</div>
+									</div>
+									<div class="progress-card">
+										<div class="d-flex justify-content-between mb-1">
+											<span class="text-muted">Open Rate</span>
+											<span class="text-muted fw-bold"> 60%</span>
+										</div>
+										<div class="progress mb-2" style="height: 7px;">
+											<div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="60%"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="card card-stats">
+								<div class="card-body">
+									<p class="fw-bold mt-1">Statistic</p>
+									<div class="row">
+										<div class="col-5">
+											<div class="icon-big text-center icon-warning">
+												<i class="la la-pie-chart text-warning"></i>
+											</div>
+										</div>
+										<div class="col-7 d-flex align-items-center">
+											<div class="numbers">
+												<p class="card-category">Number</p>
+												<h4 class="card-title">150GB</h4>
+											</div>
+										</div>
+									</div>
+									<hr />
+									<div class="row">
+										<div class="col-5">
+											<div class="icon-big text-center">
+												<i class="la la-heart-o text-primary"></i>
+											</div>
+										</div>
+										<div class="col-7 d-flex align-items-center">
+											<div class="numbers">
+												<p class="card-category">Followers</p>
+												<h4 class="card-title">+45K</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
-        <br>
-        <br>
-        <div class="col-md-12">
+				</div>
+			</div>
+			
+			<x-admin.partials.footer />
 
-            <div class="main-content">
-
-
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body  text-center">
-                            <div class=" w-100 ">
-                                <div class=" px-2">
-                                    <label for="caregory" class="mb-4 h1 text-dark">Dashboard</label>
-                                    <table class="table table-responsive table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Name Of All Product</th>
-                                                <th scope="col">Total Sells </th>
-                                                <th scope="col">Benifit Of Product</th>
-                                                <th scope="col">Total Cost</th>
-                                                <th scope="col">Income</th>
-                                                <th colspan="3" scope="col">Action</th>
-   
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>296</td>
-                                                <td>Lorem, ipsum dolor.</td>
-                                                <td>3350</td>
-                                                <td>3500</td>
-                                                <td><button type="submit" class="btn btn-info w-100"><a href="categoryshow.html">View</a></button></td>
-                                                <td><button type="submit" class="btn btn-primary w-100"><a href="productedit.html">UPDATE</a></button></td>
-                                                <td><button type="submit" class="btn btn-danger w-100">delete</button></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>560</td>
-                                                <td>Lorem, ipsum dolor.</td>
-                                                <td>3350</td>
-                                                <td>3500</td>
-                                                <td><button type="submit" class="btn btn-info w-100"><a href="categoryshow.html">View</a></button></td>
-                                                <td><button type="submit" class="btn btn-primary w-100"><a href="productedit.html">UPDATE</a></button></td>
-                                                <td><button type="submit" class="btn btn-danger w-100">delete</button></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>Larry the Bird</td>
-                                                <td>384</td>
-                                                <td>Lorem, ipsum dolor.</td>
-                                                <td>3350</td>
-                                                <td>3500</td>
-                                                <td><button type="submit" class="btn btn-info w-100"><a href="categoryshow.html">View</a></button></td>
-                                                <td><button type="submit" class="btn btn-primary w-100"><a href="productedit.html">UPDATE</a></button></td>
-                                                <td><button type="submit" class="btn btn-danger w-100">delete</button></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+		</div>
 
 
-    </div>
-    @endsection
+		</x-admin>
