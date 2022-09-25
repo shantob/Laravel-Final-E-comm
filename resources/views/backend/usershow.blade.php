@@ -40,7 +40,7 @@
 
 
 
-                                                                <p>User Id Id: 225</p>
+                                                                <p>User Id Id: 225 {{$id}}</p>
                                                                 <p>User Name: Fruits</p>
                                                                 <p> Picture :<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cHJvZHVjdCUyMGltYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Profile Picture"> </p>
 

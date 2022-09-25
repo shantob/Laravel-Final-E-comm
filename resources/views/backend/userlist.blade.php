@@ -46,7 +46,7 @@
                                                                     <td>Mark</td>
                                                                     <td>Mark</td>
                                                                     <td>Mark</td>
-                                                                    <td><a href="{{route('admin.usershow')}}"><button type="submit" class="btn btn-info w-100">Show</button></a></td>
+                                                                    <td><a href="{{route('admin.usershow',['id' =>2])}}"><button type="submit" class="btn btn-info w-100">Show</button></a></td>
                                                                     <td><button type="submit" class="btn btn-danger w-100">Delete</button></td>
                                                                 </tr>
                                                                 <tr>
@@ -54,7 +54,7 @@
                                                                     <td>Jacob</td>
                                                                     <td>Jacob</td>
                                                                     <td>Jacob</td>
-                                                                    <td><a href="{{route('admin.usershow')}}"><button type="submit" class="btn btn-info w-100">Show</button></a></td>
+                                                                    <td><a href="{{route('admin.usershow',['id' =>3])}}"><button type="submit" class="btn btn-info w-100">Show</button></a></td>
                                                                     <td><button type="submit" class="btn btn-danger w-100">Delete</button></td>
                                                                 </tr>
                                                                 <tr>
@@ -62,7 +62,7 @@
                                                                     <td>Larry the Bird</td>
                                                                     <td>Larry the Bird</td>
                                                                     <td>Larry the Bird</td>
-                                                                    <td><a href="{{route('admin.usershow')}}"><button type="submit" class="btn btn-info w-100">Show</button></a></td>
+                                                                    <td><a href="{{route('admin.usershow',['id' =>4])}}"><button type="submit" class="btn btn-info w-100">Show</button></a></td>
                                                                     <td><button type="submit" class="btn btn-danger w-100">Delete</button></td>
                                                                 </tr>
                                                             </tbody>

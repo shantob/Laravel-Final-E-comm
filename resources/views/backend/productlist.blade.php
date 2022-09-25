@@ -50,7 +50,7 @@
                                                                     <td>Lorem, ipsum dolor.</td>
                                                                     <td>3350</td>
                                                                     <td>3500</td>
-                                                                    <td><a href="{{route('admin.productshow')}}" class="text-light"><button type="submit" class="btn btn-info w-100">View</button></a></td>
+                                                                    <td><a href="{{route('admin.productshow',12)}}" class="text-light"><button type="submit" class="btn btn-info w-100">View</button></a></td>
                                                                     <td><a href="{{route('admin.productedit')}}" class="text-light"><button type="submit" class="btn btn-primary w-100">UPDATE</button></a></td>
                                                                     <td><button type="submit" class="btn btn-danger w-100">delete</button></td>
                                                                 </tr>
@@ -61,7 +61,7 @@
                                                                     <td>Lorem, ipsum dolor.</td>
                                                                     <td>3350</td>
                                                                     <td>3500</td>
-                                                                    <td><a href="{{route('admin.productshow')}}" class="text-light"><button type="submit" class="btn btn-info w-100">View</button></a></td>
+                                                                    <td><a href="{{route('admin.productshow',13)}}" class="text-light"><button type="submit" class="btn btn-info w-100">View</button></a></td>
                                                                     <td><a href="{{route('admin.productedit')}}" class="text-light"><button type="submit" class="btn btn-primary w-100">UPDATE</button></a></td>
                                                                     <td><button type="submit" class="btn btn-danger w-100">delete</button></td>
                                                                 </tr>
@@ -72,7 +72,7 @@
                                                                     <td>Lorem, ipsum dolor.</td>
                                                                     <td>3350</td>
                                                                     <td>3500</td>
-                                                                    <td><a href="{{route('admin.productshow')}}" class="text-light"><button type="submit" class="btn btn-info w-100">View</button></a></td>
+                                                                    <td><a href="{{route('admin.productshow',14)}}" class="text-light"><button type="submit" class="btn btn-info w-100">View</button></a></td>
                                                                     <td><a href="{{route('admin.productedit')}}" class="text-light"><button type="submit" class="btn btn-primary w-100">UPDATE</button></a></td>
                                                                     <td><button type="submit" class="btn btn-danger w-100">delete</button></td>
                                                                 </tr>

@@ -28,7 +28,8 @@ class HomeController extends Controller
     {
         return view("backend/productedit");
     }
-    public function productshow()
+
+    public function productshow($id)
     {
         return view("backend/productshow");
     }
@@ -55,10 +56,12 @@ class HomeController extends Controller
     {
         return view("backend/userlist");
     }
-    public function usershow()
+
+    public function usershow($id)
     {
         return view("backend/usershow");
     }
+
     public function login()
     {
         return view("backend/login");
