@@ -51,19 +51,19 @@ Route::prefix('admin')->group(function () {
     Route::prefix('product')->group(function () {
         Route::get('/', [Backend::class, 'productlist'])->name('admin.productlist');
         Route::get('/add', [Backend::class, 'productadd'])->name('admin.productadd');
-        Route::get('/edit/', [Backend::class, 'productedit'])->where('id','(0-9)+')->name('admin.productedit');
-        Route::get('/show/{id}', [Backend::class, 'productshow'])->where('id','(0-9)+')->name('admin.productshow');
+        Route::get('/edit/', [Backend::class, 'productedit'])->where('id','[0-9]+')->name('admin.productedit');
+        Route::get('/show/{id}', [Backend::class, 'productshow'])->where('id','[0-9]+')->name('admin.productshow');
     });
     Route::prefix('category')->group(function () {
         Route::get('/', [Backend::class, 'category'])->name('admin.category');
         Route::get('/add', [Backend::class, 'categoryadd'])->name('admin.categoryadd');
-        Route::get('/edit', [Backend::class, 'categoryedit'])->where('id','(0-9)+')->name('admin.categoryedit');
-        Route::get('/show', [Backend::class, 'categoryshow'])->where('id','(0-9)+')->name('admin.categoryshow');
+        Route::get('/edit', [Backend::class, 'categoryedit'])->where('id','[0-9]+')->name('admin.categoryedit');
+        Route::get('/show', [Backend::class, 'categoryshow'])->where('id','[0-9]+')->name('admin.categoryshow');
     });
 
     Route::prefix('user')->group(function () {
         Route::get('/', [Backend::class, 'userlist'])->name('admin.userlist');
-        Route::get('/show/{id}', [Backend::class, 'usershow'])->where('id','(0-9)+')->name('admin.usershow');
+        Route::get('/show/{id}', [Backend::class, 'usershow'])->where('id','[0-9]+')->name('admin.usershow');
     });
 });
 Route::fallback(function () {
