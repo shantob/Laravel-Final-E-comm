@@ -3,7 +3,7 @@
     <!-- partial -->
     <x-slot:title>
 
-        CATEGORY SHOW
+        PRODUCT SHOW
         </x-slot>
 
         <!-- Main Wrapper -->
@@ -11,7 +11,7 @@
         <div class="main-panel">
             <div class="content">
                 <div class="container-fluid">
-                    <h4 class="page-title">Category Show</h4>
+                    <h4 class="page-title">Product Show</h4>
                     <div class="row">
                         <div class="col-md-10">
 
@@ -35,15 +35,19 @@
                                                     <div class="card-body  text-center">
                                                         <div class=" w-100 ">
                                                             <div class=" px-2">
-                                                                <label for="caregory" class="mb-4 h1 text-dark"> Category Info</label>
+                                                                <label for="caregory" class="mb-4 h1 text-dark"> Product Info</label>
 
 
 
 
-                                                                <p>Category Id: 225</p>
-                                                                <p>Name: Fruits</p>
-                                                                <p> Picture :<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cHJvZHVjdCUyMGltYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Profile Picture"> </p>
-
+                                                                <p>Product Id: {{$productShow->id}}</p>
+                                                                <p>Name: {{$productShow->name}}</p>
+                                                                <p> Picture :<img src="{{$productShow->image}}" alt="Profile Picture"> </p>
+                                                                <p>Price: {{$productShow->price}}$</p>
+                                                                <p>{{$productShow->description}}</p>
+                                                                <p>Tags: {{$productShow->tags}}</p>
+                                                                <p>Create: {{$productShow->created_at}}</p>
+                                                                
                                                             </div>
                                                         </div>
                                                     </div>

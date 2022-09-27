@@ -3,48 +3,59 @@
 namespace App\Http\Controllers\Forntend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+   public function header()
+   {
+      $category = Category::all();
+      return view("components/forntend/partials/header", compact('category'));
+   }
    public function index()
    {
-    return view("forntend/index");
+      $productall = Product::all();
+      $blogs = Blog::all();
+      $category = Category::all();
+      return view("forntend/index", compact('category','productall','blogs'));
    }
    public function productlist()
    {
-    return view("forntend/productlist");
+      return view("forntend/productlist");
    }
    public function contact()
    {
-    return view("forntend/contact");
+      return view("forntend/contact");
    }
    public function about()
    {
-    return view("forntend/about");
+      return view("forntend/about");
    }
    public function addtocard()
    {
-    return view("forntend/addtocard");
+      return view("forntend/addtocard");
    }
    public function checkout()
    {
-    return view("forntend/checkout");
+      return view("forntend/checkout");
    }
    public function productdetels()
    {
-    return view("forntend/productdetels");
+      return view("forntend/productdetels");
    }
    public function thankyou()
    {
-    return view("forntend/thankyou");
+      return view("forntend/thankyou");
    }
    public function invoice()
    {
-    return view("forntend/invoice");
+      return view("forntend/invoice");
    }
    public function login()
    {
-    return view("forntend/login");
+      return view("forntend/login");
    }
 }

@@ -11,47 +11,7 @@ class HomeController extends Controller
     {
         return view("backend/index");
     }
-    
-    public function productlist()
-    {
-        return view("backend/productlist");
-    }
 
-
-    public function productadd()
-    {
-        return view("backend/productadd");
-    }
-
-
-    public function productedit()
-    {
-        return view("backend/productedit");
-    }
-
-    public function productshow($id)
-    {
-        return view("backend/productshow");
-    }
-
-    public function category()
-    {
-        return view("backend/category");
-    }
-
-    public function categoryadd()
-    {
-        return view("backend/categoryadd");
-    }
-    public function categoryshow()
-    {
-        return view("backend/categoryshow");
-    }
-
-    public function categoryedit()
-    {
-        return view("backend/categoryedit");
-    }
     public function userlist()
     {
         return view("backend/userlist");

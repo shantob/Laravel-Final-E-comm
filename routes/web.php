@@ -6,7 +6,8 @@ use App\Http\Controllers\forntend\HomeController as Forntend;
 use App\Http\Controllers\backend\HomeController as Backend;
 use App\Http\Controllers\backend\BlogController as Blog;
 use App\Http\Controllers\backend\CommentController as Comment;
-use App\Http\Controllers\backend\AddProduct;
+use App\Http\Controllers\backend\ProductController as Product;
+use App\Http\Controllers\backend\CategoryController as Category;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,16 +52,18 @@ Route::prefix('admin')->group(function () {
     Route::get('/', [Backend::class, 'home'])->name('admin.home');
 
     Route::prefix('product')->group(function () {
-        Route::get('/', [Backend::class, 'productlist'])->name('admin.productlist');
-        Route::get('/add', [Backend::class, 'productadd'])->name('admin.productadd');
-        Route::get('/edit/', [Backend::class, 'productedit'])->where('id', '[0-9]+')->name('admin.productedit');
-        Route::get('/show/{id}', [Backend::class, 'productshow'])->where('id', '[0-9]+')->name('admin.productshow');
+        Route::get('/', [Product::class, 'productlist'])->name('admin.productlist');
+        Route::get('/add', [Product::class, 'productadd'])->name('admin.productadd');
+        Route::get('/edit/', [Product::class, 'productedit'])->where('id', '[0-9]+')->name('admin.productedit');
+        Route::get('/show/{id}', [Product::class, 'productshow'])->where('id', '[0-9]+')->name('admin.productshow');
+        Route::get('/destroy/{id}', [Product::class, 'productdelete'])->where('id', '[0-9]+')->name('admin.productdelete');
     });
     Route::prefix('category')->group(function () {
-        Route::get('/', [Backend::class, 'category'])->name('admin.category');
-        Route::get('/add', [Backend::class, 'categoryadd'])->name('admin.categoryadd');
-        Route::get('/edit', [Backend::class, 'categoryedit'])->where('id', '[0-9]+')->name('admin.categoryedit');
-        Route::get('/show', [Backend::class, 'categoryshow'])->where('id', '[0-9]+')->name('admin.categoryshow');
+        Route::get('/', [Category::class, 'category'])->name('admin.category');
+        Route::get('/add', [Category::class, 'categoryadd'])->name('admin.categoryadd');
+        Route::get('/edit', [Category::class, 'categoryedit'])->where('id', '[0-9]+')->name('admin.categoryedit');
+        Route::get('/show/{id}', [Category::class, 'categoryshow'])->where('id', '[0-9]+')->name('admin.categoryshow');
+        Route::get('/delete/{id}', [Category::class, 'destroy'])->name('admin.categorydestroy');
     });
 
     Route::prefix('user')->group(function () {
@@ -71,9 +74,11 @@ Route::prefix('admin')->group(function () {
         Route::get('/', [Blog::class, 'bloglist'])->name('admin.bloglist');
         Route::get('/add', [Blog::class, 'addblog'])->name('admin.addblog');
         Route::get('/show/{id}', [Blog::class, 'blogshow'])->where('id', '[0-9]+')->name('admin.blogshow');
+        Route::get('/delete/{id}', [Blog::class, 'blogdelete'])->where('id', '[0-9]+')->name('admin.blogdelete');
     });
     Route::prefix('comment')->group(function () {
         Route::get('/', [Comment::class, 'commentlist'])->name('admin.commentlist');
+        Route::get('/delete/{id}', [Comment::class, 'commenttdelete'])->name('admin.commenttdelete');
     });
 });
 Route::fallback(function () {

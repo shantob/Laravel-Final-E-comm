@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('name');
             $table->text('comment');
+            $table->boolean('is_read');
             $table->timestamps();
         });
     }

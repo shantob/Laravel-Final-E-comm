@@ -22,6 +22,7 @@ class CommentFactory extends Factory
             'email' => fake()->email(),
             'name' => fake()->userName(),
             'comment' => fake()->text(30),
+            'is_read' => fake()->boolean(),
 
         ];
     }

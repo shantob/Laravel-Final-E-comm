@@ -40,12 +40,12 @@
 
 
 
-                                                                <p>Blog Id: 225</p>
-                                                                <p>Title: Electricital</p>
-                                                                <p> Picture :<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cHJvZHVjdCUyMGltYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Profile Picture"> </p>
-                                                                <p>Discription: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint sit cumque soluta itaque omnis cum mollitia maxime laudantium voluptatem quam!</p>
-                                                                <p>Total Like: 5637</p>
-                                                                <p>Total Comment: 226</p>
+                                                                <p>Blog Id: {{$blogShow->id}}</p>
+                                                                <p>Title: {{$blogShow->title}}</p>
+                                                                <p> Picture :<img src="{{$blogShow->image}}" alt="Profile Picture"> </p>
+                                                                <p>{{$blogShow->blog}}</p>
+                                                                <p>Total Like: {{$blogShow->like}}</p>
+                                                                <p>Total Comment: {{$blogShow->comment}}</p>
                                                                 
                                                             </div>
                                                         </div>
