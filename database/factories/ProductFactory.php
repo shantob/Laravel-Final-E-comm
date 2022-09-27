@@ -20,6 +20,7 @@ class ProductFactory extends Factory
             'name'=>fake()->sentence(5),
             'caegory'=>fake()->sentence(5),
             'description'=>fake()->text(30),
+            'price'=>fake()->numberBetween(200, 100000),
             'tags'=>fake()->sentence(5),
             'img_alt'=>fake()->sentence(5),
             'image' => fake()->imageUrl($width=400, $height=400),

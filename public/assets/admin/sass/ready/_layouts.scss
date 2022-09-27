@@ -68,7 +68,7 @@ body {
   z-index: 1;
   color: $white-color;
   font-weight: 200;
-  background: $white-color;
+  background: gray;
   background-size: cover;
   background-position: center center;
   border-right: 1px solid #eee;
@@ -187,7 +187,8 @@ body {
         margin-bottom: 5px;
         &:hover, &:focus {
           text-decoration: none;
-          background: #fbfbfb;
+          color: black;
+          background: #554157;
         }
       }
       &:hover a:before {

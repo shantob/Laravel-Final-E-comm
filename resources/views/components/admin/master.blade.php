@@ -19,15 +19,16 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/ready.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/admin/css/custom.css') }}">
+
 </head>
 
 <body>
     <div class="wrapper">
-    <x-admin.partials.header />
-<!--  -->
+        <x-admin.partials.header />
+        <!--  -->
 
 
-    <x-admin.partials.sideber />
+        <x-admin.partials.sideber />
 
         <!-- body -->
         {{$slot}}
