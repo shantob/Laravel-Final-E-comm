@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\forntend\HomeController as Forntend;
 use App\Http\Controllers\backend\HomeController as Backend;
 use App\Http\Controllers\backend\BlogController as Blog;
+use App\Http\Controllers\backend\CommentController as Comment;
 use App\Http\Controllers\backend\AddProduct;
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +71,9 @@ Route::prefix('admin')->group(function () {
         Route::get('/', [Blog::class, 'bloglist'])->name('admin.bloglist');
         Route::get('/add', [Blog::class, 'addblog'])->name('admin.addblog');
         Route::get('/show/{id}', [Blog::class, 'blogshow'])->where('id', '[0-9]+')->name('admin.blogshow');
+    });
+    Route::prefix('comment')->group(function () {
+        Route::get('/', [Comment::class, 'commentlist'])->name('admin.commentlist');
     });
 });
 Route::fallback(function () {

@@ -67,8 +67,8 @@
                             <p class=" text-warning">Add Product</p>
                         </a>
                     </li>
-                    <li class="nav-item #">
-                        <a href="#">
+                    <li class="nav-item {{ Route::is('admin.commentlist') ?  'active' : ''}}">
+                        <a href="{{route('admin.commentlist')}}">
                             <i class="la la-table"></i>
                             <p class=" text-warning">Comment</p>
                           
