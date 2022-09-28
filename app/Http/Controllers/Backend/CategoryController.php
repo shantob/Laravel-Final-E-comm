@@ -15,6 +15,14 @@ class CategoryController extends Controller
         return view("backend/category/home", compact('categories'));
     }
 
+    public function store(Request $request)
+    {
+        Category::create([
+            'name' => $request->name,
+        ]);
+        return redirect()->route('admin.category')->with('success', 'SuccessFully Created Category');
+    }
+
     public function categoryadd()
     {
         return view("backend/category/categoryadd");
@@ -35,6 +43,6 @@ class CategoryController extends Controller
     {
         $categoryDestroy = Category::find($id);
         $categoryDestroy->delete();
-        return redirect()->route('admin.category')->with('success','SuccessFully Deleted Category');
+        return redirect()->route('admin.category')->with('success', 'SuccessFully Deleted Category');
     }
 }

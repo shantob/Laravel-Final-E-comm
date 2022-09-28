@@ -57,8 +57,9 @@
                                 @foreach ($category as $categorys)
                                 <li data-filter=".oranges">{{$categorys->name}}</li>
                                 @endforeach
-
+                                <span class="align-middle">{{ $category->links() }}</span>
                             </ul>
+                           
                         </div>
                     </div>
                 </div>
@@ -77,14 +78,18 @@
                             </div>
                         </div>
                     </div>
+              
                     @endforeach
+                   
                 </div>
+                <span>{{ $productall->links() }}</span>
             </div>
             </div>
         </section>
         <!-- Featured Section End -->
-
+      
         <!-- Banner Begin -->
+    
         <div class="banner">
             <div class="container-fluid">
                 <div class="row">
@@ -339,6 +344,7 @@
                         </div>
                     </div>
                     @endforeach
+                    <span>{{ $blogs->links() }}</span>
                 </div>
             </div>
         </section>

@@ -12,7 +12,8 @@
             <div class="content">
                 <div class="container-fluid">
                     <h4 class="page-title">Add New Product</h4>
-                    <form action="#" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.product.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
 
                         <div class="row">
                             <div class="col-md-8">
@@ -22,12 +23,17 @@
                                             <div class="card-body">
                                                 <div class="form-group">
                                                     <label for="title">Product Name</label>
-                                                    <input type="text" class="form-control" name="title" id="title" placeholder="Enter Product name" value="">
+                                                    <input type="text" class="form-control" name="name" id="title" placeholder="Enter Product name" value="">
 
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="ProcuctDetels">Product Detels</label>
-                                                    <textarea name="ProcuctDetels" id="ProcuctDetels" class="w-100 "></textarea>
+                                                    <textarea name="description" id="ProcuctDetels" class="w-100 "></textarea>
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="price">Thumbnail Image</label>
+                                                    <input type="text" name="price" id="price" class="form-control">
 
                                                 </div>
 
@@ -47,9 +53,11 @@
                                             <div class="card-body">
                                                 <div class="form-group">
                                                     <label for="category_id">Category</label>
-                                                    <select name="category_id" id="category_id" class="form-control">
+                                                    <select name="category" id="category_id" class="form-control">
                                                         <option value="" disabled selected>(Select Category)</option>
-
+                                                        @foreach($categories as $category)
+                                                        <option>{{ $category->name }}</option>
+                                                        @endforeach
                                                     </select>
 
                                                 </div>

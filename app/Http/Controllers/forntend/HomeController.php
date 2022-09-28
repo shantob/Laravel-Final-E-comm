@@ -19,18 +19,18 @@ class HomeController extends Controller
 
    public function index()
    {
-      $productall = Product::all();
-      $blogs = Blog::all();
-      $category = Category::all();
+      $productall = Product::paginate(12)->fragment('productall');
+      $blogs = Blog::paginate(3)->fragment('blogs');
+      $category = Category::paginate(5);
       return view("forntend/index", compact('category','productall','blogs'));
    }
 
 
    public function productlist()
    {
-      $productall = Product::all();
+      $productall = Product::paginate(15)->get();
       $blogs = Blog::all();
-      $category = Category::all();
+      $category = Category::get();
       return view("forntend/productlist",compact('category','productall','blogs'));
    }
 
