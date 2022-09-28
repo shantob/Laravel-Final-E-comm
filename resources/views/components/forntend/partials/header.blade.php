@@ -1,5 +1,5 @@
 <div class=" container-fluid fixed-top bg-light " style="height: 4rem;">
-    <header class="header" >
+    <header class="header">
 
         <div class="container-fluid">
             <div class="row" style="height: 5rem;">
@@ -22,7 +22,6 @@
                                             <li><a href="#">Books</a></li>
                                             <li><a href="#">Furniture</a></li>
                                             <li><a href="#">Other</a></li>
-
                                         </ul>
                                     </div>
                                 </div>

@@ -34,7 +34,8 @@
                                                 <div class=" w-100 ">
                                                     <div class=" px-2">
                                                         <label for="caregory" class="mb-4 h1 text-dark">Product LIst <span class="text-danger">({{$productlist->count()}})</span></label>
-                                                        <table class="table table-responsive table-hover table-responsive round">
+                                                        <input type="text" id="product_search" class="form-control" placeholder="Search Product" onclick="searchFun()">
+                                                        <table class="table table-responsive table-hover table-responsive round" id="product_table">
                                                             <thead>
                                                                 <tr class="text-light">
                                                                     <th scope="col">#</th>
@@ -86,4 +87,25 @@
             <x-admin.partials.footer />
 
         </div>
+        <script>
+          
+            const searchFun = () => {
+                let filter = document.getElementById('product_search').value.toUpperCase();
+                let product = document.getElementById('product_table');
+                let tr = product.getElementsByTagName('tr');
+                for (var i = 0; i < tr.length; i++) {
+                    let td = tr[i].getElementsByTagName('td')[1];
+
+                    if (td) {
+                        let textValue = td.textContent || td.innerHTML;
+
+                        if (textValue.toUppercase().indexOf(filter) > -1) {
+                            tr[1].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        </script>
         </x-admin>

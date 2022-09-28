@@ -13,8 +13,10 @@ class HomeController extends Controller
    public function header()
    {
       $category = Category::all();
-      return view("components/forntend/partials/header", compact('category'));
+      return view('components.forntend.partials.header', compact('category'));
    }
+
+
    public function index()
    {
       $productall = Product::all();
@@ -22,30 +24,42 @@ class HomeController extends Controller
       $category = Category::all();
       return view("forntend/index", compact('category','productall','blogs'));
    }
+
+
    public function productlist()
    {
-      return view("forntend/productlist");
+      $productall = Product::all();
+      $blogs = Blog::all();
+      $category = Category::all();
+      return view("forntend/productlist",compact('category','productall','blogs'));
    }
+
+
    public function contact()
    {
       return view("forntend/contact");
    }
+
    public function about()
    {
       return view("forntend/about");
    }
+
    public function addtocard()
    {
       return view("forntend/addtocard");
    }
+
    public function checkout()
    {
       return view("forntend/checkout");
    }
+
    public function productdetels()
    {
       return view("forntend/productdetels");
    }
+   
    public function thankyou()
    {
       return view("forntend/thankyou");
