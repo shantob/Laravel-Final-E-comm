@@ -52,7 +52,7 @@
                                                                 <tr>
                                                                     <th scope="row">{{$loop->iteration}}</th>
                                                                     <td>{{$blog->title}}</td>
-                                                                    <td><img src="{{$blog->image}}" height="40px" alt="abcd"></td>
+                                                                    <td><img src="{{ url('upload/images', $blog->image)}}" height="40px" alt="abcd"></td>
                                                                     <td>{{$blog->like}}</td>
                                                                     <td>{{$blog->comment}}</td>
                                                                     <td>{{$blog->created_at}}</td>

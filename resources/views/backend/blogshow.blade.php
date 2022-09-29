@@ -42,7 +42,7 @@
 
                                                                 <p>Blog Id: {{$blogShow->id}}</p>
                                                                 <p>Title: {{$blogShow->title}}</p>
-                                                                <p> Picture :<img src="{{$blogShow->image}}" alt="Profile Picture"> </p>
+                                                                <p> Picture :<img src="{{ url('upload/images', $blogShow->image)}}"  height="200" alt="Profile Picture"> </p>
                                                                 <p>{{$blogShow->blog}}</p>
                                                                 <p>Total Like: {{$blogShow->like}}</p>
                                                                 <p>Total Comment: {{$blogShow->comment}}</p>
