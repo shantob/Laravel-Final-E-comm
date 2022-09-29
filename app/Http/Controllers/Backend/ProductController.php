@@ -15,6 +15,11 @@ class ProductController extends Controller
         $productlist = Product::orderby('id', 'DESC')->paginate(10);
         return view("backend/product/productlist", compact('productlist', 'allproduct'));
     }
+    public function productadd()
+    {
+        $categories = Category::all();
+        return view("backend/product/productadd", compact('categories'));
+    }
 
     public function store(Request $request)
     {
