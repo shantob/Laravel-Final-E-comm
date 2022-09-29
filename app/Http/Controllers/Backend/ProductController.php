@@ -9,17 +9,17 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index()
-    {
-        $allproduct = Product::all();
-        $productlist = Product::orderby('id', 'DESC')->paginate(10);
-        return view("backend/product/productlist", compact('productlist', 'allproduct'));
-    }
+    // public function index()
+    // {
+    //     $allproduct = Product::all();
+    //     $productlist = Product::orderby('id', 'DESC')->paginate(10);
+    //     return view("backend/product/productlist", compact('productlist', 'allproduct'));
+    // }
 
     public function productlist()
-    {
+    {    $allproduct = Product::all();
         $productlist = Product::orderby('id', 'DESC')->paginate(10);
-        return view("backend/product/productlist", compact('productlist'));
+        return view("backend/product/productlist", compact('productlist','allproduct'));
     }
     public function productadd()
     {
