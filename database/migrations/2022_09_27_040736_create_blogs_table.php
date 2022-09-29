@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('category');
             $table->text('blog');
             $table->string('image');
-            $table->integer('like');
-            $table->integer('comment');
+            $table->integer('like')->nullable();
+            $table->integer('comment')->nullable();
             $table->timestamps();
         });
     }

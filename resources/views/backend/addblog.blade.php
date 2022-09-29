@@ -11,9 +11,9 @@
         <div class="main-panel">
             <div class="content">
                 <div class="container-fluid">
-                    <h4 class="page-title">Add New Blog</h4>
-                    <form action="#" method="post" enctype="multipart/form-data">
-
+                    <h4 class="page-title"> New Blog</h4>
+                    <form action="{{route('admin.blogStore')}}" method="post" enctype="multipart/form-data">
+                    @csrf
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="card">
@@ -22,12 +22,12 @@
                                             <div class="card-body">
                                                 <div class="form-group">
                                                     <label for="title">Title</label>
-                                                    <input type="text" class="form-control" name="title" id="title" placeholder="Enter Product name" value="">
+                                                    <input type="text" class="form-control" name="title" id="title" placeholder="Enter Blog name" value="">
 
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="ProcuctDetels">Blog Detels</label>
-                                                    <textarea name="ProcuctDetels" id="ProcuctDetels" class="w-100 "></textarea>
+                                                    <textarea name="blog" id="ProcuctDetels" class="w-100 "></textarea>
 
                                                 </div>
 
@@ -46,10 +46,13 @@
                                         <div class="table-responsive">
                                             <div class="card-body">
                                                 <div class="form-group">
+                                                    <label for="category">Category</label>
                                                     <label for="category_id">Category</label>
-                                                    <select name="category_id" id="category_id" class="form-control">
+                                                    <select name="category" id="category_id" class="form-control">
                                                         <option value="" disabled selected>(Select Category)</option>
-
+                                                        @foreach($categories as $category)
+                                                        <option>{{ $category->name }}</option>
+                                                        @endforeach
                                                     </select>
 
                                                 </div>

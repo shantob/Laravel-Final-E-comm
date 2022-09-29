@@ -79,6 +79,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/add', [Blog::class, 'addblog'])->name('admin.addblog');
         Route::get('/show/{id}', [Blog::class, 'blogshow'])->where('id', '[0-9]+')->name('admin.blogshow');
         Route::get('/delete/{id}', [Blog::class, 'blogdelete'])->where('id', '[0-9]+')->name('admin.blogdelete');
+        Route::post('/Store', [Blog::class, 'blogStore'])->name('admin.blogStore');
+   
     });
     Route::prefix('comment')->group(function () {
         Route::get('/', [Comment::class, 'commentlist'])->name('admin.commentlist');
