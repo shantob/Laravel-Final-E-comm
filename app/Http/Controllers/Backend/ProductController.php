@@ -15,6 +15,12 @@ class ProductController extends Controller
         $productlist = Product::orderby('id', 'DESC')->paginate(10);
         return view("backend/product/productlist", compact('productlist', 'allproduct'));
     }
+
+    public function productlist()
+    {
+        $productlist = Product::orderby('id', 'DESC')->paginate(10);
+        return view("backend/product/productlist", compact('productlist'));
+    }
     public function productadd()
     {
         $categories = Category::all();
