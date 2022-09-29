@@ -88,5 +88,5 @@ Route::prefix('admin')->group(function () {
     });
 });
 Route::fallback(function () {
-    dd('paglami bondo koro 😠.....');
+    dd('paglami bondo koro 😠..... faltu kotha');
 });
