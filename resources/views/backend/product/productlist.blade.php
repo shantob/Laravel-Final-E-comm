@@ -16,10 +16,10 @@
                             <!-- Top Nav -->
 
                             <!--End Top Nav -->
-                            @if(session('success'))
-                            <p class="text-success text-center">
-                                {{ session('success') }}
-                            </p>
+                            @if (session('success'))
+                                <p class="text-success text-center">
+                                    {{ session('success') }}
+                                </p>
                             @endif
                             <br>
                             <br>
@@ -33,9 +33,14 @@
                                             <div class="card-body text-center">
                                                 <div class=" w-100 ">
                                                     <div class=" px-2">
-                                                        <label for="caregory" class="mb-4 h1 text-dark">Product LIst <span class="text-danger">({{$productlist->count()}})</span></label>
-                                                        <input type="text" id="product_search" class="form-control" placeholder="Search Product" onclick="searchFun()">
-                                                        <table class="table table-responsive table-hover table-responsive round" id="product_table">
+                                                        <label for="caregory" class=" h1 text-dark">Product LIst
+                                                            <br><span class="text-danger mb-4">Total :
+                                                                ({{ $allproduct->count() }})</span></label>
+                                                        <input type="text" id="product_search" class="form-control"
+                                                            placeholder="Search Product" onclick="searchFun()">
+                                                        <table
+                                                            class="table table-responsive table-hover table-responsive round"
+                                                            id="product_table">
                                                             <thead>
                                                                 <tr class="text-light">
                                                                     <th scope="col">#</th>
@@ -49,24 +54,36 @@
 
                                                             </thead>
                                                             <tbody>
-                                                                @foreach($productlist as $product)
-                                                                <tr>
-                                                                    <th scope="row">{{$loop->iteration}}</th>
-                                                                    <td>{{$product->name}}</td>
-                                                                    <td>{{$product->caegory	}}</td>
-                                                                    <td>{{$product->price}}</td>
-                                                                    <td><img src="{{ url('upload/images', $product->image) }}" height="40px" alt=""></td>
-                                                                    <td>{{$product->tags}}</td>
-                                                                    <td>{{$product->img_alt}}</td>
-                                                                    <td><a href="{{route('admin.productshow',$product->id)}}" class="text-light"><button type="submit" class="btn-sm btn-outline-info w-100">View</button></a></td>
-                                                                    <td><a href="{{route('admin.productedit',$product->id)}}" class="text-light"><button type="submit" class="btn-sm btn-outline-primary w-100">UPDATE</button></a></td>
-                                                                    <td><a href="{{route('admin.productdelete',$product->id)}}"><button type="submit" class="btn-sm btn-outline-danger w-100">delete</button></a></td>
-                                                                </tr>
-                                                                
+                                                                @foreach ($productlist as $product)
+                                                                    <tr>
+                                                                        <th scope="row">{{ $loop->iteration }}</th>
+                                                                        <td>{{ $product->name }}</td>
+                                                                        <td>{{ $product->caegory }}</td>
+                                                                        <td>{{ $product->price }}</td>
+                                                                        <td><img src="{{ url('upload/images', $product->image) }}"
+                                                                                height="40px" alt=""></td>
+                                                                        <td>{{ $product->tags }}</td>
+                                                                        <td>{{ $product->img_alt }}</td>
+                                                                        <td><a href="{{ route('admin.productshow', $product->id) }}"
+                                                                                class="text-light"><button
+                                                                                    type="submit"
+                                                                                    class="btn-sm btn-outline-info w-100">View</button></a>
+                                                                        </td>
+                                                                        <td><a href="{{ route('admin.productedit', $product->id) }}"
+                                                                                class="text-light"><button
+                                                                                    type="submit"
+                                                                                    class="btn-sm btn-outline-primary w-100">UPDATE</button></a>
+                                                                        </td>
+                                                                        <td><a
+                                                                                href="{{ route('admin.productdelete', $product->id) }}"><button
+                                                                                    type="submit"
+                                                                                    class="btn-sm btn-outline-danger w-100">delete</button></a>
+                                                                        </td>
+                                                                    </tr>
                                                                 @endforeach
-                                                            
+
                                                             </tbody>
-                                                            
+
                                                         </table>
                                                         <span>{{ $productlist->links() }}</span>
                                                     </div>
@@ -92,7 +109,6 @@
 
         </div>
         <script>
-          
             const searchFun = () => {
                 let filter = document.getElementById('product_search').value.toUpperCase();
                 let product = document.getElementById('product_table');

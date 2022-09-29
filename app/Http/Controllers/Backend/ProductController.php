@@ -9,10 +9,11 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function productlist()
+    public function index()
     {
+        $allproduct = Product::all();
         $productlist = Product::orderby('id', 'DESC')->paginate(10);
-        return view("backend/product/productlist", compact('productlist'));
+        return view("backend/product/productlist", compact('productlist', 'allproduct'));
     }
 
     public function store(Request $request)
@@ -37,14 +38,14 @@ class ProductController extends Controller
     }
 
 
-    public function productadd()
+    public function create()
     {
         $categories = Category::all();
         return view("backend/product/productadd", compact('categories'));
     }
 
 
-    public function productedit($id)
+    public function edit($id)
     {
         $products = Product::find($id);
         $categories = Category::all();
@@ -52,20 +53,28 @@ class ProductController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'price' => 'required',
-            'description' => 'required',
-        ]);
+        //dd($request);
+        // do the same for everything else.. 
+        // echo $name;
+
+        // $product = Product::find($id);
+        // dd($product);
+
+        // $request->validate([
+        //     'name' => 'required',
+        //     'price' => 'required',
+        //     'description' => 'required',
+        // ]);
         if ($request->file('image')) {
             $file = $request->file('image');
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move('upload/images/', $filename);
             $data['image'] = $filename;
         }
-        Product::where('id'.$id)->update([
+        Product::where('name', $request->name)->update([
+
             'name' => $request->name,
             'caegory' => $request->category,
             'description' => $request->description,
@@ -78,13 +87,13 @@ class ProductController extends Controller
     }
 
 
-    public function productshow($id)
+    public function show($id)
     {
         $productShow = Product::find($id);
         return view("backend/product/productshow", compact('productShow'));
     }
 
-    public function productdelete($id)
+    public function destroy($id)
     {
         $productDelete = Product::find($id);
         $productDelete->delete();
