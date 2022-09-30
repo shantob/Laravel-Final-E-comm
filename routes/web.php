@@ -75,11 +75,12 @@ Route::prefix('admin')->group(function () {
         Route::get('/show/{id}', [Backend::class, 'usershow'])->where('id', '[0-9]+')->name('admin.usershow');
     });
     Route::prefix('blog')->group(function () {
-        Route::get('/', [Blog::class, 'bloglist'])->name('admin.bloglist');
-        Route::get('/add', [Blog::class, 'addblog'])->name('admin.addblog');
-        Route::get('/show/{id}', [Blog::class, 'blogshow'])->where('id', '[0-9]+')->name('admin.blogshow');
-        Route::get('/delete/{id}', [Blog::class, 'blogdelete'])->where('id', '[0-9]+')->name('admin.blogdelete');
-        Route::post('/Store', [Blog::class, 'blogStore'])->name('admin.blogStore');
+        Route::get('/', [Blog::class, 'index'])->name('admin.bloglist');
+        Route::post('/Store', [Blog::class, 'store'])->name('admin.blogStore');
+        Route::get('/add', [Blog::class, 'create'])->name('admin.addblog');
+        Route::get('/show/{id}', [Blog::class, 'show'])->where('id', '[0-9]+')->name('admin.blogshow');
+        Route::get('/delete/{id}', [Blog::class, 'destroy'])->where('id', '[0-9]+')->name('admin.blogdelete');
+     
    
     });
     Route::prefix('comment')->group(function () {
