@@ -66,7 +66,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/add', [Product::class, 'productadd'])->name('admin.productadd');
         Route::post('/store', [Product::class, 'store'])->name('admin.product.store');
         Route::get('/edit/{id}', [Product::class, 'productedit'])->where('id', '[0-9]+')->name('admin.productedit');
-        Route::put('/update/', [Product::class, 'update'])->where('id', '[0-9]+')->name('admin.product.update');
+        Route::patch('/{id}', [Product::class, 'update'])->where('id', '[0-9]+')->name('admin.product.update');
         Route::get('/show/{id}', [Product::class, 'productshow'])->where('id', '[0-9]+')->name('admin.productshow');
         Route::get('/destroy/{id}', [Product::class, 'productdelete'])->where('id', '[0-9]+')->name('admin.productdelete');
     });

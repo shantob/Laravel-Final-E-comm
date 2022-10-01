@@ -68,7 +68,7 @@
                                                                         <td><a href="{{ route('admin.productedit', $product->id) }}"
                                                                                 class="text-light"><button
                                                                                     type="submit"
-                                                                                    class="btn-sm btn-outline-primary w-100">UPDATE</button></a>
+                                                                                    class="btn-sm btn-outline-primary w-100">Edit</button></a>
                                                                         </td>
                                                                         <td><a
                                                                                 href="{{ route('admin.productdelete', $product->id) }}"><button

@@ -14,7 +14,7 @@
                     <h4 class="page-title">Edit Product</h4>
                     <a href="{{ route('admin.productlist') }}"><button class="btn btn-warning">
                         << Go Back</button></a>
-                            <form action="{{ route('admin.product.update', $products->name) }}" method="post"
+                            <form action="{{ route('admin.product.update', $products->id) }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('patch')
@@ -63,7 +63,7 @@
                                                                     Category)
                                                                 </option>
                                                                 @foreach ($categories as $category)
-                                                                    <option>{{ $category->name }}</option>
+                                                                    <option value="{{$category->name }}"  @if ($products->caegory==$category->name) selected @endif >   {{$category->name }}</option>
                                                                 @endforeach
 
                                                             </select>
@@ -72,7 +72,7 @@
                                                         <div class="form-group">
                                                             <label for="image">Product Image</label>
                                                             <input type="file" name="image" id="image"
-                                                                value="{{ url('upload/images', $products->image) }}"><img
+                                                                ><img
                                                                 src="{{ url('upload/images', $products->image) }}"
                                                                 alt="">
 
