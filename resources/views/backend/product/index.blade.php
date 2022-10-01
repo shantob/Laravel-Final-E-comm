@@ -60,18 +60,18 @@
                                                                                 height="40px" alt=""></td>
                                                                         <td>{{ $product->tags }}</td>
                                                                         <td>{{ $product->img_alt }}</td>
-                                                                        <td><a href="{{ route('admin.productshow', $product->id) }}"
+                                                                        <td><a href="{{ route('product.show', $product->id) }}"
                                                                                 class="text-light"><button
                                                                                     type="submit"
                                                                                     class="btn-sm btn-outline-info w-100">View</button></a>
                                                                         </td>
-                                                                        <td><a href="{{ route('admin.productedit', $product->id) }}"
+                                                                        <td><a href="{{ route('product.edit', $product->id) }}"
                                                                                 class="text-light"><button
                                                                                     type="submit"
                                                                                     class="btn-sm btn-outline-primary w-100">Edit</button></a>
                                                                         </td>
                                                                         <td><a
-                                                                                href="{{ route('admin.productdelete', $product->id) }}"><button
+                                                                                href="{{ route('product.destroy', $product->id) }}"><button
                                                                                     type="submit"
                                                                                     class="btn-sm btn-outline-danger w-100">delete</button></a>
                                                                         </td>

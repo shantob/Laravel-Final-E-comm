@@ -12,9 +12,9 @@
             <div class="content">
                 <div class="container-fluid">
                     <h4 class="page-title">Add New Product</h4>
-                    <a href="{{ route('admin.productlist') }}"><button class="btn btn-warning">
+                    <a href="{{ route('product.index') }}"><button class="btn btn-warning">
                             << Go Back</button></a>
-                    <form action="{{ route('admin.product.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row">

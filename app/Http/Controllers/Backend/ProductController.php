@@ -12,14 +12,14 @@ class ProductController extends Controller
     // public function index()
     // {
     //     $allproduct = Product::all();
-    //     $productlist = Product::orderby('id', 'DESC')->paginate(10);
-    //     return view("backend/product/productlist", compact('productlist', 'allproduct'));
+    //     $index = Product::orderby('id', 'DESC')->paginate(10);
+    //     return view("backend/product/index", compact('index', 'allproduct'));
     // }
 
-    public function productlist()
+    public function index()
     {    $allproduct = Product::all();
         $productlist = Product::orderby('id', 'DESC')->paginate(10);
-        return view("backend/product/productlist", compact('productlist','allproduct'));
+        return view("backend.product.index", compact('productlist','allproduct'));
     }
 //    
 public function store(Request $request)
@@ -40,22 +40,22 @@ public function store(Request $request)
             'tags' => $request->tags,
             'img_alt' => $request->img_alt,
         ]);
-        return redirect()->route('admin.productlist')->with('success', 'Product Created SuccessFully !!!');
+        return redirect()->route('product.index')->with('success', 'Product Created SuccessFully !!!');
     }
 
 
-    public function productadd()
+    public function create()
     {
         $categories = Category::all();
-        return view("backend/product/productadd", compact('categories'));
+        return view("backend.product.create", compact('categories'));
     }
 
 
-    public function productedit($id)
+    public function edit($id)
     {
         $products = Product::find($id);
         $categories = Category::all();
-        return view("backend/product/productedit", compact('categories', 'products'));
+        return view("backend.product.edit", compact('categories', 'products'));
     }
 
 
@@ -93,20 +93,20 @@ public function store(Request $request)
         // Product::where('id'.$id)->update(
         // );
         $Product->update($data);
-        return redirect()->route('admin.productlist')->with('success', 'Product Updated SuccessFully !!!');
+        return redirect()->route('product.index')->with('success', 'Product Updated SuccessFully !!!');
     }
 
 
-    public function productshow($id)
+    public function show($id)
     {
         $productShow = Product::find($id);
-        return view("backend/product/productshow", compact('productShow'));
+        return view("backend.product.show", compact('productShow'));
     }
 
-    public function productdelete($id)
+    public function destroy($id)
     {
         $productDelete = Product::find($id);
         $productDelete->delete();
-        return redirect()->route('admin.productlist')->with('success', 'Product Delete SuccessFully !!!');
+        return redirect()->route('product.index')->with('success', 'Product Delete SuccessFully !!!');
     }
 }

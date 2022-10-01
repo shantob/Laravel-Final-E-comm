@@ -12,9 +12,9 @@
             <div class="content">
                 <div class="container-fluid">
                     <h4 class="page-title">Edit Product</h4>
-                    <a href="{{ route('admin.productlist') }}"><button class="btn btn-warning">
+                    <a href="{{ route('product.index') }}"><button class="btn btn-warning">
                         << Go Back</button></a>
-                            <form action="{{ route('admin.product.update', $products->id) }}" method="post"
+                            <form action="{{ route('product.update', $products->id) }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('patch')

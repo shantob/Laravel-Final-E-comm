@@ -12,7 +12,7 @@
             <div class="content">
                 <div class="container-fluid">
                     <h4 class="page-title">Product Show</h4>
-                    <a href="{{ route('admin.productlist') }}"><button class="btn btn-warning">
+                    <a href="{{ route('product.index') }}"><button class="btn btn-warning">
                             << Go Back</button></a>
                     <div class="row">
                         <div class="col-md-10">
