@@ -12,9 +12,13 @@
             <div class="content">
                 <div class="container-fluid">
                     <h4 class="page-title">Edit Product</h4>
+<<<<<<< HEAD:resources/views/backend/product/productedit.blade.php
                     <a href="{{ route('admin.product.index') }}"><button class="btn btn-warning">
+=======
+                    <a href="{{ route('product.index') }}"><button class="btn btn-warning">
+>>>>>>> ec075d0f6d883a63af9df1a4c8da6a7c7e7e5c4b:resources/views/backend/product/edit.blade.php
                         << Go Back</button></a>
-                            <form action="{{ route('admin.product.update', $products->name) }}" method="post"
+                            <form action="{{ route('product.update', $products->id) }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('patch')
@@ -63,7 +67,7 @@
                                                                     Category)
                                                                 </option>
                                                                 @foreach ($categories as $category)
-                                                                    <option>{{ $category->name }}</option>
+                                                                    <option value="{{$category->name }}"  @if ($products->caegory==$category->name) selected @endif >   {{$category->name }}</option>
                                                                 @endforeach
 
                                                             </select>
@@ -72,7 +76,7 @@
                                                         <div class="form-group">
                                                             <label for="image">Product Image</label>
                                                             <input type="file" name="image" id="image"
-                                                                value="{{ url('upload/images', $products->image) }}"><img
+                                                                ><img
                                                                 src="{{ url('upload/images', $products->image) }}"
                                                                 alt="">
 

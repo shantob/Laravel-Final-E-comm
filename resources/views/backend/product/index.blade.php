@@ -60,18 +60,30 @@
                                                                                 height="40px" alt=""></td>
                                                                         <td>{{ $product->tags }}</td>
                                                                         <td>{{ $product->img_alt }}</td>
+<<<<<<< HEAD:resources/views/backend/product/productlist.blade.php
                                                                         <td><a href="{{ route('admin.product.show', $product->id) }}"
+=======
+                                                                        <td><a href="{{ route('product.show', $product->id) }}"
+>>>>>>> ec075d0f6d883a63af9df1a4c8da6a7c7e7e5c4b:resources/views/backend/product/index.blade.php
                                                                                 class="text-light"><button
                                                                                     type="submit"
                                                                                     class="btn-sm btn-outline-info w-100">View</button></a>
                                                                         </td>
+<<<<<<< HEAD:resources/views/backend/product/productlist.blade.php
                                                                         <td><a href="{{ route('admin.product.edit', $product->id) }}"
+=======
+                                                                        <td><a href="{{ route('product.edit', $product->id) }}"
+>>>>>>> ec075d0f6d883a63af9df1a4c8da6a7c7e7e5c4b:resources/views/backend/product/index.blade.php
                                                                                 class="text-light"><button
                                                                                     type="submit"
-                                                                                    class="btn-sm btn-outline-primary w-100">UPDATE</button></a>
+                                                                                    class="btn-sm btn-outline-primary w-100">Edit</button></a>
                                                                         </td>
                                                                         <td><a
+<<<<<<< HEAD:resources/views/backend/product/productlist.blade.php
                                                                                 href="{{ route('admin.product.delete', $product->id) }}"><button
+=======
+                                                                                href="{{ route('product.destroy', $product->id) }}"><button
+>>>>>>> ec075d0f6d883a63af9df1a4c8da6a7c7e7e5c4b:resources/views/backend/product/index.blade.php
                                                                                     type="submit"
                                                                                     class="btn-sm btn-outline-danger w-100">delete</button></a>
                                                                         </td>

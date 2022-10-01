@@ -42,10 +42,21 @@
                             <p class=" text-warning">Dashboard</p>
                         </a>
                     </li>
+<<<<<<< HEAD
                     <li class="nav-item {{ Route::is('admin.product.index') ?  'active' : ''}}">
                         <a href="{{ route('admin.product.index')}}">
+=======
+                    <li class="nav-item {{ Route::is('product.index') ?  'active' : ''}}">
+                        <a href="{{ route('product.index')}}">
+>>>>>>> ec075d0f6d883a63af9df1a4c8da6a7c7e7e5c4b
                             <i class="la la-table"></i>
                             <p class=" text-warning">All Product</p>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Route::is('product.create') ?  'active' : ''}}">
+                        <a href="{{ route('product.create')}}">
+                            <i class="la la-table"></i>
+                            <p class=" text-warning">Add Product</p>
                         </a>
                     </li>
                     <li class="nav-item {{ Route::is('admin.category') ?  'active' : ''}}">
@@ -61,12 +72,16 @@
                         </a>
                     </li>
                 
+<<<<<<< HEAD
                     <li class="nav-item {{ Route::is('admin.product.create') ?  'active' : ''}}">
                         <a href="{{ route('admin.product.create')}}">
                             <i class="la la-table"></i>
                             <p class=" text-warning">Add Product</p>
                         </a>
                     </li>
+=======
+                 
+>>>>>>> ec075d0f6d883a63af9df1a4c8da6a7c7e7e5c4b
                     <li class="nav-item {{ Route::is('admin.commentlist') ?  'active' : ''}}">
                         <a href="{{route('admin.commentlist')}}">
                             <i class="la la-table"></i>
