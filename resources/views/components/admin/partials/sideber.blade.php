@@ -42,8 +42,8 @@
                             <p class=" text-warning">Dashboard</p>
                         </a>
                     </li>
-                    <li class="nav-item {{ Route::is('admin.productlist') ?  'active' : ''}}">
-                        <a href="{{ route('admin.productlist')}}">
+                    <li class="nav-item {{ Route::is('admin.product.index') ?  'active' : ''}}">
+                        <a href="{{ route('admin.product.index')}}">
                             <i class="la la-table"></i>
                             <p class=" text-warning">All Product</p>
                         </a>
@@ -54,15 +54,15 @@
                             <p class=" text-warning">Category</p>
                         </a>
                     </li>
-                    <li class="nav-item {{ Route::is('admin.categoryadd') ?  'active' : ''}}">
-                        <a href="{{ route('admin.categoryadd')}}">
+                    <li class="nav-item {{ Route::is('admin.category.create') ?  'active' : ''}}">
+                        <a href="{{ route('admin.category.create')}}">
                             <i class="la la-table"></i>
                             <p class=" text-warning">Category Add</p>
                         </a>
                     </li>
                 
-                    <li class="nav-item {{ Route::is('admin.productadd') ?  'active' : ''}}">
-                        <a href="{{ route('admin.productadd')}}">
+                    <li class="nav-item {{ Route::is('admin.product.create') ?  'active' : ''}}">
+                        <a href="{{ route('admin.product.create')}}">
                             <i class="la la-table"></i>
                             <p class=" text-warning">Add Product</p>
                         </a>

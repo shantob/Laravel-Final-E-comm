@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
 
-    public function category()
+    public function index()
     {
         $categories = Category::all();
         return view("backend/category/home", compact('categories'));
@@ -23,20 +23,32 @@ class CategoryController extends Controller
         return redirect()->route('admin.category')->with('success', 'SuccessFully Created Category');
     }
 
-    public function categoryadd()
+    public function create()
     {
         return view("backend/category/categoryadd");
     }
 
-    public function categoryshow($id)
+    public function show($id)
     {
         $categoryShow = Category::find($id);
         return view('backend.category.categoryshow', compact('categoryShow'));
     }
 
-    public function categoryedit()
+    public function edit($id)
     {
-        return view("backend/category/categoryedit");
+        $categoryedit = Category::find($id);
+        return view("backend/category/categoryedit",compact('categoryedit'));
+    }
+
+    public function update(Request $request,$id)
+    {
+        //dd($request);
+        $categorie = Category::find($id);
+        $data = [
+            'name'=> $request->name,
+        ];
+        $categorie->update($data);
+        return redirect()->route('admin.category')->with('success','Category edit Successdfully');
     }
 
     public function destroy($id)

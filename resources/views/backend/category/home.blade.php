@@ -10,14 +10,10 @@
         <div class="main-panel">
             <div class="content">
                 <div class="container-fluid">
-                    <h4 class="page-title">Category List </h4>
+                    <h4 class="page-title">Category List <h6 class="text-right"><a href="{{route('admin.category.create')}}"><button class="btn btn-danger">+ Add New</button></a></h6></h4>
                     <div class="row">
                         <div class="col-md-10">
-                        @if(session('success'))
-                            <p class="text-success text-center">
-                                {{ session('success') }}
-                            </p>
-                            @endif
+   
                             <div class="main-content bg-dark">
 
 
@@ -40,9 +36,9 @@
                                                             <tr>
                                                                 <th scope="row">{{$loop->iteration}}</th>
                                                                 <td>{{$category->name}}</td>
-                                                                <td><a href="{{route('admin.categoryshow', $category->id)}}"><button type="submit" class=" btn-sm btn-outline-info w-100">Wiew</button></a></td>
-                                                                <td><a href="{{route('admin.categoryedit')}}"><button type="submit" class="btn-sm btn-outline-warning w-100">UPDATE</button></a></td>
-                                                                <td><a href="{{route('admin.categorydestroy', $category->id)}}"><button type="submit" class="btn-sm btn-outline-danger w-100">DELETE</button></a></td>
+                                                                <td><a href="{{route('admin.category.show', $category->id)}}"><button type="submit" class=" btn-sm btn-outline-info w-100">Wiew</button></a></td>
+                                                                <td><a href="{{route('admin.category.edit',$category->id)}}"><button type="submit" class="btn-sm btn-outline-warning w-100">UPDATE</button></a></td>
+                                                                <td><a href="{{route('admin.category.destroy', $category->id)}}"><button type="submit" class="btn-sm btn-outline-danger w-100">DELETE</button></a></td>
                                                             </tr>
                                                             @endforeach
                                                         </tbody>

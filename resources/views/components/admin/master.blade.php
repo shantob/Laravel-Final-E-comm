@@ -96,7 +96,7 @@
 </script>
 @endif
 
-<script>
+<script type="text/javascript">
     function searchFun() {
         let filter = document.getElementById('product_search').value.toUpperCase();
         let product = document.getElementById('product_table');
@@ -115,6 +115,30 @@
             }
         }
     }
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+      
+    $('#search').keyup(function(){
+        var search = $('#search').val();
+        if(search==""){
+            $("#memList").html("");
+            $('#result').hide();
+        }
+        else{
+            $.get("{{ URL::to('search') }}",{search:search}, function(data){
+                $('#memList').empty().html(data);
+                $('#result').show();
+            })
+        }
+    });
+});
 </script>
 
 </html>

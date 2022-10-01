@@ -53,8 +53,31 @@ class ProductController extends Controller
     }
 
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
+        $products = Product::find($id);
+
+         if ($request->file('image')) {
+                $file = $request->file('image');
+                $filename = date('YmdHi') . $file->getClientOriginalName();
+                $file->move('upload/images/', $filename);
+                $data['image'] = $filename;
+            }
+        $data =[
+            'name' => $request->name,
+            'caegory' => $request->category,
+            'description' => $request->description,
+            'price' => $request->price,
+            'image' => $filename,
+            'tags' => $request->tags,
+            'img_alt' => $request->img_alt,
+        ];
+       
+        
+        $products->update($data);
+        dd($products);
+        return redirect()->route('admin.product.index')->with('success', 'Product Updated SuccessFully !!!');
+
         //dd($request);
         // do the same for everything else.. 
         // echo $name;
@@ -67,23 +90,22 @@ class ProductController extends Controller
         //     'price' => 'required',
         //     'description' => 'required',
         // ]);
-        if ($request->file('image')) {
-            $file = $request->file('image');
-            $filename = date('YmdHi') . $file->getClientOriginalName();
-            $file->move('upload/images/', $filename);
-            $data['image'] = $filename;
-        }
-        Product::where('name', $request->name)->update([
+        // if ($request->file('image')) {
+        //     $file = $request->file('image');
+        //     $filename = date('YmdHi') . $file->getClientOriginalName();
+        //     $file->move('upload/images/', $filename);
+        //     $data['image'] = $filename;
+        // }
+        // Product::where('name', $request->name)->update([
 
-            'name' => $request->name,
-            'caegory' => $request->category,
-            'description' => $request->description,
-            'price' => $request->price,
-            'image' => $filename,
-            'tags' => $request->tags,
-            'img_alt' => $request->img_alt,
-        ]);
-        return redirect()->route('admin.productlist')->with('success', 'Product Updated SuccessFully !!!');
+        //     'name' => $request->name,
+        //     'caegory' => $request->category,
+        //     'description' => $request->description,
+        //     'price' => $request->price,
+        //     'image' => $filename,
+        //     'tags' => $request->tags,
+        //     'img_alt' => $request->img_alt,
+        // ]);
     }
 
 
@@ -97,6 +119,6 @@ class ProductController extends Controller
     {
         $productDelete = Product::find($id);
         $productDelete->delete();
-        return redirect()->route('admin.productlist')->with('success', 'Product Delete SuccessFully !!!');
+        return redirect()->route('admin.product.index')->with('success', 'Product Delete SuccessFully !!!');
     }
 }

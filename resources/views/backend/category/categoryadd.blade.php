@@ -2,7 +2,7 @@
     <!-- partial -->
     <x-slot:title>
 
-        CATEGORY EDIT
+        CATEGORY ADD
         </x-slot>
 
         <!-- Main Wrapper -->
@@ -10,7 +10,7 @@
         <div class="main-panel">
             <div class="content">
                 <div class="container-fluid">
-                    <h4 class="page-title">Category Edit</h4>
+                    <h4 class="page-title">Category Add</h4>
                     <div class="row">
                         <div class="col-md-10">
 

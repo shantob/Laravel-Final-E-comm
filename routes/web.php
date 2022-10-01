@@ -52,22 +52,23 @@ Route::prefix('admin')->group(function () {
     Route::get('/', [Backend::class, 'home'])->name('admin.home');
 
     Route::prefix('product')->group(function () {
-        Route::get('/', [Product::class, 'index'])->name('admin.productlist');
-        Route::get('/add', [Product::class, 'create'])->name('admin.productadd');
+        Route::get('/', [Product::class, 'index'])->name('admin.product.index');
+        Route::get('/add', [Product::class, 'create'])->name('admin.product.create');
         Route::post('/store', [Product::class, 'store'])->name('admin.product.store');
-        Route::get('/edit/{id}', [Product::class, 'edit'])->where('id', '[0-9]+')->name('admin.productedit');
+        Route::get('/edit/{id}', [Product::class, 'edit'])->where('id', '[0-9]+')->name('admin.product.edit');
         Route::patch('/update/{id}', [Product::class, 'update'])->name('admin.product.update');
-        Route::get('/show/{id}', [Product::class, 'show'])->where('id', '[0-9]+')->name('admin.productshow');
-        Route::get('/destroy/{id}', [Product::class, 'destroy'])->where('id', '[0-9]+')->name('admin.productdelete');
+        Route::get('/show/{id}', [Product::class, 'show'])->where('id', '[0-9]+')->name('admin.product.show');
+        Route::get('/destroy/{id}', [Product::class, 'destroy'])->where('id', '[0-9]+')->name('admin.product.delete');
     });
 
     Route::prefix('category')->group(function () {
-        Route::get('/', [Category::class, 'category'])->name('admin.category');
-        Route::get('/add', [Category::class, 'categoryadd'])->name('admin.categoryadd');
+        Route::get('/', [Category::class, 'index'])->name('admin.category');
+        Route::get('/add', [Category::class, 'create'])->name('admin.category.create');
         Route::post('/store', [Category::class, 'store'])->name('admin.category.store');
-        Route::get('/edit', [Category::class, 'categoryedit'])->where('id', '[0-9]+')->name('admin.categoryedit');
-        Route::get('/show/{id}', [Category::class, 'categoryshow'])->where('id', '[0-9]+')->name('admin.categoryshow');
-        Route::get('/delete/{id}', [Category::class, 'destroy'])->name('admin.categorydestroy');
+        Route::get('/edit/{id}', [Category::class, 'edit'])->where('id', '[0-9]+')->name('admin.category.edit');
+        Route::patch('/update/{id}', [Category::class, 'update'])->where('id', '[0-9]+')->name('admin.category.update');
+        Route::get('/show/{id}', [Category::class, 'show'])->where('id', '[0-9]+')->name('admin.category.show');
+        Route::get('/delete/{id}', [Category::class, 'destroy'])->name('admin.category.destroy');
     });
 
     Route::prefix('user')->group(function () {

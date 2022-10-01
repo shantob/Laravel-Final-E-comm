@@ -26,7 +26,8 @@
                                     <br>
                                     <br>
                                     <div class="col-md-10">
-
+                                    <a href="{{route('admin.category')}}"><button class="btn btn-success">
+                                        << GO BACK</button></a>
                                         <div class="main-content">
 
                                             <br>
@@ -42,7 +43,6 @@
 
                                                                 <p>Category Id: {{$categoryShow->id}}</p>
                                                                 <p>Name: {{$categoryShow->name}}</p>
-                                                                <p> Picture :<img src="{{$categoryShow->image}}" alt="Profile Picture"> </p>
 
                                                             </div>
                                                         </div>

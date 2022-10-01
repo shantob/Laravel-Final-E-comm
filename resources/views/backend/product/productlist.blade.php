@@ -10,7 +10,7 @@
         <div class="main-panel">
             <div class="content">
                 <div class="container-fluid">
-                    <h4 class="page-title">Product List</h4>
+                    <h4 class="page-title">Product List <h5 class="text-right"><a href="{{route('admin.product.create') }}"><button class="btn btn-danger">+ Add New</button></a></h4></h5>
                     <div class="row">
                         <div class=" my-container active-cont mx-2">
                             <!-- Top Nav -->
@@ -60,18 +60,18 @@
                                                                                 height="40px" alt=""></td>
                                                                         <td>{{ $product->tags }}</td>
                                                                         <td>{{ $product->img_alt }}</td>
-                                                                        <td><a href="{{ route('admin.productshow', $product->id) }}"
+                                                                        <td><a href="{{ route('admin.product.show', $product->id) }}"
                                                                                 class="text-light"><button
                                                                                     type="submit"
                                                                                     class="btn-sm btn-outline-info w-100">View</button></a>
                                                                         </td>
-                                                                        <td><a href="{{ route('admin.productedit', $product->id) }}"
+                                                                        <td><a href="{{ route('admin.product.edit', $product->id) }}"
                                                                                 class="text-light"><button
                                                                                     type="submit"
                                                                                     class="btn-sm btn-outline-primary w-100">UPDATE</button></a>
                                                                         </td>
                                                                         <td><a
-                                                                                href="{{ route('admin.productdelete', $product->id) }}"><button
+                                                                                href="{{ route('admin.product.delete', $product->id) }}"><button
                                                                                     type="submit"
                                                                                     class="btn-sm btn-outline-danger w-100">delete</button></a>
                                                                         </td>
@@ -103,25 +103,6 @@
             <x-admin.partials.footer />
 
         </div>
-        <script>
-            const searchFun = () => {
-                let filter = document.getElementById('product_search').value.toUpperCase();
-                let product = document.getElementById('product_table');
-                let tr = product.getElementsByTagName('tr');
-                for (var i = 0; i < tr.length; i++) {
-                    let td = tr[i].getElementsByTagName('td')[1];
-
-                    if (td) {
-                        let textValue = td.textContent || td.innerHTML;
-
-                        if (textValue.toUppercase().indexOf(filter) > -1) {
-                            tr[1].style.display = "";
-                        } else {
-                            tr[i].style.display = "none";
-                        }
-                    }
-                }
-            }
-        </script>
+       
         
         </x-admin>
