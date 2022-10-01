@@ -9,27 +9,25 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-    public function bloglist()
+    public function index()
     {
         $blogs = Blog::all();
         return view("backend/bloglist", compact('blogs'));
     }
-    public function addblog()
+    public function create()
     {
         $categories = Category::all();
         
         return view("backend/addblog",compact('categories'));
     }
-    public function blogshow($id)
+    public function show($id)
     {
         $blogShow = Blog::find($id);
         return view("backend/blogshow", compact('blogShow'));
     }
 
-    public function blogStore(Request $request)
+    public function store(Request $request)
     {
-
-
 
         if ($request->file('image')) {
             $file = $request->file('image');
@@ -50,7 +48,7 @@ class BlogController extends Controller
         return redirect()->route('admin.bloglist')->with('success', 'Blog Created SuccessFully !!!');
        
     }
-    public function blogdelete($id)
+    public function destroy($id)
     {
         $blogdelete = Blog::find($id);
         $blogdelete->delete();

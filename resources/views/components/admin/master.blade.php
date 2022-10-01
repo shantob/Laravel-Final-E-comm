@@ -81,25 +81,40 @@
 
 <!-- custom them -->
 <script src="{{ asset('assets/admin/js/ready.min.js') }}"></script>
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+@if(session('success'))
 <script>
-            function searchFun() {
-                let filter = document.getElementById('product_search').value.toUpperCase();
-                let product = document.getElementById('product_table');
-                let tr = product.getElementsByTagName('tr');
-                for (var i = 0; i < tr.length; i++) {
-                    let td = tr[i].getElementsByTagName('td')[1];
+    swal({
+        title: "Good job!",
+        text: " {{ session('success') }}",
+        icon: "success",
+    });
+</script>
+@endif
 
-                    if (td) {
-                        let textValue = td.textContent || td.innerHTML;
+<script>
+    function searchFun() {
+        let filter = document.getElementById('product_search').value.toUpperCase();
+        let product = document.getElementById('product_table');
+        let tr = product.getElementsByTagName('tr');
+        for (var i = 0; i < tr.length; i++) {
+            let td = tr[i].getElementsByTagName('td')[1];
 
-                        if (textValue.toUppercase().indexOf(filter) > -1) {
-                            tr[1].style.display = "";
-                        } else {
-                            tr[i].style.display = "none";
-                        }
-                    }
+            if (td) {
+                let textValue = td.textContent || td.innerHTML;
+
+                if (textValue.toUppercase().indexOf(filter) > -1) {
+                    tr[1].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
                 }
             }
-        </script>
+        }
+    }
+</script>
 
 </html>
