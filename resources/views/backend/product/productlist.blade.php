@@ -16,11 +16,7 @@
                             <!-- Top Nav -->
 
                             <!--End Top Nav -->
-                            @if (session('success'))
-                                <p class="text-success text-center">
-                                    {{ session('success') }}
-                                </p>
-                            @endif
+                            
                             <br>
                             <br>
                             <div class="col-md-12">
@@ -92,7 +88,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
 
@@ -128,4 +123,5 @@
                 }
             }
         </script>
+        
         </x-admin>
