@@ -24,10 +24,13 @@ php artisan migrate:rollback
 
 php artisan make:model category
 php artisan make:model Blog -m  ..with migration table
-https://carbon.nesbot.com/docs/
+
+php artisan make:factory BlogFactory
+php artisan make:seeder BlogSeeder
+
 
 php artisan make:controller PhotoController --resource
-
+https://carbon.nesbot.com/docs/
 seeder....
 php artisan make:seeder categorySeedeer
 php artisan db:seed
