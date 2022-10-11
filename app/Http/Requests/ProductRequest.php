@@ -23,25 +23,25 @@ class ProductRequest extends FormRequest
      */
     public function rules()
     {
-        $imageValitionRules='image|mimes:jpg,png,jpeg,gif';
-        if($this->isMethod('post')){
-            $imageValitionRules= 'required|'.$imageValitionRules;
+        $imageValitionRules = 'image|mimes:jpg,png,jpeg,gif';
+        if ($this->isMethod('post')) {
+            $imageValitionRules = 'required|' . $imageValitionRules;
         }
         return [
-            'name' => 'required|string|max:255|min:3|unique:courses,title,'
-            .$this->id,
+            'name' => 'required|string|max:255|min:3|unique:products,id,' . $this->product?->id,
+
             'description' => 'required',
             'price' => 'required|digits_between:1,6',
 
             // 'seats' => ' required|integer|size:10';
-            
+
             'category' => 'required|string',
-            'image'=>$imageValitionRules
+            'image' => $imageValitionRules
 
 
         ];
-            //
-        
+        //
+
     }
 
 
@@ -51,7 +51,7 @@ class ProductRequest extends FormRequest
             'name.required' => 'A Name Field is required',
             'name.unique' => 'Database check kore dekheci eta ace',
             'name.string' => 'dasdas',
-            'category.required'=> "category_id Field is Required",
+            'category.required' => "category_id Field is Required",
             'price.required.' => "price requried",
             'description.required.' => "description requried"
         ];

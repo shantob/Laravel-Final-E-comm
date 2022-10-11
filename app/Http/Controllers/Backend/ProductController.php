@@ -9,6 +9,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Image;
+
 class ProductController extends Controller
 {
     // public function index()
@@ -19,12 +20,13 @@ class ProductController extends Controller
     // }
 
     public function index()
-    {    $allproduct = Product::all();
+    {
+        $allproduct = Product::all();
         $productlist = Product::orderby('id', 'DESC')->paginate(10);
-        return view("backend.product.index", compact('productlist','allproduct'));
+        return view("backend.product.index", compact('productlist', 'allproduct'));
     }
-//    
-public function store(ProductRequest $request)
+    //    
+    public function store(ProductRequest $request)
     {
         Product::create([
 
@@ -43,16 +45,17 @@ public function store(ProductRequest $request)
 
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::pluck('name', 'id')->toArray();
         return view("backend.product.create", compact('categories'));
     }
 
 
-    public function edit( Product $product, Category $category )
+    public function edit(Product $product)
     {
         // $products = Product::find($id);
         // $categories = Category::all();
-        return view("backend.product.edit", compact('product', 'category'));
+        $categories =  Category::pluck('name', 'id')->toArray();
+        return view("backend.product.edit", compact('product', 'categories'));
     }
 
 
@@ -60,8 +63,8 @@ public function store(ProductRequest $request)
     {
         // $products = Product::find($id);
 
- 
-        $data =[
+
+        $data = [
             'name' => $request->name,
             'caegory' => $request->category,
             'description' => $request->description,
@@ -70,17 +73,17 @@ public function store(ProductRequest $request)
             'tags' => $request->tags,
             'img_alt' => $request->img_alt,
         ];
-       
-        
+
+
         $product->update($data);
         //dd($products);
         return redirect()->route('product.index')->with('success', 'Product Updated SuccessFully !!!');
     }
-    
+
     public function show(Product $product)
     {
         // $productShow = Product::find($id);
-        return view("backend.product.show", compact('productShow'));
+        return view("backend.product.show", compact('product'));
     }
 
     public function destroy(Product $product)
@@ -110,7 +113,7 @@ public function store(ProductRequest $request)
 
         return redirect()
             ->route('product.trash')
-            ->with('success','Parmanent Deleted Successfully!');
+            ->with('success', 'Parmanent Deleted Successfully!');
     }
     public function downloadPdf()
     {
@@ -119,13 +122,14 @@ public function store(ProductRequest $request)
         return $pdf->download('product-list.pdf');
     }
 
-    public function uploadImage($file){
-        $fileName = date('y-m-d').'-'.time().'.'.$file ->getClientOriginalExtension();
+    public function uploadImage($file)
+    {
+        $fileName = date('y-m-d') . '-' . time() . '.' . $file->getClientOriginalExtension();
         // $file->move(storage_path('app/public/categories'), $fileName);
 
         Image::make($file)
-                ->resize(200, 200)
-                ->save(storage_path() . '/app/public/products/' . $fileName);
+            ->resize(200, 200)
+            ->save(storage_path() . '/app/public/products/' . $fileName);
 
         return $fileName;
     }

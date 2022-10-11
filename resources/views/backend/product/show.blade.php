@@ -43,15 +43,15 @@
 
 
 
-                                                                <p>Product Id: {{ $productShow->id }}</p>
-                                                                <p>Name: {{ $productShow->name }}</p>
+                                                                <p>Product Id: {{ $product->id }}</p>
+                                                                <p>Name: {{ $product->name }}</p>
                                                                 <p> Picture :<img
-                                                                        src="{{ url('upload/images', $productShow->image) }}"
+                                                                        src="{{ asset('storage/products/' . $product->image) }}"
                                                                         height="400px" alt=""> </p>
-                                                                <p>Price: {{ $productShow->price }}$</p>
-                                                                <p>{{ $productShow->description }}</p>
-                                                                <p>Tags: {{ $productShow->tags }}</p>
-                                                                <p>Create: {{ $productShow->created_at }}</p>
+                                                                <p>Price: {{ $product->price }}$</p>
+                                                                <p>{{ $product->description }}</p>
+                                                                <p>Tags: {{ $product->tags }}</p>
+                                                                <p>Create: {{ $product->created_at }}</p>
 
                                                             </div>
                                                         </div>
