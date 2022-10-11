@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
-
+use Barryvdh\DomPDF\Facade\Pdf;
+use Image;
 class CategoryController extends Controller
 {
 
@@ -15,12 +17,17 @@ class CategoryController extends Controller
         return view("backend/category/home", compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        Category::create([
+        $data = [
             'name' => $request->name,
-        ]);
-        return redirect()->route('admin.category')->with('success', 'SuccessFully Created Category');
+            'is_active' => $request->is_active ? true : false,
+            'image' =>  $this->uploadImage($request->file('image'))
+        ];
+
+        Category::create($data);
+
+        return redirect()->route('category.index')->with('success', 'SuccessFully Created Category');
     }
 
     public function create()
@@ -28,33 +35,71 @@ class CategoryController extends Controller
         return view("backend/category/categoryadd");
     }
 
-    public function show($id)
+    public function show(Category $category)
     {
-        $categoryShow = Category::find($id);
-        return view('backend.category.categoryshow', compact('categoryShow'));
+        // $categoryShow = Category::find($id);
+        return view('backend.category.categoryshow', compact('category'));
     }
 
-    public function edit($id)
+    public function edit(Category $category)
     {
-        $categoryedit = Category::find($id);
-        return view("backend/category/categoryedit",compact('categoryedit'));
+        // $categoryedit = Category::find($id);
+        return view("backend/category/categoryedit", compact('category'));
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request, Category $category)
     {
         //dd($request);
-        $categorie = Category::find($id);
+        // $categorie = Category::find($id);
         $data = [
-            'name'=> $request->name,
+            'name' => $request->name,
         ];
-        $categorie->update($data);
-        return redirect()->route('admin.category')->with('success','Category edit Successdfully');
+        $category->update($data);
+        return redirect()->route('category.index')->with('success', 'Category edit Successdfully');
     }
 
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        $categoryDestroy = Category::find($id);
-        $categoryDestroy->delete();
-        return redirect()->route('admin.category')->with('success', 'SuccessFully Deleted Category');
+        // $categoryDestroy = Category::find($id);
+        $category->delete();
+        return redirect()->route('category.index')->with('success', 'SuccessFully Deleted Category');
     }
+    public function trash()
+    {
+        $categories = Category::onlyTrashed()->get();
+        return view("backend/category/trash", compact('categories'));
+    }
+    public function restore($id)
+    {
+        $category = Category::onlyTrashed()->find($id);
+        $category->restore();
+        return redirect()->route('category.trash')->with('success', 'SuccessFully Restored Category');
+    }
+
+    public function delete($id)
+    {
+        $category = Category::onlyTrashed()->find($id);
+        $category->forceDelete();
+
+        return redirect()
+            ->route('category.trash')
+            ->with('success','Parmanent Deleted Successfully!');
+    }
+    public function downloadPdf()
+    {
+        $categories = Category::all();
+        $pdf = Pdf::loadView('backend.category.pdf', compact('categories'));
+        return $pdf->download('category-list.pdf');
+    }
+    public function uploadImage($file){
+        $fileName = date('y-m-d').'-'.time().'.'.$file ->getClientOriginalExtension();
+        // $file->move(storage_path('app/public/categories'), $fileName);
+
+        Image::make($file)
+                ->resize(200, 200)
+                ->save(storage_path() . '/app/public/categories/' . $fileName);
+
+        return $fileName;
+    }
+    
 }

@@ -26,7 +26,7 @@
                                     <br>
                                     <br>
                                     <div class="col-md-10">
-                                    <a href="{{route('admin.category')}}"><button class="btn btn-success">
+                                    <a href="{{route('category.index')}}"><button class="btn btn-success">
                                         << GO BACK</button></a>
                                         <div class="main-content">
 
@@ -41,9 +41,10 @@
 
 
 
-                                                                <p>Category Id: {{$categoryShow->id}}</p>
-                                                                <p>Name: {{$categoryShow->name}}</p>
-
+                                                                <p>Category Id: {{$category->id}}</p>
+                                                                <p>Name: {{$category->name}}</p>
+                                                                <p>Is Active?: {{ $category->is_active ? 'Yes' : 'No' }} </p>
+                                                                <img src="{{ asset('storage/categories/'.$category->image) }}" height="250" />
                                                             </div>
                                                         </div>
                                                     </div>

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
-
+use Barryvdh\DomPDF\Facade\Pdf;
+use Image;
 class ProductController extends Controller
 {
     // public function index()
@@ -22,24 +24,19 @@ class ProductController extends Controller
         return view("backend.product.index", compact('productlist','allproduct'));
     }
 //    
-public function store(Request $request)
+public function store(ProductRequest $request)
     {
-        if ($request->file('image')) {
-            $file = $request->file('image');
-            $filename = date('YmdHi') . $file->getClientOriginalName();
-            $file->move('upload/images/', $filename);
-            $data['image'] = $filename;
-        }
         Product::create([
 
             'name' => $request->name,
             'caegory' => $request->category,
             'description' => $request->description,
             'price' => $request->price,
-            'image' => $filename,
+            'image' =>  $this->uploadImage($request->file('image')),
             'tags' => $request->tags,
             'img_alt' => $request->img_alt,
         ]);
+
         return redirect()->route('product.index')->with('success', 'Product Created SuccessFully !!!');
     }
 
@@ -51,122 +48,85 @@ public function store(Request $request)
     }
 
 
-    public function edit($id)
+    public function edit( Product $product, Category $category )
     {
-        $products = Product::find($id);
-        $categories = Category::all();
-        return view("backend.product.edit", compact('categories', 'products'));
+        // $products = Product::find($id);
+        // $categories = Category::all();
+        return view("backend.product.edit", compact('product', 'category'));
     }
 
 
-<<<<<<< HEAD
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, Product $product)
     {
-        $products = Product::find($id);
+        // $products = Product::find($id);
 
-         if ($request->file('image')) {
-                $file = $request->file('image');
-                $filename = date('YmdHi') . $file->getClientOriginalName();
-                $file->move('upload/images/', $filename);
-                $data['image'] = $filename;
-            }
+ 
         $data =[
             'name' => $request->name,
             'caegory' => $request->category,
             'description' => $request->description,
             'price' => $request->price,
-            'image' => $filename,
+            'image' =>  $this->uploadImage($request->file('image')),
             'tags' => $request->tags,
             'img_alt' => $request->img_alt,
         ];
        
         
-        $products->update($data);
-        dd($products);
-        return redirect()->route('admin.product.index')->with('success', 'Product Updated SuccessFully !!!');
-
-        //dd($request);
-        // do the same for everything else.. 
-        // echo $name;
-
-        // $product = Product::find($id);
-        // dd($product);
-
-        // $request->validate([
-        //     'name' => 'required',
-        //     'price' => 'required',
-        //     'description' => 'required',
-        // ]);
-        // if ($request->file('image')) {
-        //     $file = $request->file('image');
-        //     $filename = date('YmdHi') . $file->getClientOriginalName();
-        //     $file->move('upload/images/', $filename);
-        //     $data['image'] = $filename;
-        // }
-        // Product::where('name', $request->name)->update([
-
-        //     'name' => $request->name,
-        //     'caegory' => $request->category,
-        //     'description' => $request->description,
-        //     'price' => $request->price,
-        //     'image' => $filename,
-        //     'tags' => $request->tags,
-        //     'img_alt' => $request->img_alt,
-        // ]);
-=======
-    public function update(Request $request ,$id)
-    {   $Product=Product::find($id);
-       
-        if ($request->file('image')) {
-            $file = $request->file('image');
-            $filename = date('YmdHi') . $file->getClientOriginalName();
-            $file->move('upload/images/', $filename);
-            $data['image'] = $filename;
-
-
-            $data=[
-                'name' => $request->name,
-                'caegory' => $request->category,
-                'description' => $request->description,
-                'price' => $request->price,
-                'image' => $filename,
-                'tags' => $request->tags,
-                'img_alt' => $request->img_alt];
-            // Product::where('id'.$id)->update(
-            // );
-            $Product->update($data);
-        }
-
-        $data=[
-            'name' => $request->name,
-            'caegory' => $request->category,
-            'description' => $request->description,
-            'price' => $request->price,
-            'image' => $Product->image,
-            'tags' => $request->tags,
-            'img_alt' => $request->img_alt,];
-        // Product::where('id'.$id)->update(
-        // );
-        $Product->update($data);
+        $product->update($data);
+        //dd($products);
         return redirect()->route('product.index')->with('success', 'Product Updated SuccessFully !!!');
->>>>>>> ec075d0f6d883a63af9df1a4c8da6a7c7e7e5c4b
     }
-
-
-    public function show($id)
+    
+    public function show(Product $product)
     {
-        $productShow = Product::find($id);
+        // $productShow = Product::find($id);
         return view("backend.product.show", compact('productShow'));
     }
 
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        $productDelete = Product::find($id);
-        $productDelete->delete();
-<<<<<<< HEAD
-        return redirect()->route('admin.product.index')->with('success', 'Product Delete SuccessFully !!!');
-=======
+        // $productDelete = Product::find($id);
+        $product->delete();
         return redirect()->route('product.index')->with('success', 'Product Delete SuccessFully !!!');
->>>>>>> ec075d0f6d883a63af9df1a4c8da6a7c7e7e5c4b
+    }
+
+    public function trash()
+    {
+        $product = Product::onlyTrashed()->get();
+        return view("backend/product/trash", compact('product'));
+    }
+    public function restore($id)
+    {
+        $product = Product::onlyTrashed()->find($id);
+        $product->restore();
+        return redirect()->route('product.trash')->with('success', 'SuccessFully Restored Category');
+    }
+
+    public function delete($id)
+    {
+        //dd($id);
+        $product = Product::onlyTrashed()->find($id);
+        $product->forceDelete();
+
+        return redirect()
+            ->route('product.trash')
+            ->with('success','Parmanent Deleted Successfully!');
+    }
+    public function downloadPdf()
+    {
+        $products = Product::all();
+        $pdf = Pdf::loadView('backend.product.pdf', compact('products'));
+        return $pdf->download('product-list.pdf');
+    }
+
+    public function uploadImage($file){
+        $fileName = date('y-m-d').'-'.time().'.'.$file ->getClientOriginalExtension();
+        // $file->move(storage_path('app/public/categories'), $fileName);
+
+        Image::make($file)
+                ->resize(200, 200)
+                ->save(storage_path() . '/app/public/products/' . $fileName);
+
+        return $fileName;
     }
 }

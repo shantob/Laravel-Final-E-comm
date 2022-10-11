@@ -35,12 +35,17 @@
                                                 <div class="col-md-8">
                                                     <div class="card bg-warning">
                                                         <div class="card-body ">
-                                                            <form action="{{ route('admin.category.store') }}" method="post">
+                                                            <form action="{{ route('category.store') }}" method="post" enctype="multipart/form-data">
                                                                 @csrf
-                                                                <label for="caregory" class="my-4">
-                                                                    <h2 class="text-center text-light">Type Category</h2>
-                                                                </label>
-                                                                <input type="text" name="name" class="form-control" id="category">
+                                                                <x-admin.forms.input type="text" name="name" label="Name" :value="old('name')" placeholder="Enter name" />
+
+                                                                <x-admin.forms.input type="file" name="image" label="Image"/>
+
+                                                                <div class="mb-3 form-check">
+                                                                    <input name="is_active" type="checkbox" class="form-check-input" id="isActiveInput">
+                                                                    <label class="form-check-label" for="isActiveInput">Is Active ?</label>
+                                                                </div>
+
                                                                 <div class="d-flex justify-content-center mt-4 py-4">
                                                                     <button type="submit" class="btn btn-light mx-2">Create Category</button>
                                                                     <button type="reset" class="btn btn-dark mx-2">Cancle</button>

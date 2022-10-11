@@ -61,36 +61,38 @@ Route::prefix('admin')->group(function () {
     //     Route::get('/destroy/{id}', [Product::class, 'destroy'])->where('id', '[0-9]+')->name('admin.productdelete');
     // });
 
-    Route::prefix('product')->group(function () {
-<<<<<<< HEAD
-        Route::get('/', [Product::class, 'index'])->name('admin.product.index');
-        Route::get('/add', [Product::class, 'create'])->name('admin.product.create');
-        Route::post('/store', [Product::class, 'store'])->name('admin.product.store');
-        Route::get('/edit/{id}', [Product::class, 'edit'])->where('id', '[0-9]+')->name('admin.product.edit');
-        Route::patch('/update/{id}', [Product::class, 'update'])->name('admin.product.update');
-        Route::get('/show/{id}', [Product::class, 'show'])->where('id', '[0-9]+')->name('admin.product.show');
-        Route::get('/destroy/{id}', [Product::class, 'destroy'])->where('id', '[0-9]+')->name('admin.product.delete');
-=======
-        Route::get('/', [Product::class, 'index'])->name('product.index');
-        Route::get('/add', [Product::class, 'create'])->name('product.create');
-        Route::post('/store', [Product::class, 'store'])->name('product.store');
-        Route::get('/edit/{id}', [Product::class, 'edit'])->where('id', '[0-9]+')->name('product.edit');
-        Route::patch('/{id}', [Product::class, 'update'])->where('id', '[0-9]+')->name('product.update');
-        Route::get('/show/{id}', [Product::class, 'show'])->where('id', '[0-9]+')->name('product.show');
-        Route::get('/destroy/{id}', [Product::class, 'destroy'])->where('id', '[0-9]+')->name('product.destroy');
->>>>>>> ec075d0f6d883a63af9df1a4c8da6a7c7e7e5c4b
-    });
+    Route::resource('product', Product::class);
+    Route::get('/product-trash', [Product::class, 'trash'])->name('product.trash');
+    Route::get('/product-pdf', [Product::class, 'downloadPdf'])->name('product.pdf');
+    Route::patch('/restore/{product}', [Product::class, 'restore'])->where('id', '[0-9]+')->name('product.restore');
+    Route::delete('/delete/{id}', [Product::class, 'delete'])->where('id', '[0-9]+')->name('product.delete');
     
+    // Route::prefix('product')->group(function () {
 
-    Route::prefix('category')->group(function () {
-        Route::get('/', [Category::class, 'index'])->name('admin.category');
-        Route::get('/add', [Category::class, 'create'])->name('admin.category.create');
-        Route::post('/store', [Category::class, 'store'])->name('admin.category.store');
-        Route::get('/edit/{id}', [Category::class, 'edit'])->where('id', '[0-9]+')->name('admin.category.edit');
-        Route::patch('/update/{id}', [Category::class, 'update'])->where('id', '[0-9]+')->name('admin.category.update');
-        Route::get('/show/{id}', [Category::class, 'show'])->where('id', '[0-9]+')->name('admin.category.show');
-        Route::get('/delete/{id}', [Category::class, 'destroy'])->name('admin.category.destroy');
-    });
+    //     Route::get('/', [Product::class, 'index'])->name('product.index');
+    //     Route::get('/add', [Product::class, 'create'])->name('product.create');
+    //     Route::post('/store', [Product::class, 'store'])->name('product.store');
+    //     Route::get('/edit/{id}', [Product::class, 'edit'])->where('id', '[0-9]+')->name('product.edit');
+    //     Route::patch('/update/{id}', [Product::class, 'update'])->name('product.update');
+    //     Route::get('/show/{id}', [Product::class, 'show'])->where('id', '[0-9]+')->name('product.show');
+    //     Route::get('/destroy/{id}', [Product::class, 'destroy'])->where('id', '[0-9]+')->name('product.delete');
+    // });
+
+
+    Route::get('/category-trash', [Category::class, 'trash'])->name('category.trash');
+    Route::get('/category-pdf', [Category::class, 'downloadPdf'])->name('pdf');
+    Route::patch('/restore/{category}', [Category::class, 'restore'])->where('id', '[0-9]+')->name('category.restore');
+    Route::delete('/delete/{category}', [Category::class, 'delete'])->where('id', '[0-9]+')->name('category.delete');
+    Route::resource('category', Category::class);
+    // Route::prefix('category')->group(function () {
+    //     Route::get('/', [Category::class, 'index'])->name('category.index');
+    //     Route::get('/add', [Category::class, 'create'])->name('category.create');
+    //     Route::post('/store', [Category::class, 'store'])->name('category.store');
+    //     Route::get('/edit/{id}', [Category::class, 'edit'])->where('id', '[0-9]+')->name('category.edit');
+    //     Route::patch('/update/{id}', [Category::class, 'update'])->where('id', '[0-9]+')->name('category.update');
+    //     Route::get('/show/{id}', [Category::class, 'show'])->where('id', '[0-9]+')->name('category.show');
+    //     Route::delete('/delete/{id}', [Category::class, 'destroy'])->name('category.destroy');
+    // });
 
     Route::prefix('user')->group(function () {
         Route::get('/', [Backend::class, 'userlist'])->name('admin.userlist');
@@ -102,8 +104,6 @@ Route::prefix('admin')->group(function () {
         Route::get('/add', [Blog::class, 'create'])->name('admin.addblog');
         Route::get('/show/{id}', [Blog::class, 'show'])->where('id', '[0-9]+')->name('admin.blogshow');
         Route::get('/delete/{id}', [Blog::class, 'destroy'])->where('id', '[0-9]+')->name('admin.blogdelete');
-     
-   
     });
     Route::prefix('comment')->group(function () {
         Route::get('/', [Comment::class, 'commentlist'])->name('admin.commentlist');

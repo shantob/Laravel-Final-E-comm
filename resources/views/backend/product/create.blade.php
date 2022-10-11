@@ -12,11 +12,8 @@
             <div class="content">
                 <div class="container-fluid">
                     <h4 class="page-title">Add New Product</h4>
-<<<<<<< HEAD:resources/views/backend/product/productadd.blade.php
-                    <a href="{{ route('admin.product.index') }}"><button class="btn btn-warning">
-=======
+
                     <a href="{{ route('product.index') }}"><button class="btn btn-warning">
->>>>>>> ec075d0f6d883a63af9df1a4c8da6a7c7e7e5c4b:resources/views/backend/product/create.blade.php
                             << Go Back</button></a>
                     <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
@@ -27,23 +24,14 @@
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <div class="card-body">
-                                                <div class="form-group">
-                                                    <label for="title">Product Name</label>
-                                                    <input type="text" class="form-control" name="name"
-                                                        id="title" placeholder="Enter Product name" value="">
+                                             
+                                                    <x-admin.forms.input type="text" label="Product Name" class="form-control" name="name" id="title" placeholder="Enter Product name" value="{{old('name')}}"/>
 
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="ProcuctDetels">Product Detels</label>
-                                                    <textarea name="description" id="ProcuctDetels" class="w-100 "></textarea>
+                                                
+                                                <x-admin.forms.textarea name="description" label="Product Description" class="bg-light form-control" value="{{old('description')}}"  placeholder="Type Description" />
 
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="price">Price</label>
-                                                    <input type="text" name="price" id="price"
-                                                        class="form-control">
+                                                    <x-admin.forms.input type="number" name="price" id="price" label="Price Of Product" class="form-control" value="{{old('price')}}"/>
 
-                                                </div>
 
                                             </div>
                                             <div class="card-action">
@@ -59,35 +47,22 @@
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <div class="card-body">
-                                                <div class="form-group">
-                                                    <label for="category_id">Category</label>
-                                                    <select name="category" id="category_id" class="form-control">
-                                                        <option value="" disabled selected>(Select
-                                                            Category)
-                                                        </option>
-                                                        @foreach ($categories as $category)
-                                                            <option>{{ $category->name }}</option>
-                                                        @endforeach
-                                                    </select>
+                                         
+                                                    <x-admin.forms.select name="category" label="Select category" :values="$categories" />
 
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="image">Thumbnail Image</label>
-                                                    <input type="file" name="image" id="image">
+                                                
+                                          
+                                                    <x-admin.forms.input type="file" lable="Product Image" name="image" id="image"/>
 
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="Image_alt">Image Alt.</label>
-                                                    <input type="text" name="img_alt" id="img_alt"
-                                                        class="form-control" value="#">
+                                               
+                                     
+                                                    <x-admin.forms.input type="text" name="img_alt" label="Image Alt." id="img_alt" class="form-control" value="{{old('img_alt')}}"/>
 
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="tags">Tags/Keywords</label>
-                                                    <input type="text" name="tags" id="tags"
-                                                        class="form-control" value="#">
 
-                                                </div>
+                                           
+                                                    <x-admin.forms.input type="text" name="tags" label="Tags/Kewwords" id="tags" class="form-control" value="{{old('tags')}}"/>
+
+                                                
 
                                             </div>
                                         </div>

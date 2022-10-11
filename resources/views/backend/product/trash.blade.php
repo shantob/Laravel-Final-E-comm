@@ -2,7 +2,7 @@
     <!-- partial -->
     <x-slot:title>
 
-        PRODUCT LIST
+        PRODUCT TRASH LIST
         </x-slot>
 
         <!-- Main Wrapper -->
@@ -10,17 +10,10 @@
         <div class="main-panel">
             <div class="content">
                 <div class="container-fluid">
-                    <h4 class="page-title">Product List <h5 class="text-right"><a href="{{route('product.create') }}"><button class="btn btn-danger">+ Add New</button></a></h4>
+                    <h4 class="page-title">Product Trash List <h5 class="text-right"><a href="{{route('product.create') }}"><button class="btn btn-danger">+ Add New</button></a></h4>
                     </h5>
-                    <div class="btn-group me-2">
-                        <a href="{{ route('product.pdf') }}">
-                            <button type="button" class="btn btn-sm btn-outline-primary">PDF</button>
-                        </a>
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Export Excel</button>
-                        <a href="{{route('product.trash')}}">
-                            <button type="button" class="btn btn-sm btn-outline-danger">Trash</button>
-                        </a>
-                    </div>
+                    <a href="{{ route('product.index') }}"><button class="btn btn-warning">
+                        << Go Back</button></a>
                     <div class="row">
                         <div class=" my-container active-cont mx-2">
                             <!-- Top Nav -->
@@ -41,7 +34,7 @@
                                                     <div class=" px-2">
                                                         <label for="caregory" class=" h1 text-dark">Product LIst
                                                             <br><span class="text-danger mb-4">Total :
-                                                                ({{ $allproduct->count() }})</span></label>
+                                                                ({{ $product->count() }})</span></label>
                                                         <input type="text" id="product_search" class="form-control" placeholder="Search Product" onclick="searchFun()">
                                                         <table class="table table-responsive table-hover table-responsive round" id="product_table">
                                                             <thead>
@@ -50,43 +43,37 @@
                                                                     <th scope="col">Name Of All Product</th>
                                                                     <th scope="col">Category </th>
                                                                     <th scope="col">Price</th>
-                                                                    <th scope="col">Image</th>
                                                                     <th scope="col">Tags</th>
                                                                     <th scope="col">Img_alt</th>
                                                                     <th colspan="3" scope="col">Action</th>
 
                                                             </thead>
                                                             <tbody>
-                                                                @foreach ($productlist as $product)
+                                                                @foreach ($product as $products)
                                                                 <tr>
                                                                     <th scope="row">{{ $loop->iteration }}</th>
-                                                                    <td>{{ $product->name }}</td>
-                                                                    <td>{{ $product->caegory }}</td>
-                                                                    <td>{{ $product->price }}</td>
-                                                                    <td><img src="{{ url('upload/images', $product->image) }}" height="40px" alt=""></td>
-                                                                    <td>{{ $product->tags }}</td>
-                                                                    <td>{{ $product->img_alt }}</td>
-
-                                                                  <td><a href="{{ route('product.show', $product->id) }}"><button type="submit" class="btn-sm btn-outline-info w-100">View</button></a>
-                                                                            </td>
-                                                                            <td><a href="{{ route('product.edit', $product->id) }}" <button type="submit" class="btn-sm btn-outline-primary w-100">Edit</button></a>
-                                                                            </td>
-
-                                                                            <td>
-                                                                                <form action="{{ route('product.destroy', $product->id) }}" method="POST">
-                                                                                    @csrf
-                                                                                    @method('delete')
-                                                                                    <button type="submit" class="btn-sm btn-outline-danger w-100">Delete</button>
-                                                                                </form>
-                                                                            
-                                                                            </td>
+                                                                    <td>{{ $products->name }}</td>
+                                                                    <td>{{ $products->caegory }}</td>
+                                                                    <td>{{ $products->price }}</td>
+                                                                    <td>{{ $products->tags }}</td>
+                                                                    <td>{{ $products->img_alt }}</td>
+                                                                   <td class="d-flex"> <form action="{{ route('product.restore', $products->id) }}" method="post">
+                                                                        @csrf
+                                                                        @method('patch')
+                                                                        <button class="btn btn-sm btn-outline-warning" onclick="return confirm('Are you sure want to restore?')">Restore</button>
+                                                                    </form>
+                                                                    <form action="{{ route('product.delete', $products->id) }}" method="post">
+                                                                        @csrf
+                                                                        @method('delete')
+                                                                        <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure want to delete?')">Delete</button>
+                                                                    </form>
+                                                                </td>
                                                                 </tr>
                                                                 @endforeach
 
                                                             </tbody>
 
                                                         </table>
-                                                        <span>{{ $productlist->links() }}</span>
                                                     </div>
 
                                                 </div>
