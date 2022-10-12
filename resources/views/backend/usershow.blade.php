@@ -35,15 +35,18 @@
                                                     <div class="card-body  text-center">
                                                         <div class=" w-100 ">
                                                             <div class=" px-2">
-                                                                <label for="caregory" class="mb-4 h1 text-dark"> Category Info</label>
+                                                                <label for="caregory" class="mb-4 h1 text-dark"> User Info</label>
 
 
 
 
-                                                                <p>User Id Id: 225 </p>
-                                                                <p>User Name: Fruits</p>
-                                                                <p> Picture :<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cHJvZHVjdCUyMGltYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Profile Picture"> </p>
-
+                                                                <p>User Id Id: {{$user->id}} </p>
+                                                                <p>User Name: {{$user->name}}</p>
+                                                                <p>User Email: {{$user->email}}</p>
+                                                                <p>User Present Address: {{$user->profile?->present_address}}</p>
+                                                                <p>User Phone Number: {{$user->profile?->phone_number}}</p>
+                                                                <p>User Created At: {{$user->created_at}}</p>
+                                                              
                                                             </div>
                                                         </div>
                                                     </div>

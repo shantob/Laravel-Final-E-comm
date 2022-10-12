@@ -35,7 +35,7 @@ class ProductRequest extends FormRequest
 
             // 'seats' => ' required|integer|size:10';
 
-            'category' => 'required|string',
+            'category_id' => 'required|string',
             'image' => $imageValitionRules
 
 

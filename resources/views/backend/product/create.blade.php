@@ -36,7 +36,7 @@
                                             </div>
                                             <div class="card-action">
                                                 <button class="btn btn-success">Submit</button>
-                                                <button class="btn btn-danger">Cancel</button>
+                                                <button class="btn btn-danger" data-dismiss="">Cancel</button>
                                             </div>
                                         </div>
                                     </div>
@@ -48,7 +48,7 @@
                                         <div class="table-responsive">
                                             <div class="card-body">
                                          
-                                                    <x-admin.forms.select name="category" label="Select category" :values="$categories" />
+                                                    <x-admin.forms.select name="category_id" label="Select category" :values="$categories" :selectedval="old('category_id')"/>
 
                                                 
                                           

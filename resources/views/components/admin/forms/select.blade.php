@@ -7,19 +7,11 @@
     @if ($label)
         <label for="{{ $name }}Input">{{ $label }}</label><br>
     @endif
-    <select id="{{ $name }}Input" class="form-control" name="{{ $name }}"
-        {{ $attributes->merge(['class' => 'form-control']) }}>
-        <option value="" disabled selected>--{{ $label }} --</option>
-
-
-        @foreach ($values as $keys => $value)
-            <option value="{{ $value }}" @if ($value == $selectedval) selected @endif>
-                {{-- {{ $value->name ? $value->name : $value }} --}}
-                {{ $value }}
-            </option>
+    <select name="{{ $name }}" id="{{ $name }}Input" {{ $attributes->merge(['class' => 'form-control']) }}>
+        <option value="">Select One</option>
+        @foreach($values as $key => $option)
+            <option value="{{ $key }}" @if($selectedval == $key) selected @endif >{{ $option }}</option>
         @endforeach
-
-
     </select>
     <br>
 

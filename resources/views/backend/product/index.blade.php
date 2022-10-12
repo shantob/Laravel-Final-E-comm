@@ -78,7 +78,7 @@
                                                                                     type="submit"
                                                                                     class="btn-sm btn-outline-info w-100">View</button></a>
                                                                         </td>
-                                                                        <td><a href="{{ route('product.edit', $product->id) }}"
+                                                                        <td><a href="{{ route('product.edit', $product->id) }}">
                                                                                 <button type="submit"
                                                                                 class="btn-sm btn-outline-primary w-100">Edit</button></a>
                                                                         </td>
