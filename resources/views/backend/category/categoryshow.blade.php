@@ -51,8 +51,8 @@
                                                             </div>
 
                                                             <table
-                                                                class="table table-responsive table-hover table-responsive round mt-5" style="width: 100%"
-                                                                id="product_table">
+                                                                class="table table-responsive table-hover table-responsive round mt-5"
+                                                                style="width: 100%" id="product_table">
                                                                 <thead>
                                                                     <tr class="text-light">
                                                                         <th scope="col">#</th>
@@ -66,29 +66,37 @@
 
                                                                 </thead>
                                                                 <tbody>
-                                                                    <tr>
-                                                                        <th scope="row">#</th>
-                                                                        <td>#</td>
-
-                                                                        {{--  <td>{{ $product->categories?->name }}</td> --}}
-
-                                                                        <td>Lorem ipsum dolor sit amet.</td>
-                                                                        <td>#</td>
-                                                                        <td><img src="#" height="40px"
-                                                                                alt=""></td>
-                                                                        <td>#</td>
-                                                                        <td>#</td>
-
-                                                                        <td><a
-                                                                            href="#"><button
-                                                                                    type="submit"
-                                                                                    class="btn-sm btn-outline-info w-100">View</button></a>
-                                                                        </td>
 
 
 
-                                                                    </tr>
+                                                                    @foreach ($products as $product)
+                                                                        @if ($product->count() > 0)
+                                                                            <tr>
+                                                                                <th scope="row">
+                                                                                    {{ $loop->iteration }}
+                                                                                </th>
+                                                                                <td>{{ $product->name }}</td>
 
+                                                                                {{--  <td>{{ $product->categories?->name }}</td> --}}
+
+                                                                                <td>Lorem ipsum dolor sit amet.</td>
+                                                                                <td>#</td>
+                                                                                <td><img src="#" height="40px"
+                                                                                        alt=""></td>
+                                                                                <td>#</td>
+                                                                                <td>#</td>
+
+                                                                                <td><a href="#"><button
+                                                                                            type="submit"
+                                                                                            class="btn-sm btn-outline-info w-100">View</button></a>
+                                                                                </td>
+
+
+
+                                                                            </tr>
+                                                                        @endif
+                                                                        <h5>No Product</h5>
+                                                                    @endforeach
 
                                                                 </tbody>
 

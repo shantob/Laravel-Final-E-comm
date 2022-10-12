@@ -35,7 +35,7 @@ class ProductController extends Controller
         Product::create([
 
             'name' => $request->name,
-            'caegory' => $request->category_id,
+            'category_id' => $request->category_id,
             'description' => $request->description,
             'price' => $request->price,
             'image' =>  $this->uploadImage($request->file('image')),
@@ -70,7 +70,7 @@ class ProductController extends Controller
 
         $data = [
             'name' => $request->name,
-            'caegory' => $request->category,
+            'category_id' => $request->category_id,
             'description' => $request->description,
             'price' => $request->price,
             'image' =>  $this->uploadImage($request->file('image')),

@@ -67,9 +67,9 @@
                                                                         <th scope="row">{{ $loop->iteration }}</th>
                                                                         <td>{{ $product->name }}</td>
 
-                                                                      {{--  <td>{{ $product->categories?->name }}</td>--}}
+                                                                        {{--  <td>{{ $product->categories?->name }}</td> --}}
 
-                                                                        <td>{{ $product->caegory }}</td>
+                                                                        <td>{{ $product->category?->name }}</td>
                                                                         <td>{{ $product->price }}</td>
                                                                         <td><img src="{{ asset('storage/products/' . $product->image) }}"
                                                                                 height="40px" alt=""></td>
@@ -81,9 +81,10 @@
                                                                                     type="submit"
                                                                                     class="btn-sm btn-outline-info w-100">View</button></a>
                                                                         </td>
-                                                                        <td><a href="{{ route('product.edit', $product->id) }}">
+                                                                        <td><a
+                                                                                href="{{ route('product.edit', $product->id) }}">
                                                                                 <button type="submit"
-                                                                                class="btn-sm btn-outline-primary w-100">Edit</button></a>
+                                                                                    class="btn-sm btn-outline-primary w-100">Edit</button></a>
                                                                         </td>
 
                                                                         <td>

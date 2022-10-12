@@ -5,9 +5,11 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Image;
+
 class CategoryController extends Controller
 {
 
@@ -37,8 +39,11 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
+        //dd($category);
+        //$products= Product::find($name);
         // $categoryShow = Category::find($id);
-        return view('backend.category.categoryshow', compact('category'));
+        $products = $category->product()->get();
+        return view('backend.category.categoryshow', compact('category', 'products'));
     }
 
     public function edit(Category $category)
@@ -83,7 +88,7 @@ class CategoryController extends Controller
 
         return redirect()
             ->route('category.trash')
-            ->with('success','Parmanent Deleted Successfully!');
+            ->with('success', 'Parmanent Deleted Successfully!');
     }
     public function downloadPdf()
     {
@@ -91,15 +96,15 @@ class CategoryController extends Controller
         $pdf = Pdf::loadView('backend.category.pdf', compact('categories'));
         return $pdf->download('category-list.pdf');
     }
-    public function uploadImage($file){
-        $fileName = date('y-m-d').'-'.time().'.'.$file ->getClientOriginalExtension();
+    public function uploadImage($file)
+    {
+        $fileName = date('y-m-d') . '-' . time() . '.' . $file->getClientOriginalExtension();
         // $file->move(storage_path('app/public/categories'), $fileName);
 
         Image::make($file)
-                ->resize(200, 200)
-                ->save(storage_path() . '/app/public/categories/' . $fileName);
+            ->resize(200, 200)
+            ->save(storage_path() . '/app/public/categories/' . $fileName);
 
         return $fileName;
     }
-    
 }

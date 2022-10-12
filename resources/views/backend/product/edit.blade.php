@@ -56,8 +56,8 @@
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <div class="card-body">
-                                                <x-admin.forms.select name="category" label="Select category"
-                                                    :values="$categories" :selectedval="old('category',$product->caegory)" />
+                                                <x-admin.forms.select name="category_id" label="Select category"
+                                                    :values="$categories" :selectedval="old('category', $product->caegory)" />
 
 
                                                 <img src="{{ asset('storage/products/' . $product->image) }}"
