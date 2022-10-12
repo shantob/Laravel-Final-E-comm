@@ -57,13 +57,12 @@
                                         <div class="table-responsive">
                                             <div class="card-body">
                                                 <x-admin.forms.select name="category_id" label="Select category"
-                                                    :values="$categories" :selectedval="old('category', $product->caegory)" />
+                                                    :values="$categories" :selectedval="old('category', $product->category_id)" />
 
 
-                                                <img src="{{ asset('storage/products/' . $product->image) }}"
-                                                    height="400px" alt="">
+                                              
                                                 <x-admin.forms.input type="file" lable="Product Image" name="image"
-                                                    id="image" value="$product->image" />
+                                                    id="image" value="$product->image" data-default-file="{{ url('storage/products/', $product->image) }}"/>
 
 
 

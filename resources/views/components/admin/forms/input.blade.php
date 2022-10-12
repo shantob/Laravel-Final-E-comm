@@ -8,7 +8,7 @@
     <input 
         name="{{ $name }}" 
         type="{{ $type }}" 
-        id="{{ $name }}Input" 
+        id="{{ $name }}" 
         value="{{ $value}}" 
         {{ $attributes->merge(['class' => 'form-control']) }}
     >

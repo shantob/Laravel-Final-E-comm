@@ -6,7 +6,7 @@
     @endif
 
    
-    <textarea name="{{ $name }}" id="{{ $name }}Input" 
+    <textarea name="{{ $name }}" id="{{ $name }}" 
     {{ $attributes->merge(['class' => 'form-control','class' => 'w-100']) }}
     >{{$value}}</textarea>
 

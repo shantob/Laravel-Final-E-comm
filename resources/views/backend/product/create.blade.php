@@ -28,7 +28,7 @@
                                                     <x-admin.forms.input type="text" label="Product Name" class="form-control" name="name" id="title" placeholder="Enter Product name" value="{{old('name')}}"/>
 
                                                 
-                                                <x-admin.forms.textarea name="description" label="Product Description" class="bg-light form-control" value="{{old('description')}}"  placeholder="Type Description" />
+                                                <x-admin.forms.textarea name="description" label="Product Description" class="bg-light" value="{{old('description')}}"  placeholder="Type Description" />
 
                                                     <x-admin.forms.input type="number" name="price" id="price" label="Price Of Product" class="form-control" value="{{old('price')}}"/>
 
@@ -52,7 +52,7 @@
 
                                                 
                                           
-                                                    <x-admin.forms.input type="file" lable="Product Image" name="image" id="image"/>
+                                                    <x-admin.forms.input type="file" lable="Product Image" name="image" class="dropify"/>
 
                                                
                                      

@@ -70,7 +70,6 @@
 <script src="{{ asset('assets/admin/js/plugin/jquery-mapael/maps/world_countries.min.js') }}"></script>
 <script src="{{ asset('assets/admin/js/plugin/chart-circle/circles.min.js') }}"></script>
 <script src="{{ asset('assets/admin/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
-
 <!-- summernote -->
 <script src="{{ asset('assets/admin/summernote/summernote-lite.min.js') }}"></script>
 
@@ -82,10 +81,17 @@
 <!-- custom them -->
 <script src="{{ asset('assets/admin/js/ready.min.js') }}"></script>
 
-
+<script src="{{ asset('assets/admin/summernote/summernote-lite.min.js') }}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-
+	<!-- dropify -->
+	<script src="{{ asset('assets/admin/dropify/js/dropify.min.js') }}"></script>
+<script>
+	$('#description').summernote({
+		placeholder: 'Write your Product Description here.............',
+		height: 450
+	});
+    $('#image').dropify({});
+</script>
 @if(session('success'))
 <script>
     swal({
@@ -93,6 +99,7 @@
         text: " {{ session('success') }}",
         icon: "success",
     });
+   
 </script>
 @endif
 
