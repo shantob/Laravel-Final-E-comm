@@ -23,6 +23,10 @@ class ProductController extends Controller
     {
         $allproduct = Product::all();
         $productlist = Product::orderby('id', 'DESC')->paginate(10);
+
+        // $category = Category::with('category')->find('all');
+        // $categories= $category->category->toArray();
+
         return view("backend.product.index", compact('productlist', 'allproduct'));
     }
     //    

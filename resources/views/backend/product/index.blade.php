@@ -66,6 +66,9 @@
                                                                     <tr>
                                                                         <th scope="row">{{ $loop->iteration }}</th>
                                                                         <td>{{ $product->name }}</td>
+
+                                                                      {{--  <td>{{ $product->categories?->name }}</td>--}}
+
                                                                         <td>{{ $product->caegory }}</td>
                                                                         <td>{{ $product->price }}</td>
                                                                         <td><img src="{{ asset('storage/products/' . $product->image) }}"

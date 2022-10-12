@@ -13,7 +13,7 @@
                 <div class="container-fluid">
                     <h4 class="page-title">Category Show</h4>
                     <div class="row">
-                        <div class="col-md-10">
+                        <div class="col-md-12">
 
                             <div class="main-content bg-light">
 
@@ -26,8 +26,8 @@
                                     <br>
                                     <br>
                                     <div class="col-md-10">
-                                    <a href="{{route('category.index')}}"><button class="btn btn-success">
-                                        << GO BACK</button></a>
+                                        <a href="{{ route('category.index') }}"><button class="btn btn-success">
+                                                << GO BACK</button></a>
                                         <div class="main-content">
 
                                             <br>
@@ -36,16 +36,63 @@
                                                     <div class="card-body  text-center">
                                                         <div class=" w-100 ">
                                                             <div class=" px-2">
-                                                                <label for="caregory" class="mb-4 h1 text-dark"> Category Info</label>
+                                                                <label for="caregory" class="mb-4 h1 text-dark">
+                                                                    Category Info</label>
 
 
 
 
-                                                                <p>Category Id: {{$category->id}}</p>
-                                                                <p>Name: {{$category->name}}</p>
-                                                                <p>Is Active?: {{ $category->is_active ? 'Yes' : 'No' }} </p>
-                                                                <img src="{{ asset('storage/categories/'.$category->image) }}" height="250" />
+                                                                <p>Category Id: {{ $category->id }}</p>
+                                                                <p>Name: {{ $category->name }}</p>
+                                                                <p>Is Active?: {{ $category->is_active ? 'Yes' : 'No' }}
+                                                                </p>
+                                                                <img src="{{ asset('storage/categories/' . $category->image) }}"
+                                                                    height="250" />
                                                             </div>
+
+                                                            <table
+                                                                class="table table-responsive table-hover table-responsive round mt-5" style="width: 100%"
+                                                                id="product_table">
+                                                                <thead>
+                                                                    <tr class="text-light">
+                                                                        <th scope="col">#</th>
+                                                                        <th scope="col">Name Of All Product</th>
+                                                                        <th scope="col">Category </th>
+                                                                        <th scope="col">Price</th>
+                                                                        <th scope="col">Image</th>
+                                                                        <th scope="col">Tags</th>
+                                                                        <th scope="col">Img_alt</th>
+                                                                        <th colspan="3" scope="col">Action</th>
+
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th scope="row">#</th>
+                                                                        <td>#</td>
+
+                                                                        {{--  <td>{{ $product->categories?->name }}</td> --}}
+
+                                                                        <td>Lorem ipsum dolor sit amet.</td>
+                                                                        <td>#</td>
+                                                                        <td><img src="#" height="40px"
+                                                                                alt=""></td>
+                                                                        <td>#</td>
+                                                                        <td>#</td>
+
+                                                                        <td><a
+                                                                            href="#"><button
+                                                                                    type="submit"
+                                                                                    class="btn-sm btn-outline-info w-100">View</button></a>
+                                                                        </td>
+
+
+
+                                                                    </tr>
+
+
+                                                                </tbody>
+
+                                                            </table>
                                                         </div>
                                                     </div>
                                                 </div>
