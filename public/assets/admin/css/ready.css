@@ -1924,9 +1924,9 @@ label {
   bottom: 0;
 }
 
-.toggle input[type=checkbox] {
+/* .toggle input[type=checkbox] {
   display: none;
-}
+} */
 
 .toggle-group {
   width: 200%;
@@ -5258,22 +5258,22 @@ body {
 }
 
 /*     CheckBox Input    */
-.select-all-checkbox + .form-check-sign:before {
+/* .select-all-checkbox + .form-check-sign:before {
   background: #ccc !important;
   border-color: #ccc !important;
-}
+} */
 
-[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+/* [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
   position: absolute;
   left: -9999px;
-}
-[type="checkbox"]:not(:checked) + .form-check-sign, [type="checkbox"]:checked + .form-check-sign {
+} */
+/* [type="checkbox"]:not(:checked) + .form-check-sign, [type="checkbox"]:checked + .form-check-sign {
   position: relative;
   padding-left: 1.65em;
   color: #777;
   cursor: pointer;
-}
-[type="checkbox"]:not(:checked) + .form-check-sign:before, [type="checkbox"]:checked + .form-check-sign:before {
+} */
+/* [type="checkbox"]:not(:checked) + .form-check-sign:before, [type="checkbox"]:checked + .form-check-sign:before {
   content: '';
   position: absolute;
   left: 0;
@@ -5328,7 +5328,7 @@ body {
 }
 [type="checkbox"]:checked:focus + .form-check-sign:before, [type="checkbox"]:not(:checked):focus + .form-check-sign:before {
   border: 1px solid #ccc;
-}
+} */
 
 /* checked mark aspect changes */
 /* disabled checkbox */

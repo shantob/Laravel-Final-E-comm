@@ -3,10 +3,12 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title> {{$title}}</title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <title> {{ $title }}</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+        name='viewport' />
     <link rel="stylesheet" href="{{ asset('assets/admin/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('assets/admin/summernote/summernote-lite.min.css') }}">
 
@@ -15,7 +17,6 @@
 
     <!-- tags -->
     <link rel="stylesheet" href="{{ asset('assets/admin/tags/bootstrap-tagsinput.css') }}">
-
     <link rel="stylesheet" href="{{ asset('assets/admin/css/ready.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/admin/css/custom.css') }}">
@@ -31,12 +32,13 @@
         <x-admin.partials.sideber />
 
         <!-- body -->
-        {{$slot}}
+        {{ $slot }}
         <!-- end content body -->
     </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="modalUpdatePro" aria-hidden="true">
+    <div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="modalUpdatePro"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
@@ -83,24 +85,23 @@
 
 <script src="{{ asset('assets/admin/summernote/summernote-lite.min.js') }}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	<!-- dropify -->
-	<script src="{{ asset('assets/admin/dropify/js/dropify.min.js') }}"></script>
+<!-- dropify -->
+<script src="{{ asset('assets/admin/dropify/js/dropify.min.js') }}"></script>
 <script>
-	$('#description').summernote({
-		placeholder: 'Write your Product Description here.............',
-		height: 450
-	});
+    $('#description').summernote({
+        placeholder: 'Write your Product Description here.............',
+        height: 450
+    });
     $('#image').dropify({});
 </script>
-@if(session('success'))
-<script>
-    swal({
-        title: "Good job!",
-        text: " {{ session('success') }}",
-        icon: "success",
-    });
-   
-</script>
+@if (session('success'))
+    <script>
+        swal({
+            title: "Good job!",
+            text: " {{ session('success') }}",
+            icon: "success",
+        });
+    </script>
 @endif
 
 <script type="text/javascript">
@@ -125,27 +126,28 @@
 </script>
 
 <script type="text/javascript">
-$(document).ready(function(){
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('#search').keyup(function() {
+            var search = $('#search').val();
+            if (search == "") {
+                $("#memList").html("");
+                $('#result').hide();
+            } else {
+                $.get("{{ URL::to('search') }}", {
+                    search: search
+                }, function(data) {
+                    $('#memList').empty().html(data);
+                    $('#result').show();
+                })
+            }
+        });
     });
-      
-    $('#search').keyup(function(){
-        var search = $('#search').val();
-        if(search==""){
-            $("#memList").html("");
-            $('#result').hide();
-        }
-        else{
-            $.get("{{ URL::to('search') }}",{search:search}, function(data){
-                $('#memList').empty().html(data);
-                $('#result').show();
-            })
-        }
-    });
-});
 </script>
 
 </html>

@@ -48,7 +48,7 @@
                                         <div class="table-responsive">
                                             <div class="card-body">
                                          
-                                                    <x-admin.forms.select name="category_id" label="Select category" :values="$categories" :selectedval="old('category_id')"/>
+                                                    <x-admin.forms.select name="color" label="Select category" :values="$categories" :selectedval="old('category_id')"/>
 
                                                 
                                           

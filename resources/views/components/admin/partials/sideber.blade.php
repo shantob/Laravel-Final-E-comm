@@ -36,47 +36,60 @@
             </div>
         </div>
         <ul class="nav ">
-            <li class="nav-item {{ Route::is('admin.home') ?  'active' : ''}}">
-                <a href="{{ route('admin.home')}}">
+            <li class="nav-item {{ Route::is('admin.home') ? 'active' : '' }}">
+                <a href="{{ route('admin.home') }}">
                     <i class="la la-dashboard"></i>
                     <p class=" text-warning">Dashboard</p>
                 </a>
             </li>
 
-            <li class="nav-item {{ Route::is('product.index') ?  'active' : ''}}">
-                <a href="{{ route('product.index')}}">
+            <li class="nav-item {{ Route::is('product.index') ? 'active' : '' }}">
+                <a href="{{ route('product.index') }}">
                     <i class="la la-table"></i>
                     <p class=" text-warning">All Product</p>
                 </a>
             </li>
-            <li class="nav-item {{ Route::is('product.create') ?  'active' : ''}}">
-                <a href="{{ route('product.create')}}">
+            <li class="nav-item {{ Route::is('product.create') ? 'active' : '' }}">
+                <a href="{{ route('product.create') }}">
                     <i class="la la-table"></i>
                     <p class=" text-warning">Add Product</p>
                 </a>
             </li>
-            <li class="nav-item {{ Route::is('category.index') ?  'active' : ''}}">
-                <a href="{{ route('category.index')}}">
+            <li class="nav-item {{ Route::is('category.index') ? 'active' : '' }}">
+                <a href="{{ route('category.index') }}">
                     <i class="la la-table"></i>
                     <p class=" text-warning">Category</p>
                 </a>
             </li>
-            <li class="nav-item {{ Route::is('category.create') ?  'active' : ''}}">
-                <a href="{{ route('category.create')}}">
+            <li class="nav-item {{ Route::is('category.create') ? 'active' : '' }}">
+                <a href="{{ route('category.create') }}">
                     <i class="la la-table"></i>
                     <p class=" text-warning">Category Add</p>
                 </a>
             </li>
-            <li class="nav-item {{ Route::is('admin.commentlist') ?  'active' : ''}}">
-                <a href="{{route('admin.commentlist')}}">
+            <li class="nav-item {{ Route::is('color.index') ? 'active' : '' }}">
+                <a href="{{ route('color.index') }}">
+                    <i class="la la-table"></i>
+                    <p class=" text-warning">Color</p>
+                </a>
+            </li>
+            <li class="nav-item {{ Route::is('brand.index') ? 'active' : '' }}">
+                <a href="{{ route('brand.index') }}">
+                    <i class="la la-table"></i>
+                    <p class=" text-warning">Brand</p>
+                </a>
+            </li>
+
+            <li class="nav-item {{ Route::is('admin.commentlist') ? 'active' : '' }}">
+                <a href="{{ route('admin.commentlist') }}">
                     <i class="la la-table"></i>
                     <p class=" text-warning">Comment</p>
 
                     <span class="badge badge-success">#</span>
                 </a>
             </li>
-            <li class="nav-item {{ Route::is('admin.bloglist') ?  'active' : ''}}">
-                <a href="{{route('admin.bloglist')}}">
+            <li class="nav-item {{ Route::is('admin.bloglist') ? 'active' : '' }}">
+                <a href="{{ route('admin.bloglist') }}">
                     <i class="la la-table"></i>
                     <p class=" text-warning">Blog List</p>
                     <span class="badge badge-warning"></span>
@@ -89,8 +102,8 @@
                     <span class="badge badge-success"></span>
                 </a>
             </li>
-            <li class="nav-item {{ Route::is('admin.userlist') ?  'active' : ''}}">
-                <a href="{{route('admin.userlist')}}">
+            <li class="nav-item {{ Route::is('admin.userlist') ? 'active' : '' }}">
+                <a href="{{ route('admin.userlist') }}">
                     <i class="la la-table"></i>
                     <p class=" text-warning">User List</p>
                     <span class="badge badge-warning"></span>

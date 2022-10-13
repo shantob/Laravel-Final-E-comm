@@ -1,8 +1,9 @@
+<!-- Main Wrapper -->
 <x-admin.master>
     <!-- partial -->
     <x-slot:title>
 
-        CATEGORY ADD
+        CATEGORY EDIT
         </x-slot>
 
         <!-- Main Wrapper -->
@@ -10,12 +11,14 @@
         <div class="main-panel">
             <div class="content">
                 <div class="container-fluid">
-                    <h4 class="page-title">Category Add</h4>
+                    <h4 class="page-title">Category Edit</h4>
                     <div class="row">
                         <div class="col-md-10">
 
                             <div class="main-content bg-light">
-                                <!-- Main Wrapper -->
+                                <a href="{{ route('category.index') }}"><button class="btn btn-success">
+                                        << GO BACK</button></a>
+
                                 <div class=" my-container active-cont">
                                     <!-- Top Nav -->
 
@@ -33,33 +36,41 @@
 
                                                 </div>
                                                 <div class="col-md-8">
-                                                    <div class="card">
+                                                    <div class="card bg-warning">
                                                         <div class="card-body ">
-                                                            <form action="{{ route('category.store') }}" method="post"
-                                                                enctype="multipart/form-data">
+                                                            <label for="caregory" class="my-4">
+                                                                <h2 class="text-center text-light">Edit Category</h2>
+                                                            </label>
+                                                            <form action="{{ route('color.update', $color->id) }}"
+                                                                method="post">
                                                                 @csrf
+                                                                @method('patch')
                                                                 <x-admin.forms.input type="text" name="name"
-                                                                    label="Name" :value="old('name')"
+                                                                    label="Name" :value="old('name', $color->name)"
                                                                     placeholder="Enter name" />
 
-                                                                <x-admin.forms.input type="file" name="image"
-                                                                    label="Image" />
+                                                                <x-admin.forms.input type="text" name="color_code"
+                                                                    label="Name" :value="old('color_code', $color->color_code)"
+                                                                    placeholder="Enter Color Code" />
+
+                                                                <x-admin.forms.textarea name="description"
+                                                                    label="Descriptiion " :value="old('description', $color->description)"
+                                                                    placeholder="Enter Color Description" />
+
 
                                                                 <div class="mb-3 form-check">
                                                                     <input name="is_active" type="checkbox"
-                                                                        class="form-check-input" id="isActiveInput">
+                                                                        class="form-check-input" id="isActiveInput"
+                                                                        @if ($color->is_active) checked @endif>
                                                                     <label class="form-check-label"
-                                                                        for="isActiveInput">Is
-                                                                        Active ?</label>
+                                                                        for="isActiveInput">Is Active ?</label>
                                                                 </div>
-
-
                                                                 <div class="d-flex justify-content-center mt-4 py-4">
                                                                     <button type="submit"
-                                                                        class="btn btn-success mx-2">Create
-                                                                        Category</button>
+                                                                        class="btn btn-light mx-2">Updte
+                                                                        Color</button>
                                                                     <button type="reset"
-                                                                        class="btn btn-danger mx-2">Cancle</button>
+                                                                        class="btn btn-dark mx-2">Cancle</button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -82,8 +93,7 @@
                 </div>
             </div>
 
-
             <x-admin.partials.footer />
 
         </div>
-</x-admin.master>
+        </x-admin>

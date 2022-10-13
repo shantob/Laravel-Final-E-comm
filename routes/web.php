@@ -7,6 +7,8 @@ use App\Http\Controllers\backend\BlogController as Blog;
 use App\Http\Controllers\backend\CommentController as Comment;
 use App\Http\Controllers\backend\ProductController as Product;
 use App\Http\Controllers\backend\CategoryController as Category;
+use App\Http\Controllers\backend\ColorController as Color;
+use App\Http\Controllers\backend\BrandController as Brand;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -88,6 +90,12 @@ Route::middleware('auth')->group(function () {
         //     Route::get('/show/{id}', [Category::class, 'show'])->where('id', '[0-9]+')->name('category.show');
         //     Route::delete('/delete/{id}', [Category::class, 'destroy'])->name('category.destroy');
         // });
+
+
+        Route::resource('color', Color::class);
+
+        Route::resource('brand', Brand::class);
+
 
         Route::prefix('user')->group(function () {
             Route::get('/', [Backend::class, 'userlist'])->name('admin.userlist');

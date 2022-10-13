@@ -2,7 +2,7 @@
     <!-- partial -->
     <x-slot:title>
 
-        CATEGORY ADD
+        COLOR ADD
         </x-slot>
 
         <!-- Main Wrapper -->
@@ -10,7 +10,7 @@
         <div class="main-panel">
             <div class="content">
                 <div class="container-fluid">
-                    <h4 class="page-title">Category Add</h4>
+                    <h4 class="page-title">Color Add</h4>
                     <div class="row">
                         <div class="col-md-10">
 
@@ -35,15 +35,20 @@
                                                 <div class="col-md-8">
                                                     <div class="card">
                                                         <div class="card-body ">
-                                                            <form action="{{ route('category.store') }}" method="post"
+                                                            <form action="{{ route('color.store') }}" method="post"
                                                                 enctype="multipart/form-data">
                                                                 @csrf
                                                                 <x-admin.forms.input type="text" name="name"
                                                                     label="Name" :value="old('name')"
                                                                     placeholder="Enter name" />
 
-                                                                <x-admin.forms.input type="file" name="image"
-                                                                    label="Image" />
+                                                                <x-admin.forms.input type="text" name="color_code"
+                                                                    label="Name" :value="old('color_code')"
+                                                                    placeholder="Enter Color Code" />
+
+                                                                <x-admin.forms.textarea name="description"
+                                                                    label="Descriptiion " :value="old('description')"
+                                                                    placeholder="Enter Color Description" />
 
                                                                 <div class="mb-3 form-check">
                                                                     <input name="is_active" type="checkbox"
@@ -57,7 +62,7 @@
                                                                 <div class="d-flex justify-content-center mt-4 py-4">
                                                                     <button type="submit"
                                                                         class="btn btn-success mx-2">Create
-                                                                        Category</button>
+                                                                        Color</button>
                                                                     <button type="reset"
                                                                         class="btn btn-danger mx-2">Cancle</button>
                                                                 </div>
