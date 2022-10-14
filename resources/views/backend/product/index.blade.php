@@ -58,13 +58,14 @@
                                                                     <th scope="col">Image</th>
                                                                     <th scope="col">Tags</th>
                                                                     <th scope="col">Img_alt</th>
+                                                                    <th scope="col">Created At</th>
                                                                     <th colspan="3" scope="col">Action</th>
 
                                                             </thead>
                                                             <tbody>
                                                                 @foreach ($productlist as $product)
                                                                     <tr>
-                                                                        <th scope="row">{{ $loop->iteration }}</th>
+                                                                        <th scope="row">{{ $serialNo++ }}</th>
                                                                         <td>{{ $product->name }}</td>
 
                                                                         {{--  <td>{{ $product->categories?->name }}</td> --}}
@@ -75,6 +76,7 @@
                                                                                 height="40px" alt=""></td>
                                                                         <td>{{ $product->tags }}</td>
                                                                         <td>{{ $product->img_alt }}</td>
+                                                                        <td>{{ $product->created_at->diffForHumans() }}</td>
 
                                                                         <td><a
                                                                                 href="{{ route('product.show', $product->id) }}"><button

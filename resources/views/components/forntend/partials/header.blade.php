@@ -42,30 +42,54 @@
                 </div>
 
                 <div class="col-lg-4 py-3 text-right w-100 hover">
-                    <a href="{{ route('home')}}"><button class="btn btn-light px-2 {{ Route::is('home') ?  'active' : ''}} mx-2">Home</button></a>
-                    <a href="{{ route('productlist')}}"><button class="{{ Route::is('productlist') ?  'active' : ''}} btn btn-light px-2 mx-2">All Product</button></a>
-                    <a href="{{ route('contact')}}"><button class="btn btn-light px-2 {{ Route::is('contact') ?  'active' : ''}} mx-2">Contact Us</button></a>
+                    <a href="{{ route('home') }}"><button
+                            class="btn btn-light px-2 {{ Route::is('home') ? 'active' : '' }} mx-2">Home</button></a>
+                    <a href="{{ route('productlist') }}"><button
+                            class="{{ Route::is('productlist') ? 'active' : '' }} btn btn-light px-2 mx-2">All
+                            Product</button></a>
+                    <a href="{{ route('contact') }}"><button
+                            class="btn btn-light px-2 {{ Route::is('contact') ? 'active' : '' }} mx-2">Contact
+                            Us</button></a>
 
-                    <a href="{{ route('about')}}"><button class="btn btn-light px-2 {{ Route::is('about') ?  'active' : ''}} mx-2">About</button></a>
+                    <a href="{{ route('about') }}"><button
+                            class="btn btn-light px-2 {{ Route::is('about') ? 'active' : '' }} mx-2">About</button></a>
                 </div>
                 <div class="col-lg-2">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="{{ route('checkout')}}"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="{{ route('checkout') }}"><i class="fa fa-shopping-bag"></i> <span>3</span></a>
+                            </li>
                         </ul>
-                        <div class="header__top__right__auth">
-                            <a href="{{ route('login') }}"><i class="fa fa-user"></i> Login</a>
-                        </div>
+
+                        @if (Auth::user() != null)
+                            <div class="header__top__right__auth">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button class="btn btn-success"
+                                        onclick="event.preventDefault();this.closest('form').submit();">
+                                        {{ Auth::user()->name }}
+                                    </button>
+                                </form>
+                            </div>
+                        @else
+                            <div class="header__top__right__auth">
+                                <a href="{{ route('login') }}"><i class="fa fa-user"></i> Login</a>
+                            </div>
+                        @endif
+
                     </div>
+
+
                 </div>
             </div>
-            <div class="humberger__open">
-                <i class="fa fa-bars"></i>
-            </div>
         </div>
-    </header>
-    <!-- Header Section End -->
+        <div class="humberger__open">
+            <i class="fa fa-bars"></i>
+        </div>
+</div>
+</header>
+<!-- Header Section End -->
 
-    <!-- Hero Section Begin -->
+<!-- Hero Section Begin -->
 
 </div>

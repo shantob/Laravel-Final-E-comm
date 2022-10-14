@@ -9,6 +9,7 @@ use App\Http\Controllers\backend\ProductController as Product;
 use App\Http\Controllers\backend\CategoryController as Category;
 use App\Http\Controllers\backend\ColorController as Color;
 use App\Http\Controllers\backend\BrandController as Brand;
+use App\Http\Controllers\backend\UserController as User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -97,10 +98,15 @@ Route::middleware('auth')->group(function () {
         Route::resource('brand', Brand::class);
 
 
-        Route::prefix('user')->group(function () {
-            Route::get('/', [Backend::class, 'userlist'])->name('admin.userlist');
-            Route::get('/show/{user}', [Backend::class, 'usershow'])->where('id', '[0-9]+')->name('admin.usershow');
+        Route::prefix('users')->name('users.')->group(function () {
+            Route::get('/', [User::class, 'index'])->name('index');
+            Route::get('/{user}', [User::class, 'show'])->name('show');
+            //Route::get('/{user}/change-role', [User::class, 'show'])->name('show');
+            Route::get('/{user}/change-role', [User::class, 'changeRole'])->name('change_role');
+            Route::patch('/{user}/Update-role', [User::class, 'updateRole'])->name('update_role');
         });
+
+        
         Route::prefix('blog')->group(function () {
             Route::get('/', [Blog::class, 'index'])->name('admin.bloglist');
             Route::post('/Store', [Blog::class, 'store'])->name('admin.blogStore');

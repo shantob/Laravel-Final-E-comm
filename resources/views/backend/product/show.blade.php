@@ -51,7 +51,8 @@
                                                                 <p>Price: {{ $product->price }}$</p>
                                                                 <p>{{ $product->description }}</p>
                                                                 <p>Tags: {{ $product->tags }}</p>
-                                                                <p>Create: {{ $product->created_at }}</p>
+                                                                <p>Create: {{ $product->created_at->diffForHumans() }}</p>
+                                                                <p> {{ $product->created_at }}</p>
 
                                                             </div>
                                                         </div>

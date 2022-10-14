@@ -7,10 +7,13 @@
 
 
     <textarea name="{{ $name }}" id="{{ $name }}"
-        {{ $attributes->merge(['class' => 'form-control', 'class' => 'w-100']) }}>{{ $value }}</textarea>
+        {{ $attributes->merge(['class' => 'form-control', 'class' => 'w-100']) }}>{!! $value !!}
+    
+        @error($name)
+<div class="form-text text-danger">{{ $message }}</div>
+@enderror
+    </textarea>
 
-    @error($name)
-        <div class="form-text text-danger">{{ $message }}</div>
-    @enderror
+
 
 </div>

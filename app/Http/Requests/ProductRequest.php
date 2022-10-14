@@ -28,14 +28,13 @@ class ProductRequest extends FormRequest
             $imageValitionRules = 'required|' . $imageValitionRules;
         }
         return [
+            'category_id' => 'required|exists:categories,id',
             'name' => 'required|string|max:255|min:3|unique:products,id,' . $this->product?->id,
-
             'description' => 'required',
             'price' => 'required|digits_between:1,6',
 
             // 'seats' => ' required|integer|size:10';
 
-            'category_id' => 'required|string',
             'image' => $imageValitionRules
 
 

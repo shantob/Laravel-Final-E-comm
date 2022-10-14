@@ -26,15 +26,15 @@
                 <li class="nav-item dropdown ">
                     <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                         <img src="{{ asset('assets/admin/img/profile.jpg') }}" alt="user-img" width="36"
-                            class="img-circle"><span class=" text-light">Hizrian</span> </a>
+                            class="img-circle"><span class=" text-light">{{Auth::user()->name}}</span> </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li>
                             <div class="user-box  ">
                                 <div class="u-img"><img src="{{ asset('assets/admin/img/profile.jpg') }}"
                                         alt="user"></div>
                                 <div class="u-text ">
-                                    <h4>Hizrian</h4>
-                                    <p class="text-muted">hello@themekita.com</p><a href="profile.html"
+                                    <h4>{{Auth::user()->name}}</h4>
+                                    <p class="text-muted">{{Auth::user()->email}}</p><a href="profile.html"
                                         class="btn btn-rounded btn-danger btn-sm">View Profile</a>
                                 </div>
                             </div>

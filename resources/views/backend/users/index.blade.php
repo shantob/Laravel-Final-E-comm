@@ -39,24 +39,34 @@
                                                                 <th scope="col">#</th>
                                                                 <th scope="col">User</th>
                                                                 <th scope="col">Email</th>
+                                                                <th scope="col">Role</th>
                                                                 <th scope="col">Created At</th>
-                                                          
+
                                                                 <th colspan="2" scope="col">Action</th>
 
-                                                                @foreach ($user as $users)
+                                                                @foreach ($users as $user)
                                                             <tr>
-                                                                <th scope="row">{{$loop->iteration}}</th>
-                                                                <td>{{$users->name}}</td>
-                                                                <td>{{$users->email}}</td>
-                                                                <td>{{$users->created_at}}</td>
-                                                              
-                                                                <td><a href="{{ route('admin.usershow', $users->id) }}"><button
-                                                                            type="submit"
-                                                                            class="btn btn-info w-100">Show</button></a>
+                                                                <th scope="row">{{ $loop->iteration }}</th>
+                                                                <td>{{ $user->name }}</td>
+                                                                <td>{{ $user->email }}</td>
+                                                                <td>{{ $user->role?->name }}</td>
+                                                                <td>{{ $user->created_at }}</td>
+
+                                                                <td class="d-flex">
+                                                                    <a href="{{ route('users.show', $user->id) }}">
+                                                                        <button type="submit"
+                                                                            class="btn btn-info w-100">Show
+                                                                        </button>
+                                                                    </a>
+                                                                    @can('change-role')
+                                                                    <a href="{{ route('users.change_role', $user->id) }}">
+                                                                        <button type="submit"
+                                                                        class="btn btn-outline-warning w-100">Change Role
+                                                                        </button>
+                                                                    </a>
+                                                                    @endcan
                                                                 </td>
-                                                                <td><button type="submit"
-                                                                        class="btn btn-danger w-100">Delete</button>
-                                                                </td>
+
                                                             </tr>
                                                             @endforeach
 

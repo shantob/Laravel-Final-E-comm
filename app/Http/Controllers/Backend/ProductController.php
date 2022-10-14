@@ -21,13 +21,19 @@ class ProductController extends Controller
 
     public function index()
     {
+        $paginatePerPage = 20;
+        $serialNo = 1;
+        if($pageNumber = request('page')){
+            $serialNo = $paginatePerPage * ($pageNumber-1) + 1;
+        }
+        //dd($serialNo);
         $allproduct = Product::all();
-        $productlist = Product::orderby('id', 'DESC')->paginate(10);
+        $productlist = Product::with('category')->orderby('id', 'DESC')->paginate($paginatePerPage);
 
         // $category = Category::with('category')->find('all');
         // $categories= $category->category->toArray();
 
-        return view("backend.product.index", compact('productlist', 'allproduct'));
+        return view("backend.product.index", compact('productlist', 'allproduct','serialNo'));
     }
     //    
     public function store(ProductRequest $request)
@@ -73,10 +79,12 @@ class ProductController extends Controller
             'category_id' => $request->category_id,
             'description' => $request->description,
             'price' => $request->price,
-            'image' =>  $this->uploadImage($request->file('image')),
             'tags' => $request->tags,
             'img_alt' => $request->img_alt,
         ];
+        if ($request->hasFile('image')) {
+            $data['image'] = $this->uploadImage($request->file('image'));
+        }
 
 
         $product->update($data);

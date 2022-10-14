@@ -13,16 +13,6 @@ class HomeController extends Controller
         return view("backend/index");
     }
 
-    public function userlist()
-    {
-        $user = User::with('profile')->latest()->paginate(15);
-        return view("backend/userlist", compact('user'));
-    }
-
-    public function usershow(User $user)
-    {
-        return view("backend/usershow",compact('user'));
-    }
 
     public function login()
     {

@@ -7,8 +7,8 @@
             <div class="info">
                 <a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                     <span class=" text-light">
-                        Hizrian
-                        <span class="user-level  text-light">Administrator</span>
+                        {{Auth::user()->name}}
+                        <span class="user-level  text-light">{{Auth::user()->role_id == 1? 'Admin' : 'Manager'}}</span>
                         <span class="caret"></span>
                     </span>
                 </a>
@@ -102,8 +102,8 @@
                     <span class="badge badge-success"></span>
                 </a>
             </li>
-            <li class="nav-item {{ Route::is('admin.userlist') ? 'active' : '' }}">
-                <a href="{{ route('admin.userlist') }}">
+            <li class="nav-item {{ Route::is('users.index') ? 'active' : '' }}">
+                <a href="{{ route('users.index') }}">
                     <i class="la la-table"></i>
                     <p class=" text-warning">User List</p>
                     <span class="badge badge-warning"></span>
