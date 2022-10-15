@@ -47,7 +47,7 @@
                                                                     placeholder="Enter Company " />
 
                                                                 <x-admin.forms.select name="color_id"
-                                                                    label="Select Color" :values="$colors"
+                                                                    label="Select Color" :values="$colors" :color="$color_code"
                                                                     :selectedval="old('color_id')" />
 
                                                                 <x-admin.forms.input type="file" lable="Brand Image"

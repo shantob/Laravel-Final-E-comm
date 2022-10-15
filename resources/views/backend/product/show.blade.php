@@ -16,66 +16,57 @@
                             << Go Back</button></a>
                     <div class="row">
                         <div class="col-md-10">
+                            <div class="card-body ">
+                                <div class=" w-100 ">
+                                    <div class=" px-2">
+                                        <label for="caregory" class="mb-4 h1 text-dark"> Product
+                                            Info</label>
 
-                            <div class="main-content bg-light">
+                                        <div class="col-md-12 row d-flex">
 
-
-                                <div class=" my-container active-cont">
-                                    <!-- Top Nav -->
-
-                                    <!--End Top Nav -->
-
-                                    <br>
-                                    <br>
-                                    <div class="col-md-10">
-
-                                        <div class="main-content">
-
-                                            <br>
-                                            <div class="col-md-12">
-                                                <div class="card">
-                                                    <div class="card-body  text-center">
-                                                        <div class=" w-100 ">
-                                                            <div class=" px-2">
-                                                                <label for="caregory" class="mb-4 h1 text-dark"> Product
-                                                                    Info</label>
-
-
-
-
-                                                                <p>Product Id: {{ $product->id }}</p>
-                                                                <p>Name: {{ $product->name }}</p>
-                                                                <p> Picture :<img
-                                                                        src="{{ asset('storage/products/' . $product->image) }}"
-                                                                        height="400px" alt=""> </p>
-                                                                <p>Price: {{ $product->price }}$</p>
-                                                                <p>{{ $product->description }}</p>
-                                                                <p>Tags: {{ $product->tags }}</p>
-                                                                <p>Create: {{ $product->created_at->diffForHumans() }}</p>
-                                                                <p> {{ $product->created_at }}</p>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                            <div class="col-md-6 mx-5">
+                                                <div class="card  text-center">
+                                                    <p> Picture :<img
+                                                            src="{{ asset('storage/products/' . $product->image) }}"
+                                                            height="400px" alt="" class="w-100"> </p>
                                                 </div>
                                             </div>
-
+                                            <div class="col md-6 card" style="width: 150">
+                                                    <span>Product Id: {{ $product->id }}</span>
+                                                    <h4>Name: {{ $product->name }}</h4>
+                                                   <p>Category: <a href="{{ route('category.index')}}"> <span class="text-dark h6">{{ $product->category?->name }}</span></a> 
+                                                    </p>
+                                                    <p>Brand: {{ $product->brand?->name? $product->brand->name: "No brand" }}</p>
+                                                    <p>Color: <span style="color: {{ $product->color?->color_code }}">{{ $product->color?->name? $product->color->name: "No Color" }}</span></p>
+                                                    <p>Price: <span class="text-danger"> {{ $product->price }} ৳ </span></p>
+                                                    <p>Description about this Product: {{ $product->description }}</p>
+                                                    <p>Create:
+                                                        {{ $product->created_at->diffForHumans() }}
+                                                    </p>
+                                                    <p> {{ $product->created_at }}</p>
+                                              
+                                            </div>
                                         </div>
+
                                     </div>
-
-
                                 </div>
 
                             </div>
                         </div>
+
+
                     </div>
-
-
 
                 </div>
             </div>
+        </div>
 
-            <x-admin.partials.footer />
+
+
+        </div>
+        </div>
+
+        <x-admin.partials.footer />
 
         </div>
         </x-admin>

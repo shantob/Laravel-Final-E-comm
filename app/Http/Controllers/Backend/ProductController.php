@@ -4,7 +4,9 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
+use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Color;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -23,8 +25,8 @@ class ProductController extends Controller
     {
         $paginatePerPage = 20;
         $serialNo = 1;
-        if($pageNumber = request('page')){
-            $serialNo = $paginatePerPage * ($pageNumber-1) + 1;
+        if ($pageNumber = request('page')) {
+            $serialNo = $paginatePerPage * ($pageNumber - 1) + 1;
         }
         //dd($serialNo);
         $allproduct = Product::all();
@@ -33,7 +35,7 @@ class ProductController extends Controller
         // $category = Category::with('category')->find('all');
         // $categories= $category->category->toArray();
 
-        return view("backend.product.index", compact('productlist', 'allproduct','serialNo'));
+        return view("backend.product.index", compact('productlist', 'allproduct', 'serialNo'));
     }
     //    
     public function store(ProductRequest $request)
@@ -42,11 +44,14 @@ class ProductController extends Controller
 
             'name' => $request->name,
             'category_id' => $request->category_id,
+            'brand_id' => $request->brand_id,
+            'color_id' => $request->color_id,
             'description' => $request->description,
             'price' => $request->price,
             'image' =>  $this->uploadImage($request->file('image')),
             'tags' => $request->tags,
             'img_alt' => $request->img_alt,
+            'is_active' => $request->is_active ? true : false,
         ]);
 
         return redirect()->route('product.index')->with('success', 'Product Created SuccessFully !!!');
@@ -56,7 +61,9 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::pluck('name', 'id')->toArray();
-        return view("backend.product.create", compact('categories'));
+        $brands = Brand::pluck('name', 'id')->toArray();
+        $colors = Color::pluck('name', 'id')->toArray();
+        return view("backend.product.create", compact('categories', 'brands', 'colors'));
     }
 
 
@@ -64,8 +71,10 @@ class ProductController extends Controller
     {
         // $products = Product::find($id);
         // $categories = Category::all();
+        $brands = Brand::pluck('name', 'id')->toArray();
+        $colors = Color::pluck('name', 'id')->toArray();
         $categories =  Category::pluck('name', 'id')->toArray();
-        return view("backend.product.edit", compact('product', 'categories'));
+        return view("backend.product.edit", compact('product', 'categories', 'brands', 'colors'));
     }
 
 
@@ -77,6 +86,9 @@ class ProductController extends Controller
         $data = [
             'name' => $request->name,
             'category_id' => $request->category_id,
+            'brand_id' => $request->brand_id,
+            'color_id' => $request->color_id,
+            'is_active' => $request->is_active ? true : false,
             'description' => $request->description,
             'price' => $request->price,
             'tags' => $request->tags,

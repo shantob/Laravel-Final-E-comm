@@ -22,8 +22,6 @@
                         <th scope="col">Category </th>
                         <th scope="col">Price</th>
 
-                        <th scope="col">Tags</th>
-                        <th scope="col">Img_alt</th>
                        
                 </thead>
                 <tbody>
@@ -31,10 +29,9 @@
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $product->name }}</td>
-                        <td>{{ $product->caegory }}</td>
+                        <td>{{ $product->category?->name }}</td>
                         <td>{{ $product->price }}</td>
-                        <td>{{ $product->tags }}</td>
-                        <td>{{ $product->img_alt }}</td>
+
                    
                     </tr>
                     @endforeach

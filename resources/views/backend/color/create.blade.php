@@ -42,8 +42,10 @@
                                                                     label="Name" :value="old('name')"
                                                                     placeholder="Enter name" />
 
-                                                                <x-admin.forms.input type="text" name="color_code"
-                                                                    label="Name" :value="old('color_code')"
+                                                                <label for="Color">Select Color</label>
+                                                                <input type="color" name="color_code" id="color"
+                                                                    label="Name" class="w-100 my-3"
+                                                                    value="{{ old('color_code')}}"
                                                                     placeholder="Enter Color Code" />
 
                                                                 <x-admin.forms.textarea name="description"

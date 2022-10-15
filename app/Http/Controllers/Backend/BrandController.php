@@ -39,7 +39,8 @@ class BrandController extends Controller
     public function create()
     {
         $colors = Color::pluck('name', 'id')->toArray();
-        return view("backend.brand.create", compact('colors'));
+        $color_code = Color::pluck('color_code', 'id')->toArray();
+        return view("backend.brand.create", compact('colors','color_code'));
     }
 
 

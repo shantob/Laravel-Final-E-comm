@@ -39,8 +39,8 @@
                                                         <thead>
                                                             <tr>
                                                                 <th scope="col">#</th>
-                                                                <th scope="col">Name</th>
-                                                                <th scope="col">Company</th>
+                                                                <th scope="col">Brand Name</th>
+                                                                <th scope="col">Brand Item</th>
                                                                 <th scope="col">Image</th>
                                                                 <th scope="col">Is Active</th>☻
                                                                 <th colspan="3" scope="col">Action</th>

@@ -90,7 +90,7 @@
 <script>
     $('#description').summernote({
         placeholder: 'Write your Product Description here.............',
-        height: 450
+        height: 325
     });
     $('#image').dropify({});
 </script>

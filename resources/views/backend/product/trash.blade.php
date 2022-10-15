@@ -32,7 +32,7 @@
                                             <div class="card-body text-center">
                                                 <div class=" w-100 ">
                                                     <div class=" px-2">
-                                                        <label for="caregory" class=" h1 text-dark">Product LIst
+                                                        <label for="product" class=" h1 text-dark">Product LIst
                                                             <br><span class="text-danger mb-4">Total :
                                                                 ({{ $product->count() }})</span></label>
                                                         <input type="text" id="product_search" class="form-control" placeholder="Search Product" onclick="searchFun()">
@@ -43,8 +43,8 @@
                                                                     <th scope="col">Name Of All Product</th>
                                                                     <th scope="col">Category </th>
                                                                     <th scope="col">Price</th>
-                                                                    <th scope="col">Tags</th>
-                                                                    <th scope="col">Img_alt</th>
+                                                                    <th scope="col">Brand</th>
+                                                                    <th scope="col">Color</th>
                                                                     <th colspan="3" scope="col">Action</th>
 
                                                             </thead>
@@ -53,10 +53,10 @@
                                                                 <tr>
                                                                     <th scope="row">{{ $loop->iteration }}</th>
                                                                     <td>{{ $products->name }}</td>
-                                                                    <td>{{ $products->caegory }}</td>
+                                                                    <td>{{ $products->category?->name }}</td>                                                                    <td>{{ $products->price }}</td>
                                                                     <td>{{ $products->price }}</td>
-                                                                    <td>{{ $products->tags }}</td>
-                                                                    <td>{{ $products->img_alt }}</td>
+                                                                    <td>{{ $products->brand?->name }}</td>
+                                                                    <td>{{ $products->color?->name }}</td>
                                                                    <td class="d-flex"> <form action="{{ route('product.restore', $products->id) }}" method="post">
                                                                         @csrf
                                                                         @method('patch')

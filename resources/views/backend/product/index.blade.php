@@ -56,8 +56,8 @@
                                                                     <th scope="col">Category </th>
                                                                     <th scope="col">Price</th>
                                                                     <th scope="col">Image</th>
-                                                                    <th scope="col">Tags</th>
-                                                                    <th scope="col">Img_alt</th>
+                                                                    <th scope="col">Brand</th>
+                                                                    <th scope="col">Color</th>
                                                                     <th scope="col">Created At</th>
                                                                     <th colspan="3" scope="col">Action</th>
 
@@ -71,11 +71,12 @@
                                                                         {{--  <td>{{ $product->categories?->name }}</td> --}}
 
                                                                         <td>{{ $product->category?->name }}</td>
-                                                                        <td>{{ $product->price }}</td>
+                                                                        <td>{{ $product->price }} ৳</td>
                                                                         <td><img src="{{ asset('storage/products/' . $product->image) }}"
                                                                                 height="40px" alt=""></td>
-                                                                        <td>{{ $product->tags }}</td>
-                                                                        <td>{{ $product->img_alt }}</td>
+                                                                        <td>{{ $product->brand?->name }}</td>
+                                                                        <td style="color: {{ $product->color?->color_code }}"><h6>{{ $product->color?->name }}</h6></td>
+
                                                                         <td>{{ $product->created_at->diffForHumans() }}</td>
 
                                                                         <td><a

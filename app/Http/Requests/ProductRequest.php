@@ -29,6 +29,8 @@ class ProductRequest extends FormRequest
         }
         return [
             'category_id' => 'required|exists:categories,id',
+            'brand_id' => 'required|exists:brands,id',
+            'color_id' => 'required|exists:colors,id',
             'name' => 'required|string|max:255|min:3|unique:products,id,' . $this->product?->id,
             'description' => 'required',
             'price' => 'required|digits_between:1,6',

@@ -40,7 +40,7 @@ class ColorController extends Controller
         return view("backend/color/edit", compact('color'));
     }
 
-    public function update(Request $request, Color $color)
+    public function update(ColorRequest $request, Color $color)
     {
         //dd($request);
         // $categorie = Category::find($id);

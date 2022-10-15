@@ -16,7 +16,7 @@
                         <div class="col-md-10">
 
                             <div class="main-content bg-light">
-                                <a href="{{ route('category.index') }}"><button class="btn btn-success">
+                                <a href="{{ route('color.index') }}"><button class="btn btn-success">
                                         << GO BACK</button></a>
 
                                 <div class=" my-container active-cont">
@@ -36,10 +36,10 @@
 
                                                 </div>
                                                 <div class="col-md-8">
-                                                    <div class="card bg-warning">
+                                                    <div class="card bg-light">
                                                         <div class="card-body ">
                                                             <label for="caregory" class="my-4">
-                                                                <h2 class="text-center text-light">Edit Category</h2>
+                                                                <h2 class="text-center text-light">Edit Color</h2>
                                                             </label>
                                                             <form action="{{ route('color.update', $color->id) }}"
                                                                 method="post">
@@ -49,8 +49,9 @@
                                                                     label="Name" :value="old('name', $color->name)"
                                                                     placeholder="Enter name" />
 
-                                                                <x-admin.forms.input type="text" name="color_code"
-                                                                    label="Name" :value="old('color_code', $color->color_code)"
+                                                                <label for="color">Select Color</label>
+                                                                <input type="color" name="color_code" id="color" class="w-100 my-3"
+                                                                    value="{{ old('color_code', $color->color_code) }}"                                                                    
                                                                     placeholder="Enter Color Code" />
 
                                                                 <x-admin.forms.textarea name="description"
