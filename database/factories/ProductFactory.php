@@ -18,7 +18,7 @@ class ProductFactory extends Factory
     {
         return [
             'name'=>fake()->sentence(5),
-            'caegory'=>fake()->sentence(5),
+            'category_id'=>fake()->numberBetween(15),
             'description'=>fake()->text(30),
             'price'=>fake()->numberBetween(200, 100000),
             'tags'=>fake()->sentence(5),

@@ -15,8 +15,7 @@
 
                     <a href="{{ route('product.index') }}"><button class="btn btn-warning">
                             << Go Back</button></a>
-                    <form action="{{ route('product.store') }}" method="post"
-                        enctype="multipart/form-data">
+                    <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row">
@@ -28,13 +27,11 @@
 
                                                 <x-admin.forms.input type="text" label="Product Name"
                                                     class="form-control" name="name" id="title"
-                                                    placeholder="Enter Product name"
-                                                    value="{{ old('name') }}" />
+                                                    placeholder="Enter Product name" value="{{ old('name') }}" />
 
 
                                                 <x-admin.forms.textarea name="description" label="Product Description"
-                                                    class="bg-light form-control"
-                                                    value="{{ old('description') }}"
+                                                    class="bg-light form-control" value="{{ old('description') }}"
                                                     placeholder="Type Description" />
 
                                                 <x-admin.forms.input type="number" name="price" id="price"
@@ -62,33 +59,31 @@
                                                 <x-admin.forms.select name="brand_id" label="Select Brands"
                                                     :values="$brands" :selectedval="old('brand')" />
 
-                                                <x-admin.forms.select name="color_id" label="Select Color"
-                                                    :values="$colors" :selectedval="old('color')" />
+                                                {{-- <x-admin.forms.select name="color_id" label="Select Color"
+                                                    :values="$colors" :selectedval="old('color')" /> --}}
+                                                <x-admin.forms.checkbox name="colors[]" :checkList="$colors" label="Colors"/>
 
 
-                                              
                                                 <x-admin.forms.input type="file" lable="Product Image" name="image"
-                                                    id="image" value="{{ old('image') }}"/>
+                                                    id="image" value="{{ old('image') }}" />
 
 
 
                                                 <x-admin.forms.input type="text" name="img_alt" label="Image Alt."
-                                                    id="img_alt" class="form-control"
-                                                    value="{{ old('name') }}" />
+                                                    id="img_alt" class="form-control" value="{{ old('name') }}" />
 
 
 
                                                 <x-admin.forms.input type="text" name="tags" label="Tags/Kewwords"
-                                                    id="tags" class="form-control"
-                                                    value="{{ old('name') }}" />
+                                                    id="tags" class="form-control" value="{{ old('name') }}" />
 
-                                                    <div class="mb-3 form-check">
-                                                        <input name="is_active" type="checkbox"
-                                                            class="form-check-input" id="isActiveInput">
-                                                        <label class="form-check-label"
-                                                            for="isActiveInput">Is
-                                                            Active ?</label>
-                                                    </div>
+
+                                                <div class="mb-3 form-check">
+                                                    <input name="is_active" type="checkbox" class="form-check-input"
+                                                        id="isActiveInput">
+                                                    <label class="form-check-label" for="isActiveInput">Is
+                                                        Active ?</label>
+                                                </div>
 
                                             </div>
                                         </div>

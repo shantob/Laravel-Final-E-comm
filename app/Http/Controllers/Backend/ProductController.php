@@ -34,26 +34,27 @@ class ProductController extends Controller
 
         // $category = Category::with('category')->find('all');
         // $categories= $category->category->toArray();
+  
 
         return view("backend.product.index", compact('productlist', 'allproduct', 'serialNo'));
     }
     //    
     public function store(ProductRequest $request)
     {
-        Product::create([
+        $data = [
 
             'name' => $request->name,
             'category_id' => $request->category_id,
             'brand_id' => $request->brand_id,
-            'color_id' => $request->color_id,
             'description' => $request->description,
             'price' => $request->price,
             'image' =>  $this->uploadImage($request->file('image')),
             'tags' => $request->tags,
             'img_alt' => $request->img_alt,
             'is_active' => $request->is_active ? true : false,
-        ]);
-
+        ];
+        $product = Product::create($data);
+        $product->colors()->attach($request->colors);
         return redirect()->route('product.index')->with('success', 'Product Created SuccessFully !!!');
     }
 
@@ -73,8 +74,9 @@ class ProductController extends Controller
         // $categories = Category::all();
         $brands = Brand::pluck('name', 'id')->toArray();
         $colors = Color::pluck('name', 'id')->toArray();
+        $selectColors = $product->colors()->pluck('id')->toArray();
         $categories =  Category::pluck('name', 'id')->toArray();
-        return view("backend.product.edit", compact('product', 'categories', 'brands', 'colors'));
+        return view("backend.product.edit", compact('product', 'categories', 'brands', 'colors', 'selectColors'));
     }
 
 
@@ -87,7 +89,6 @@ class ProductController extends Controller
             'name' => $request->name,
             'category_id' => $request->category_id,
             'brand_id' => $request->brand_id,
-            'color_id' => $request->color_id,
             'is_active' => $request->is_active ? true : false,
             'description' => $request->description,
             'price' => $request->price,
@@ -101,6 +102,8 @@ class ProductController extends Controller
 
         $product->update($data);
         //dd($products);
+        $product->colors()->sync($request->colors);
+
         return redirect()->route('product.index')->with('success', 'Product Updated SuccessFully !!!');
     }
 
@@ -119,6 +122,7 @@ class ProductController extends Controller
 
     public function trash()
     {
+
         $product = Product::onlyTrashed()->get();
         return view("backend/product/trash", compact('product'));
     }
@@ -132,7 +136,9 @@ class ProductController extends Controller
     public function delete($id)
     {
         //dd($id);
+
         $product = Product::onlyTrashed()->find($id);
+        $product->colors()->detach();
         $product->forceDelete();
 
         return redirect()

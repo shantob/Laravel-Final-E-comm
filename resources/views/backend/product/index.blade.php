@@ -75,8 +75,8 @@
                                                                         <td><img src="{{ asset('storage/products/' . $product->image) }}"
                                                                                 height="40px" alt=""></td>
                                                                         <td>{{ $product->brand?->name }}</td>
-                                                                        <td style="color: {{ $product->color?->color_code }}"><h6>{{ $product->color?->name }}</h6></td>
-
+                                                                        <td style="color: "><h6></h6></td>
+                                                                        {{-- {{ $product->colors?->name? $product->colors->name : 'NULL'}} --}}
                                                                         <td>{{ $product->created_at->diffForHumans() }}</td>
 
                                                                         <td><a

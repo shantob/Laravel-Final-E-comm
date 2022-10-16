@@ -87,6 +87,7 @@
                                 <div class="col-md-6 d-flex justify-content-center">
                                     <!-- Simple link -->
                                     <a href="{{ route('password.request') }}">Forgot password?</a>
+                                    <a href="{{ route('register') }}">For Create An Account?</a>
                                 </div>
                             </div>
 
@@ -98,7 +99,7 @@
                     </div>
                     <div class="tab-pane fade show" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
                         <form method="POST" action="{{ route('register') }}">
-                            @csrf
+                            @csrf                
                             <div class="text-center mb-3">
                                 <p>Resister up with:</p>
                                 <button type="button" class="btn btn-link btn-floating mx-1">

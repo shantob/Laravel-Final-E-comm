@@ -61,9 +61,12 @@
 
                                                 <x-admin.forms.select name="brand_id" label="Select Brands"
                                                     :values="$brands" :selectedval="old('brand', $product->brand_id)" />
+                                                {{-- @php
+                                                    dd($selectColors);
+                                                @endphp --}}
+                                                <x-admin.forms.checkbox name="colors[]" :checkList="$colors"
+                                                    :checkedItem="$selectColors" label="Colors" />
 
-                                                <x-admin.forms.select name="color_id" label="Select Color"
-                                                    :values="$colors" :selectedval="old('color', $product->color_id)" />
 
 
                                                 <x-admin.forms.input type="file" lable="Product Image" name="image"

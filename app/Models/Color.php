@@ -14,4 +14,8 @@ class Color extends Model
     {
         return $this->hasMany(Brand::class);
     }
+    // public function product()
+    // {
+    //     return $this->BelongsToMany(Product::class);
+    // }
 }

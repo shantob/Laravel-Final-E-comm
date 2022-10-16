@@ -16,9 +16,6 @@ return new class extends Migration
         Schema::table('products', function (Blueprint $table) {
             $table->unsignedBigInteger('brand_id')->nullable()->after('category_id');
             $table->foreign('brand_id')->references('id')->on('brands');
-           
-            $table->unsignedBigInteger('color_id')->nullable()->after('brand_id');
-            $table->foreign('color_id')->references('id')->on('colors');
        
         });
     }
@@ -33,9 +30,6 @@ return new class extends Migration
         Schema::table('products', function (Blueprint $table) {
             $table->dropForeign(['brand_id']);
             $table->dropColumn('brand_id');
-
-            $table->dropForeign(['color_id']);
-            $table->dropColumn('color_id');
         });
     }
 };
