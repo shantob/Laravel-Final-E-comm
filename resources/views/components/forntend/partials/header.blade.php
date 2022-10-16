@@ -73,12 +73,12 @@
                             </div>
                         @else
                             <div class="header__top__right__auth">
-                                <a href="{{ route('login') }}"><i class="fa fa-user"></i> Login</a>
+                                <a href="{{route('login')}}" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop"><i class="fa fa-user"></i> Login</a>
                             </div>
                         @endif
 
                     </div>
-
 
                 </div>
             </div>
