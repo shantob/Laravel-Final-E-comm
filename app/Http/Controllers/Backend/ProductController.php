@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\Product;
+use App\Models\Size;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Image;
@@ -55,6 +56,7 @@ class ProductController extends Controller
         ];
         $product = Product::create($data);
         $product->colors()->attach($request->colors);
+        $product->sizes()->attach($request->sizes);
         return redirect()->route('product.index')->with('success', 'Product Created SuccessFully !!!');
     }
 
@@ -64,7 +66,8 @@ class ProductController extends Controller
         $categories = Category::pluck('name', 'id')->toArray();
         $brands = Brand::pluck('name', 'id')->toArray();
         $colors = Color::pluck('name', 'id')->toArray();
-        return view("backend.product.create", compact('categories', 'brands', 'colors'));
+        $sizes = Size::pluck('name', 'id')->toArray();
+        return view("backend.product.create", compact('categories', 'brands', 'colors','sizes'));
     }
 
 
@@ -74,9 +77,11 @@ class ProductController extends Controller
         // $categories = Category::all();
         $brands = Brand::pluck('name', 'id')->toArray();
         $colors = Color::pluck('name', 'id')->toArray();
+        $sizes = Size::pluck('name', 'id')->toArray();
         $selectColors = $product->colors()->pluck('id')->toArray();
+        $selectSizes = $product->sizes()->pluck('id')->toArray();
         $categories =  Category::pluck('name', 'id')->toArray();
-        return view("backend.product.edit", compact('product', 'categories', 'brands', 'colors', 'selectColors'));
+        return view("backend.product.edit", compact('product', 'categories', 'brands', 'colors', 'selectColors','sizes', 'selectSizes'));
     }
 
 
@@ -103,6 +108,7 @@ class ProductController extends Controller
         $product->update($data);
         //dd($products);
         $product->colors()->sync($request->colors);
+        $product->sizes()->sync($request->sizes);
 
         return redirect()->route('product.index')->with('success', 'Product Updated SuccessFully !!!');
     }

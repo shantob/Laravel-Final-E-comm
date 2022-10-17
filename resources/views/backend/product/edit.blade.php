@@ -41,6 +41,9 @@
                                                     label="Price Of Product" class="form-control"
                                                     value="{{ old('price', $product->price) }}" />
 
+                                                <x-admin.forms.checkbox name="sizes[]" :checkList="$sizes"
+                                                    :checkedItem="$selectSizes" label="Sizes" />
+
 
                                             </div>
                                             <div class="card-action">

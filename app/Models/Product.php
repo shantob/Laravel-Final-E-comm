@@ -22,4 +22,9 @@ class Product extends Model
     {
         return $this->BelongsToMany(Color::class);
     }
+    
+    public function sizes()
+    {
+        return $this->BelongsToMany(Size::class);
+    }
 }

@@ -38,6 +38,9 @@
                                                     label="Price Of Product" class="form-control"
                                                     value="{{ old('price') }}" />
 
+                                                <x-admin.forms.checkbox name="sizes[]" :checkList="$sizes"
+                                                    label="Size Product" />
+
 
                                             </div>
                                             <div class="card-action">
@@ -61,7 +64,8 @@
 
                                                 {{-- <x-admin.forms.select name="color_id" label="Select Color"
                                                     :values="$colors" :selectedval="old('color')" /> --}}
-                                                <x-admin.forms.checkbox name="colors[]" :checkList="$colors" label="Colors"/>
+                                                <x-admin.forms.checkbox name="colors[]" :checkList="$colors"
+                                                    label="Colors" />
 
 
                                                 <x-admin.forms.input type="file" lable="Product Image" name="image"
