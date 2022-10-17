@@ -14,14 +14,16 @@
                                             <span>Category</span>
                                         </div>
                                         <ul>
-                                            <li><a href="#">Grocery</a></li>
-                                            <li><a href="#">Kitchen Applicens</a></li>
-                                            <li><a href="#">Toys & Games</a></li>
-                                            <li><a href="#">Sports & Fittenss</a></li>
-                                            <li><a href="#">Mobiles & Accessories</a></li>
-                                            <li><a href="#">Books</a></li>
-                                            <li><a href="#">Furniture</a></li>
-                                            <li><a href="#">Other</a></li>
+                                            @foreach ($category as $categories)
+                                                <li><a href="#">Grocery</a></li>
+                                                <li><a href="#">Kitchen Applicens</a></li>
+                                                <li><a href="#">Toys & Games</a></li>
+                                                <li><a href="#">Sports & Fittenss</a></li>
+                                                <li><a href="#">Mobiles & Accessories</a></li>
+                                                <li><a href="#">Books</a></li>
+                                                <li><a href="#">Furniture</a></li>
+                                                <li><a href="#">Other</a></li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
@@ -73,8 +75,9 @@
                             </div>
                         @else
                             <div class="header__top__right__auth">
-                                <a href="{{route('login')}}" type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop"><i class="fa fa-user"></i> Login</a>
+                                <a href="{{ route('login') }}" type="button" class="btn btn-primary"
+                                    data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa fa-user"></i>
+                                    Login</a>
                             </div>
                         @endif
 

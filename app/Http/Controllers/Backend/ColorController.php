@@ -54,6 +54,14 @@ class ColorController extends Controller
     public function destroy(Color $color)
     {
         // $categoryDestroy = Category::find($id);
+        foreach ($color->brand as $brand) {
+            foreach ($brand->product as $product) {
+                $product->delete();
+            }
+            $brand->delete();
+        }
+        
+        $color->products()->detach();
         $color->delete();
         return redirect()->route('color.index')->with('success', 'SuccessFully Deleted Color');
     }
