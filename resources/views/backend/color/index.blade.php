@@ -41,6 +41,7 @@
                                                                 <th scope="col">#</th>
                                                                 <th scope="col">Name Of Color</th>
                                                                 <th scope="col">Is Active</th>
+                                                                <th scope="col">Product</th>
                                                                 <th colspan="3" scope="col">Action</th>
 
                                                         </thead>
@@ -48,11 +49,17 @@
                                                             @foreach ($colors as $color)
                                                                 <tr>
                                                                     <th scope="row">{{ $loop->iteration }}</th>
-                                                                    <td  style="color: {{ $color->color_code }}"> <h4>{{ $color->name }}</h4></td>
-                                                                    <td>{{ $color->is_active? 'True' : 'False' }}</td>
+                                                                    <td style="color: {{ $color->color_code }}">
+                                                                        <h4>{{ $color->name }}</h4>
+                                                                    </td>
+                                                                    <td>{{ $color->is_active ? 'True' : 'False' }}</td>
                                                                     <td class="d-flex">
-                                                                        <a href="{{route('color.edit',$color->id)}}" class="btn btn-sm btn-outline-warning">Edit Now</a>
-
+                                                                        <a href="{{ route('color.edit', $color->id) }}"
+                                                                            class="btn btn-sm btn-outline-warning">Edit
+                                                                            Now</a>
+                                                                        @foreach ($products as $product)
+                                                                            {{ $product->count() }}
+                                                                        @endforeach
                                                                         <form
                                                                             action="{{ route('color.destroy', $color->id) }}"
                                                                             method="post">

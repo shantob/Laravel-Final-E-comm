@@ -13,7 +13,9 @@ class ColorController extends Controller
     public function index()
     {
         $colors = Color::all();
-        return view("backend/color/index", compact('colors'));
+        dd($colors->products);
+        $products = $colors->products()->get();
+        return view("backend/color/index", compact('colors', 'products'));
     }
 
     public function store(ColorRequest $request)
@@ -60,7 +62,7 @@ class ColorController extends Controller
             }
             $brand->delete();
         }
-        
+
         $color->products()->detach();
         $color->delete();
         return redirect()->route('color.index')->with('success', 'SuccessFully Deleted Color');

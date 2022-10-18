@@ -67,7 +67,7 @@ class ProductController extends Controller
         $brands = Brand::pluck('name', 'id')->toArray();
         $colors = Color::pluck('name', 'id')->toArray();
         $sizes = Size::pluck('name', 'id')->toArray();
-        return view("backend.product.create", compact('categories', 'brands', 'colors','sizes'));
+        return view("backend.product.create", compact('categories', 'brands', 'colors', 'sizes'));
     }
 
 
@@ -81,7 +81,7 @@ class ProductController extends Controller
         $selectColors = $product->colors()->pluck('id')->toArray();
         $selectSizes = $product->sizes()->pluck('id')->toArray();
         $categories =  Category::pluck('name', 'id')->toArray();
-        return view("backend.product.edit", compact('product', 'categories', 'brands', 'colors', 'selectColors','sizes', 'selectSizes'));
+        return view("backend.product.edit", compact('product', 'categories', 'brands', 'colors', 'selectColors', 'sizes', 'selectSizes'));
     }
 
 
@@ -115,7 +115,9 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         // $productShow = Product::find($id);
-        return view("backend.product.show", compact('product'));
+        $colors = $product->colors()->get();
+        $sizes = $product->sizes()->get();
+        return view("backend.product.show", compact('product', 'colors', 'sizes'));
     }
 
     public function destroy(Product $product)

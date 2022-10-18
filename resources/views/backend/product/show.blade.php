@@ -32,19 +32,43 @@
                                                 </div>
                                             </div>
                                             <div class="col md-6 card" style="width: 150">
-                                                    <span>Product Id: {{ $product->id }}</span>
-                                                    <h4>Name: {{ $product->name }}</h4>
-                                                   <p>Category: <a href="{{ route('category.index')}}"> <span class="text-dark h6">{{ $product->category?->name }}</span></a> 
-                                                    </p>
-                                                    <p>Brand: {{ $product->brand?->name? $product->brand->name: "No brand" }}</p>
-                                                    <p>Color: <span style="color: {{ $product->color?->color_code }}">{{ $product->color?->name? $product->color->name: "No Color" }}</span></p>
-                                                    <p>Price: <span class="text-danger"> {{ $product->price }} ৳ </span></p>
-                                                    <p>Description about this Product: {{ $product->description }}</p>
-                                                    <p>Create:
-                                                        {{ $product->created_at->diffForHumans() }}
-                                                    </p>
-                                                    <p> {{ $product->created_at }}</p>
-                                              
+                                                <span>Product Id: {{ $product->id }}</span>
+                                                <h4>Name: {{ $product->name }}</h4>
+                                                <p>Category: <a href="{{ route('category.index') }}"> <span
+                                                            class="text-dark h6">{{ $product->category?->name }}</span></a>
+                                                </p>
+                                                <p>Brand:
+                                                    {{ $product->brand?->name ? $product->brand->name : 'No brand' }}
+                                                </p>
+                                                <p>Color: <span
+                                                        style="color: {{ $product->color?->color_code }}">{{ $product->color?->name ? $product->color->name : 'No Color' }}</span>
+                                                </p>
+                                                <p>Price: <span class="text-danger"> {{ $product->price }} ৳ </span></p>
+                                                <p>Description about this Product: {{ $product->description }}</p>
+                                                <p>Colors:
+                                                    @foreach ($colors as $color)
+                                                        <h5 class="text-light"
+                                                            style="background-color:  {{ $color->color_code }}">
+                                                            {{ $color->name }}</h5>
+                                                    @endforeach
+
+                                                </p>
+                                                <p>Sizes:
+                                                    @foreach ($sizes as $size)
+                                                        <h5 class="text-dark">
+                                                            {{ $size->name }}</h5>
+                                                    @endforeach
+
+                                                </p>
+                                                {{-- @foreach ($product->colors as $color)
+                                                    {{ $color }}
+                                                @endforeach --}}
+
+                                                <p>Create:
+                                                    {{ $product->created_at->diffForHumans() }}
+                                                </p>
+                                                <p> {{ $product->created_at }}</p>
+
                                             </div>
                                         </div>
 

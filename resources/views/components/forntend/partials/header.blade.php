@@ -50,6 +50,7 @@
                     <a href="{{ route('about') }}"><button
                             class="btn btn-light px-2 {{ Route::is('about') ? 'active' : '' }} mx-2">About</button></a>
                 </div>
+                
                 <div class="col-lg-2">
                     <div class="header__cart">
                         <ul>
@@ -65,6 +66,7 @@
                                         onclick="event.preventDefault();this.closest('form').submit();">
                                         {{ Auth::user()->name }}
                                     </button>
+                                   
                                 </form>
                             </div>
                         @else

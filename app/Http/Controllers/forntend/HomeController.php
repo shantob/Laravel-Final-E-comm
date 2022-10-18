@@ -22,7 +22,7 @@ class HomeController extends Controller
       if ($key = request('product_name')) {
 
          $productall = Product::latest()
-            ->where('name', 'LIKE', "%{$key}%")
+            ->where('name', 'SOUNDS LIKE', $key."%")
             // ->where("SOUNDEX('name_am') = SOUNDEX($key)")
             ->paginate(2)
             ->fragment('productall');
