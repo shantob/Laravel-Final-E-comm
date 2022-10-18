@@ -27,5 +27,13 @@ class Product extends Model
     {
         return $this->BelongsToMany(Size::class);
     }
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable')->orderby('id','desc');
+    }
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable')->orderby('id','desc');
+    }
 }
 

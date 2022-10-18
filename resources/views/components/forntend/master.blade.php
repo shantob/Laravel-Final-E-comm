@@ -38,6 +38,7 @@
 
 
     @stack('script');
+
 </body>
 
 </html>

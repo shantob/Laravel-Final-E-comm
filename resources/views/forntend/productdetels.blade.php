@@ -44,6 +44,59 @@
                 </div>
             </div>
         </div>
+        <section>
+            <div class="card container">
+                <div class="card-body">
+                    <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+                        @auth
+                        <form action="{{ route('products.comments.store', $product->id) }}" method="post">
+                            @csrf
+                            <div class="d-flex flex-start w-100">
+                                <img class="rounded-circle shadow-1-strong me-3" src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar" width="40" height="40" />
+                                <div class="form-outline w-100">
+                                    <label class="form-label" for="description">. Type Your Comment</label>
+                                    <textarea class="form-control" id="description" rows="4" name="body" style="background: #fff;"></textarea>
+                                </div>
+                            </div>
+                            <div class="float-end mt-2 pt-1 mx-5">
+                                <button type="submit" class="btn btn-primary btn-sm">Post comment</button>
+                                <button type="button" class="btn btn-outline-primary btn-sm">Cancel</button>
+                            </div>
+                        </form>
+                        @else
+                        <h5 class="text-center">For Comment You must be <a href="{{ route('login') }}" class="btn btn-warning">login </a></h5>
+                        @endauth
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="card container">
+                <div class="card-body">
+                @foreach($product->comments as $comment)
+
+                    <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+                        <div class="d-flex flex-start align-items-center">
+                            <img class="rounded-circle shadow-1-strong me-3" src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar" width="60" class="" height="60" />
+                            <div class="mx-3">
+                                <h6 class="fw-bold text-primary mb-1">{{ $comment->commentedBy->name }}</h6>
+                                <p class="text-muted small mb-0">
+                                    Shared publicly - {{ $comment->created_at->diffForHumans() }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <p class="mt-3 mb-4 pb-2">
+                        {{ $comment->body }}
+                        </p>
+
+                    </div>
+                    @endforeach
+
+                </div>
+            </div>
+            </div>
+        </section>
         <section class="related-blog spad">
             <div class="container">
                 <div class="row">

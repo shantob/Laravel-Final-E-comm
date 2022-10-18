@@ -15,4 +15,8 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
+    public function imagesCategory()
+    {
+        return $this->morphMany(Image::class, 'imageable')->orderby('id','desc');
+    }
 }

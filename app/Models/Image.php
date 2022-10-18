@@ -2,21 +2,23 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class Image extends Model
 {
+    use HasFactory;
     protected $guarded = [];
     // protected $date = ['deleted_date_time'];
-    public function commentedBy()
+    public function uploatedBy()
     {
-        return $this->belongsTo(User::class, 'commented_by');
+        return $this->belongsTo(User::class, 'uploated_by');
     }
 
     /**
      * Get the parent commentable model (post or video).
      */
-    public function commentable()
+    public function imageable()
     {
         return $this->morphTo();
     }

@@ -4,11 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\forntend\HomeController as Forntend;
 use App\Http\Controllers\backend\HomeController as Backend;
 use App\Http\Controllers\backend\BlogController as Blog;
-use App\Http\Controllers\backend\CommentController as Comment;
+use App\Http\Controllers\backend\CommentController as BackendComment;
 use App\Http\Controllers\backend\ProductController as Product;
 use App\Http\Controllers\backend\CategoryController as Category;
 use App\Http\Controllers\backend\ColorController as Color;
 use App\Http\Controllers\backend\BrandController as Brand;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\backend\UserController as User;
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,8 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('admin')->group(function () {
         Route::get('/', [Backend::class, 'home'])->name('admin.home');
+        
+        Route::post('/products/{product}/comments', [CommentController::class, 'store'])->name('products.comments.store');
 
         // Route::prefix('product')->group(function () {
         //     Route::get('/', [Product::class, 'index'])->name('admin.productlist');
@@ -117,8 +120,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/delete/{id}', [Blog::class, 'destroy'])->where('id', '[0-9]+')->name('admin.blogdelete');
         });
         Route::prefix('comment')->group(function () {
-            Route::get('/', [Comment::class, 'commentlist'])->name('admin.commentlist');
-            Route::get('/delete/{id}', [Comment::class, 'commenttdelete'])->name('admin.commenttdelete');
+            Route::get('/', [BackendComment::class, 'commentlist'])->name('admin.commentlist');
+            Route::get('/delete/{id}', [BackendComment::class, 'commenttdelete'])->name('admin.commenttdelete');
         });
     });
 });

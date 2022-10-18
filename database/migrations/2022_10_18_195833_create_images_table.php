@@ -13,15 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+       // Schema::dropIfExists('images');
+        Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->integer('blog_Id');
-            $table->string('blog_title');
-            $table->string('email');
-            $table->string('name');
-            $table->text('comment');
-            $table->boolean('is_read');
+            $table->morphs('imageable');
+            // $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('uploated_by')->nullable();
+            $table->string('image');
             $table->timestamps();
+
+             $table->foreign('uploated_by')->references('id')->on('users');
+
         });
     }
 
@@ -32,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('images');
     }
 };

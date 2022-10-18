@@ -84,7 +84,6 @@
                 <a href="{{ route('admin.commentlist') }}">
                     <i class="la la-table"></i>
                     <p class=" text-warning">Comment</p>
-
                     <span class="badge badge-success">#</span>
                 </a>
             </li>

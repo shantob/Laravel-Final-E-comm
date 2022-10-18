@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Auth;
 use Image;
 
 class CategoryController extends Controller
@@ -24,11 +25,15 @@ class CategoryController extends Controller
         $data = [
             'name' => $request->name,
             'is_active' => $request->is_active ? true : false,
-            'image' =>  $this->uploadImage($request->file('image'))
         ];
 
-        Category::create($data);
+       $category= Category::create($data);
 
+        $category->images()->create([
+            'image' => $this->uploadImage($request->file('image')),
+
+            'uploated_by' => Auth::id()
+        ]);
         return redirect()->route('category.index')->with('success', 'SuccessFully Created Category');
     }
 
@@ -42,7 +47,7 @@ class CategoryController extends Controller
         //dd($category);
         //$products= Product::find($name);
         // $categoryShow = Category::find($id);
-        $products = $category->product()->get();
+        $products = $category->products()->get();
         return view('backend.category.categoryshow', compact('category', 'products'));
     }
 

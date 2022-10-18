@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('color_product', function (Blueprint $table) {
             $table->unsignedBigInteger('color_id');
             $table->unsignedBigInteger('product_id');
-            $table->foreign('color_id')->references('id')->on('colors')->onDelete('set null');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('set null');
+            $table->foreign('color_id')->references('id')->on('colors');
+            $table->foreign('product_id')->references('id')->on('products');
 
             $table->primary(['color_id', 'product_id']);
         });
