@@ -1,60 +1,49 @@
 <x-forntend.master>
     <x-slot:title>
-        ABOUT US
+        SINGLE PRODUCT
         </x-slot>
-<div class="col-md-12 row text-center">
-    <div class="col-md-2"></div>
-    <div class="col-lg-8 col-md-7 order-md-1 order-1">
-            <div class="blog__details__text">
-                <img src="https://images.unsplash.com/photo-1594032194509-0056023973b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHQlMjBzaGlydHN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="">
-                <p>Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
-                    dui. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit
-                    aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur
-                    sed, convallis at tellus. Sed porttitor lectus nibh. Donec sollicitudin molestie malesuada.
-                    Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Proin eget tortor risus.
-                    Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis
-                    quis ac lectus. Donec sollicitudin molestie malesuada. Nulla quis lorem ut libero malesuada
-                    feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.</p>
-                <h3>The corner window forms a place within a place that is a resting point within the large
-                    space.</h3>
-                <p>The study area is located at the back with a view of the vast nature. Together with the other
-                    buildings, a congruent story has been managed in which the whole has a reinforcing effect on
-                    the components. The use of materials seeks connection to the main house, the adjacent
-                    stables</p>
-            </div>
-            <a href="checkout.html"><button type="submit" class="btn btn-success w-100 my-5">Buy Now</button></a>
-            <div class="blog__details__content">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="blog__details__author">
-                            <div class="blog__details__author__pic">
-                                <img src="https://th.bing.com/th/id/OIP.fsJIMUB57z_e-KHgDYVHWAHaHa?w=123&h=150&c=7&r=0&o=5&pid=1.7" alt="">
-                            </div>
-                            <div class="blog__details__author__text">
-                                <h6>Shanto Bepary</h6>
-                                <span>Admin</span>
+        <div class="col-md-12 row text-center">
+            <div class="col-md-2"></div>
+            <div class="col-lg-8 col-md-7 order-md-1 order-1">
+                <div class="blog__details__text">
+                    <img src="{{ asset('storage/products/'.$product->image) }}" alt="">
+                    <h5>{{ $product->name }}</h5>
+                    <span class="text-danger">{{ $product->price }}</span>
+                    <p>{{ $product->description }}</p>
+                </div>
+                <a href="checkout.html"><button type="submit" class="btn btn-success w-100 my-5">Buy Now</button></a>
+                <div class="blog__details__content">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="blog__details__author">
+                                <div class="blog__details__author__pic">
+                                    <img src="https://th.bing.com/th/id/OIP.fsJIMUB57z_e-KHgDYVHWAHaHa?w=123&h=150&c=7&r=0&o=5&pid=1.7" alt="">
+                                </div>
+                                <div class="blog__details__author__text">
+                                    <h6>Shanto Bepary</h6>
+                                    <span>Admin</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="blog__details__widget">
-                            <ul>
-                                <li><span>Categories:</span> Shirt & T-Shirt</li>
-                                <li><span>Tags:</span> All, Trending, Cooking, Healthy Food, Life Style</li>
-                            </ul>
-                            <div class="blog__details__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-google-plus"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-envelope"></i></a>
+                        <div class="col-lg-6">
+                            <div class="blog__details__widget">
+                                <ul>
+                                    <li><span>Categories:</span> {{ $product->category?->name }}</li>
+                                    <li><span>Tags:</span> {{ $product->tags }}</li>
+                                </ul>
+                                <div class="blog__details__social">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                    <a href="#"><i class="fa fa-envelope"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-</div>
         <section class="related-blog spad">
             <div class="container">
                 <div class="row">
@@ -129,6 +118,6 @@
             </div>
         </section>
         <!-- ................................ -->
-        <x-forntend.partials.card/>
+        <x-forntend.partials.card />
         <!-- fooder//////////////////////////////// -->
 </x-forntend.master>

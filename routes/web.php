@@ -23,6 +23,8 @@ use App\Http\Controllers\backend\UserController as User;
 
 // forntend........................................
 Route::get('/', [Forntend::class, 'index'])->name('home');
+Route::get('/categories/{category}/product', [Forntend::class, 'productListCategory'])->name('frontend.products.index');
+Route::get('/products/{product}', [Forntend::class, 'productDetails'])->name('frontend.products.show');
 Route::get('/productlist', [Forntend::class, 'productlist'])->name('productlist');
 Route::get('/contact', [Forntend::class, 'contact'])->name('contact');
 Route::get('/about', [Forntend::class, 'about'])->name('about');

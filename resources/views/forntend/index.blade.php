@@ -2,7 +2,22 @@
     <x-slot:title>
         HOME
         </x-slot>
-        <section class="breadcrumb-section " style="margin-top: 1rem;" data-setbg="">
+
+        <!-- <section class="latest-product spad">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="col-md-3"></div>
+                        <div class="latest-product__text col-md-6">
+                            <div class="categories__item set-bg w-100" data-setbg="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/2358239/300/200/m1/fpnw/wm0/011-.jpg?1488522070&s=ebadb1f1562113f6cae85cf8874498ad">
+                                <h5><a href="#">WELLCOME TO AJOB E-COMMERCE</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <!-- <section class="breadcrumb-section " style="margin-top: 1rem;" data-setbg="">
             <div class="col-md-12 row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6 text-center">
@@ -23,7 +38,7 @@
                 </div>
             </div>
 
-        </section>
+        </section> -->
 
         <section class="categories mt-5">
             <div class="container-fluid">
@@ -31,8 +46,8 @@
                     <div class="categories__slider owl-carousel">
                         @foreach ($category as $categorys)
                         <div class="col-lg-3">
-                            <div class="categories__item set-bg" data-setbg="{{$categorys->image}}">
-                                <h5><a href="#">{{$categorys->name}}</a></h5>
+                            <div class="categories__item set-bg" data-setbg="{{asset('storage/categories/'.$categorys->image)}}">
+                                <h5><a href="{{ route('frontend.products.index', $categorys->id) }}">{{$categorys->name}}</a></h5>
                             </div>
                         </div>
                         @endforeach
@@ -42,32 +57,17 @@
             </div>
         </section>
         <!-- Categories Section End -->
-
+        <div class="section-title text-center mt-5">
+            <h2>Latest Product</h2>
+        </div>
         <!-- Featured Section Begin -->
         <section class="featured spad">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-title">
-                            <h2>Categories</h2>
-                        </div>
-                        <div class="featured__controls">
-                            <ul>
-                                <li class="active" data-filter="*">All</li>
-                                @foreach ($category as $categorys)
-                                <li data-filter=".oranges">{{$categorys->name}}</li>
-                                @endforeach
-                                <span class="align-middle">{{ $category->links() }}</span>
-                            </ul>
-                           
-                        </div>
-                    </div>
-                </div>
-                <div class="row featured__filter">
+                <div class="row featured__filter " data-masonry='{"percentPosition": true}'>
                     @foreach ($productall as $product)
                     <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
                         <div class="featured__item">
-                            <div class="featured__item__pic set-bg" data-setbg="{{$product->image}}">
+                            <div class="featured__item__pic set-bg" data-setbg="{{asset('storage/products/'.$product->image)}}">
                                 <ul class="featured__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-shopping-cart"></i> Add To Card</a></li>
                                 </ul>
@@ -75,22 +75,23 @@
                             <div class="featured__item__text">
                                 <h6><a href="#">{{$product->name}}</a></h6>
                                 <h5>৳{{$product->price}}</h5>
+                                <a href="{{route('frontend.products.show', $product->id)}}" class="btn btn-info">Show Detels</a>
                             </div>
                         </div>
                     </div>
-              
+
                     @endforeach
-                   
+
                 </div>
                 <span>{{ $productall->links() }}</span>
             </div>
             </div>
         </section>
         <!-- Featured Section End -->
-      
+
         <!-- Banner Begin -->
-    
-        <div class="banner">
+
+        <!-- <div class="banner">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6">
@@ -105,7 +106,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Banner End -->
 
         <!-- Latest Product Section Begin -->
@@ -116,10 +117,11 @@
                         <div class="latest-product__text">
                             <h4>Latest Products</h4>
                             <div class="latest-product__slider owl-carousel">
+                                @foreach ($productall as $product)
                                 <div class="latest-prdouct__slider__item">
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="https://images.unsplash.com/photo-1537498425277-c283d32ef9db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y29tcHV0ZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="">
+                                            <img src="{{ asset('storage/products/'.$product->image) }}" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
                                             <h6>Crab Pool Security</h6>
@@ -128,27 +130,7 @@
                                     </a>
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8d2F0Y2hpbmclMjB0dnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>৳300.00</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="https://images.unsplash.com/photo-1594032194509-0056023973b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHQlMjBzaGlydHN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" width="300" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>৳650.00</span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="latest-prdouct__slider__item">
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="https://images.unsplash.com/photo-1537498425277-c283d32ef9db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y29tcHV0ZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="">
+                                            <img src="{{ asset('storage/products/'.$product->image) }}" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
                                             <h6>Crab Pool Security</h6>
@@ -157,23 +139,15 @@
                                     </a>
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8d2F0Y2hpbmclMjB0dnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="">
+                                            <img src="{{ asset('storage/products/'.$product->image) }}" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
                                             <h6>Crab Pool Security</h6>
-                                            <span>৳300.00</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="https://images.unsplash.com/photo-1594032194509-0056023973b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHQlMjBzaGlydHN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" width="300" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>৳650.00</span>
+                                            <span>৳700.00</span>
                                         </div>
                                     </a>
                                 </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -181,10 +155,11 @@
                         <div class="latest-product__text">
                             <h4>Top Rated Products</h4>
                             <div class="latest-product__slider owl-carousel">
+                                @foreach ($productall as $product)
                                 <div class="latest-prdouct__slider__item">
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="https://images.unsplash.com/photo-1537498425277-c283d32ef9db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y29tcHV0ZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="">
+                                            <img src="{{ asset('storage/products/'.$product->image) }}" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
                                             <h6>Crab Pool Security</h6>
@@ -193,27 +168,7 @@
                                     </a>
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8d2F0Y2hpbmclMjB0dnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>৳300.00</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="https://images.unsplash.com/photo-1594032194509-0056023973b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHQlMjBzaGlydHN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" width="300" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>৳650.00</span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="latest-prdouct__slider__item">
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="https://images.unsplash.com/photo-1537498425277-c283d32ef9db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y29tcHV0ZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="">
+                                            <img src="{{ asset('storage/products/'.$product->image) }}" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
                                             <h6>Crab Pool Security</h6>
@@ -222,23 +177,15 @@
                                     </a>
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8d2F0Y2hpbmclMjB0dnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="">
+                                            <img src="{{ asset('storage/products/'.$product->image) }}" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
                                             <h6>Crab Pool Security</h6>
-                                            <span>৳300.00</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="https://images.unsplash.com/photo-1594032194509-0056023973b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHQlMjBzaGlydHN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" width="300" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>৳650.00</span>
+                                            <span>৳700.00</span>
                                         </div>
                                     </a>
                                 </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -246,10 +193,11 @@
                         <div class="latest-product__text">
                             <h4>Review Products</h4>
                             <div class="latest-product__slider owl-carousel">
+                                @foreach ($productall as $product)
                                 <div class="latest-prdouct__slider__item">
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="https://images.unsplash.com/photo-1537498425277-c283d32ef9db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y29tcHV0ZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="">
+                                            <img src="{{ asset('storage/products/'.$product->image) }}" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
                                             <h6>Crab Pool Security</h6>
@@ -258,27 +206,7 @@
                                     </a>
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8d2F0Y2hpbmclMjB0dnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>৳300.00</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="https://images.unsplash.com/photo-1594032194509-0056023973b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHQlMjBzaGlydHN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" width="300" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>৳650.00</span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="latest-prdouct__slider__item">
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="https://images.unsplash.com/photo-1537498425277-c283d32ef9db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y29tcHV0ZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="">
+                                            <img src="{{ asset('storage/products/'.$product->image) }}" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
                                             <h6>Crab Pool Security</h6>
@@ -287,23 +215,15 @@
                                     </a>
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8d2F0Y2hpbmclMjB0dnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="">
+                                            <img src="{{ asset('storage/products/'.$product->image) }}" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
                                             <h6>Crab Pool Security</h6>
-                                            <span>৳300.00</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="https://images.unsplash.com/photo-1594032194509-0056023973b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHQlMjBzaGlydHN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" width="300" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>৳650.00</span>
+                                            <span>৳700.00</span>
                                         </div>
                                     </a>
                                 </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -348,6 +268,10 @@
                 </div>
             </div>
         </section>
+
+        @push('script')
+        <!-- script -->
+        @endpush
         <!-- ................................ -->
         <!-- fooder//////////////////////////////// -->
         <x-forntend.partials.card />

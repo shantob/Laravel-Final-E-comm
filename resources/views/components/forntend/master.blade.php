@@ -37,6 +37,7 @@
     @include('components.forntend.partials.footer')
 
 
+    @stack('script');
 </body>
 
 </html>

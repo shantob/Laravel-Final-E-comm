@@ -35,11 +35,11 @@ class ProductController extends Controller
 
         // $category = Category::with('category')->find('all');
         // $categories= $category->category->toArray();
-  
+
 
         return view("backend.product.index", compact('productlist', 'allproduct', 'serialNo'));
     }
-    //    
+    //
     public function store(ProductRequest $request)
     {
         $data = [
@@ -88,7 +88,6 @@ class ProductController extends Controller
     public function update(ProductRequest $request, Product $product)
     {
         // $products = Product::find($id);
-
 
         $data = [
             'name' => $request->name,

@@ -14,24 +14,18 @@
                                             <span>Category</span>
                                         </div>
                                         <ul>
-                                            @foreach ($category as $categories)
-                                                <li><a href="#">Grocery</a></li>
-                                                <li><a href="#">Kitchen Applicens</a></li>
-                                                <li><a href="#">Toys & Games</a></li>
-                                                <li><a href="#">Sports & Fittenss</a></li>
-                                                <li><a href="#">Mobiles & Accessories</a></li>
-                                                <li><a href="#">Books</a></li>
-                                                <li><a href="#">Furniture</a></li>
-                                                <li><a href="#">Other</a></li>
+                                            @foreach ($categories as $category)
+                                                <li><a href="{{ route('frontend.products.index', $category->id) }}">{{$category->name}}</a></li>
+                                             
                                             @endforeach
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-lg-8 mt-3 w-100">
-                                    <form class="navbar-left navbar-form nav-search mr-md-3" action="">
+                                    <form class="navbar-left navbar-form nav-search mr-md-3" action="{{url('/')}}">
                                         <div class="input-group">
-                                            <input type="text" placeholder="Search ..." class="form-control">
-                                            <button class="btn btn-secondary " type="button">
+                                            <input type="text" name="product_name" placeholder="Search ..." value="{{ old('product_name') }}" class="form-control">
+                                            <button class="btn btn-secondary " type="submit">
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </div>
