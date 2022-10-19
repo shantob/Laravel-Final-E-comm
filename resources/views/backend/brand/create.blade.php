@@ -53,10 +53,6 @@
                                                                 <x-admin.forms.input type="file" lable="Brand Image"
                                                                     name="image" class="dropify" />
 
-                                                                <x-admin.forms.textarea name="description"
-                                                                    label="Descriptiion " :value="old('description')"
-                                                                    placeholder="Enter Color Description" />
-
                                                                 <div class="mb-3 form-check">
                                                                     <input name="is_active" type="checkbox"
                                                                         class="form-check-input" id="isActiveInput">

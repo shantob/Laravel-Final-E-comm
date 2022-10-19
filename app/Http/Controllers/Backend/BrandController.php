@@ -8,6 +8,7 @@ use App\Http\Requests\ProductRequest;
 use App\Models\Color;
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Image;
 
 class BrandController extends Controller
@@ -22,14 +23,19 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         //dd($request);
-        Brand::create([
+        $data = [
 
             'name' => $request->name,
             'company' => $request->company,
-            'description' => $request->description,
             'color_id' => $request->color_id,
-            'image' =>  $this->uploadImage($request->file('image')),
+            // 'image' =>  $this->uploadImage($request->file('image')),
             'is_active' => $request->is_active ? true : false,
+        ] ;
+        $brand = Brand::create($data);
+        $brand->images()->create([
+            'image' => $this->uploadImage($request->file('image')),
+
+            'uploated_by' => Auth::id()
         ]);
 
         return redirect()->route('brand.index')->with('success', 'Product Created SuccessFully !!!');
@@ -61,7 +67,6 @@ class BrandController extends Controller
         $data = [
             'name' => $request->name,
             'company' => $request->company,
-            'description' => $request->description,
             'color_id' => $request->color_id,
             'image' =>  $this->uploadImage($request->file('image')),
             'is_active' => $request->is_active,

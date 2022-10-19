@@ -46,7 +46,7 @@
                                                                 <p>Name: {{ $category->name }}</p>
                                                                 <p>Is Active?: {{ $category->is_active ? 'Yes' : 'No' }}
                                                                 </p>
-                                                                @foreach( $category->imagesCategory as $image)
+                                                                @foreach( $category->images as $image)
                                                                 <img src="{{ asset('storage/categories/' . $image->image	) }}"
                                                                     height="250" />
                                                                 @endforeach

@@ -11,6 +11,7 @@ use App\Models\Product;
 use App\Models\Size;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Auth;
 use Image;
 
 class ProductController extends Controller
@@ -49,12 +50,18 @@ class ProductController extends Controller
             'brand_id' => $request->brand_id,
             'description' => $request->description,
             'price' => $request->price,
-            'image' =>  $this->uploadImage($request->file('image')),
             'tags' => $request->tags,
             'img_alt' => $request->img_alt,
             'is_active' => $request->is_active ? true : false,
         ];
+
         $product = Product::create($data);
+        $product->images()->create([
+            'image' =>  $this->uploadImage($request->file('image')),
+            'uploated_by' => Auth::id()
+        ]);
+
+
         $product->colors()->attach($request->colors);
         $product->sizes()->attach($request->sizes);
         return redirect()->route('product.index')->with('success', 'Product Created SuccessFully !!!');

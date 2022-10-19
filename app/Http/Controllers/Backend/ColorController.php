@@ -13,9 +13,7 @@ class ColorController extends Controller
     public function index()
     {
         $colors = Color::all();
-        dd($colors->products);
-        $products = $colors->products()->get();
-        return view("backend/color/index", compact('colors', 'products'));
+        return view("backend/color/index", compact('colors'));
     }
 
     public function store(ColorRequest $request)

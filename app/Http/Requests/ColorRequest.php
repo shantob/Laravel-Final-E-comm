@@ -26,7 +26,6 @@ class ColorRequest extends FormRequest
         return [
             'name' => 'required|max:255|min:3|unique:categories,id,' . $this->colors?->id,
             'color_code' => 'required',
-            'description' => 'required',
         ];
     }
 }

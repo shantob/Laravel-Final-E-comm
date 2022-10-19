@@ -54,7 +54,10 @@
                                                             <tr>
                                                                 <th scope="row">{{$loop->iteration}}</th>
                                                                 <td>{{$categors->name}}</td>
-                                                                <td><img src="{{ asset('storage/categories/' . $categors->images?->image) }}" alt=""></td>
+                                                                <td> @foreach( $categors->images as $image)
+                                                                <img src="{{ asset('storage/categories/' . $image->image	) }}"
+                                                                    height="50" />
+                                                                @endforeach</td>
                                                                 <td><a href="{{route('category.show', $categors->id)}}"><button type="submit" class=" btn-sm btn-outline-info w-100">Wiew</button></a></td>
                                                                 <td><a href="{{route('category.edit',$categors->id)}}"><button type="submit" class="btn-sm btn-outline-warning w-100">UPDATE</button></a></td>
                                                                 <td>

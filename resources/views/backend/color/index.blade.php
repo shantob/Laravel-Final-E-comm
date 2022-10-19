@@ -13,8 +13,7 @@
                     <h4 class="page-title">Color List <h6 class="text-right">
                             <div class="btn-toolbar mb-2 mb-md-0" style="margin-left: 50">
 
-                            </div> <a href="{{ route('color.create') }}"><button class="btn btn-danger"><span
-                                        data-feather="plus"></span> Add New</button></a>
+                            </div> <a href="{{ route('color.create') }}"><button class="btn btn-danger"><span data-feather="plus"></span> Add New</button></a>
                         </h6>
                     </h4>
                     <div class="row">
@@ -29,12 +28,10 @@
                                         <div class="card-body  text-center">
                                             <div class=" w-100 ">
                                                 <div class=" px-2">
-                                                    <div
-                                                        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 
                                                     </div>
-                                                    <label for="caregory" class="mb-4 h1 text-dark">Color List <span
-                                                            class="text-danger">({{ $colors->count() }})</span></label>
+                                                    <label for="caregory" class="mb-4 h1 text-dark">Color List <span class="text-danger">({{ $colors->count() }})</span></label>
                                                     <table class="table table table-hover">
                                                         <thead>
                                                             <tr>
@@ -47,29 +44,24 @@
                                                         </thead>
                                                         <tbody>
                                                             @foreach ($colors as $color)
-                                                                <tr>
-                                                                    <th scope="row">{{ $loop->iteration }}</th>
-                                                                    <td style="color: {{ $color->color_code }}">
-                                                                        <h4>{{ $color->name }}</h4>
-                                                                    </td>
-                                                                    <td>{{ $color->is_active ? 'True' : 'False' }}</td>
-                                                                    <td class="d-flex">
-                                                                        <a href="{{ route('color.edit', $color->id) }}"
-                                                                            class="btn btn-sm btn-outline-warning">Edit
-                                                                            Now</a>
-                                                                        @foreach ($products as $product)
-                                                                            {{ $product->count() }}
-                                                                        @endforeach
-                                                                        <form
-                                                                            action="{{ route('color.destroy', $color->id) }}"
-                                                                            method="post">
-                                                                            @csrf
-                                                                            @method('delete')
-                                                                            <button
-                                                                                class="btn btn-sm btn-outline-danger">Delete</button>
-                                                                        </form>
-                                                                    </td>
-                                                                </tr>
+                                                            <tr>
+                                                                <th scope="row">{{ $loop->iteration }}</th>
+                                                                <td style="color: {{ $color->color_code }}">
+                                                                    <h4>{{ $color->name }}</h4>
+                                                                </td>
+                                                            <td>{{$color->products->count()}}</td>
+                                                                <td>{{ $color->is_active ? 'True' : 'False' }}</td>
+                                                                <td class="d-flex">
+                                                                    <a href="{{ route('color.edit', $color->id) }}" class="btn btn-sm btn-outline-warning">Edit
+                                                                        Now</a>
+
+                                                                    <form action="{{ route('color.destroy', $color->id) }}" method="post">
+                                                                        @csrf
+                                                                        @method('delete')
+                                                                        <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                                                    </form>
+                                                                </td>
+                                                            </tr>
                                                             @endforeach
                                                         </tbody>
                                                     </table>
@@ -94,3 +86,4 @@
         </div>
         </x-admin>
         <!-- Main Wrapper -->
+    

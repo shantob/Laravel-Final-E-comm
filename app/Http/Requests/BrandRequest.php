@@ -33,7 +33,6 @@ class BrandRequest extends FormRequest
         return [
             'name' => 'required|string|max:255|min:3|unique:products,id,' . $this->brand?->id,
             'company' => 'required',
-            'description' => 'required',
             'color_id' => 'required',
             'image' => $imageValitionRules
 

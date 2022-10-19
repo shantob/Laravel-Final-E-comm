@@ -10,8 +10,7 @@
         <div class="main-panel">
             <div class="content">
                 <div class="container-fluid">
-                    <h4 class="page-title">Product List <h5 class="text-right"><a
-                                href="{{ route('product.create') }}"><button class="btn btn-danger">+ Add New</button></a>
+                    <h4 class="page-title">Product List <h5 class="text-right"><a href="{{ route('product.create') }}"><button class="btn btn-danger">+ Add New</button></a>
                     </h4>
                     </h5>
                     <div class="btn-group me-2">
@@ -44,11 +43,8 @@
                                                         <label for="caregory" class=" h1 text-dark">Product LIst
                                                             <br><span class="text-danger mb-4">Total :
                                                                 ({{ $allproduct->count() }})</span></label>
-                                                        <input type="text" id="product_search" class="form-control"
-                                                            placeholder="Search Product" onclick="searchFun()">
-                                                        <table
-                                                            class="table table-responsive table-hover table-responsive round"
-                                                            id="product_table">
+                                                        <input type="text" id="product_search" class="form-control" placeholder="Search Product" onclick="searchFun()">
+                                                        <table class="table table-responsive table-hover table-responsive round" id="product_table">
                                                             <thead>
                                                                 <tr class="text-light">
                                                                     <th scope="col">#</th>
@@ -64,44 +60,40 @@
                                                             </thead>
                                                             <tbody>
                                                                 @foreach ($productlist as $product)
-                                                                    <tr>
-                                                                        <th scope="row">{{ $serialNo++ }}</th>
-                                                                        <td>{{ $product->name }}</td>
+                                                                <tr>
+                                                                    <th scope="row">{{ $serialNo++ }}</th>
+                                                                    <td>{{ $product->name }}</td>
 
-                                                                        {{--  <td>{{ $product->categories?->name }}</td> --}}
+                                                                    {{-- <td>{{ $product->categories?->name }}</td> --}}
 
-                                                                        <td>{{ $product->category?->name }}</td>
-                                                                        <td>{{ $product->price }} ৳</td>
-                                                                        <td><img src="{{ asset('storage/products/' . $product->image) }}"
-                                                                                height="40px" alt=""></td>
-                                                                        <td>{{ $product->brand?->name }}</td>
-                                                                        <td style="color: "><h6></h6></td>
-                                                                        {{-- {{ $product->colors?->name? $product->colors->name : 'NULL'}} --}}
-                                                                        <td>{{ $product->created_at->diffForHumans() }}</td>
+                                                                    <td>{{ $product->category?->name }}</td>
+                                                                    <td>{{ $product->price }} ৳</td>
+                                                                    <td> @foreach( $product->images as $image)
+                                                                        <img src="{{ asset('storage/products/' . $image->image	) }}" height="50" />
+                                                                        @endforeach
+                                                                    </td>
+                                                                    <td>{{ $product->brand?->name }}</td>
+                                                                    <td style="color: ">
+                                                                        <h6></h6>
+                                                                    </td>
+                                                                    {{-- {{ $product->colors?->name? $product->colors->name : 'NULL'}} --}}
+                                                                    <td>{{ $product->created_at->diffForHumans() }}</td>
 
-                                                                        <td><a
-                                                                                href="{{ route('product.show', $product->id) }}"><button
-                                                                                    type="submit"
-                                                                                    class="btn-sm btn-outline-info w-100">View</button></a>
-                                                                        </td>
-                                                                        <td><a
-                                                                                href="{{ route('product.edit', $product->id) }}">
-                                                                                <button type="submit"
-                                                                                    class="btn-sm btn-outline-primary w-100">Edit</button></a>
-                                                                        </td>
+                                                                    <td><a href="{{ route('product.show', $product->id) }}"><button type="submit" class="btn-sm btn-outline-info w-100">View</button></a>
+                                                                    </td>
+                                                                    <td><a href="{{ route('product.edit', $product->id) }}">
+                                                                            <button type="submit" class="btn-sm btn-outline-primary w-100">Edit</button></a>
+                                                                    </td>
 
-                                                                        <td>
-                                                                            <form
-                                                                                action="{{ route('product.destroy', $product->id) }}"
-                                                                                method="POST">
-                                                                                @csrf
-                                                                                @method('delete')
-                                                                                <button type="submit"
-                                                                                    class="btn-sm btn-outline-danger w-100">Delete</button>
-                                                                            </form>
+                                                                    <td>
+                                                                        <form action="{{ route('product.destroy', $product->id) }}" method="POST">
+                                                                            @csrf
+                                                                            @method('delete')
+                                                                            <button type="submit" class="btn-sm btn-outline-danger w-100">Delete</button>
+                                                                        </form>
 
-                                                                        </td>
-                                                                    </tr>
+                                                                    </td>
+                                                                </tr>
                                                                 @endforeach
 
                                                             </tbody>
