@@ -69,7 +69,7 @@
                                                                     <td>{{ $product->category?->name }}</td>
                                                                     <td>{{ $product->price }} ৳</td>
                                                                     <td> @foreach( $product->images as $image)
-                                                                        <img src="{{ asset('storage/products/' . $image->image	) }}" height="50" />
+                                                                        <img src="{{ asset('storage/products/' . $image->image	) }}" height="30" />
                                                                         @endforeach
                                                                     </td>
                                                                     <td>{{ $product->brand?->name }}</td>

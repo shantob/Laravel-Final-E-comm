@@ -45,14 +45,15 @@
                 <div class="row">
                     <div class="categories__slider owl-carousel">
                         @foreach ($category as $categorys)
-                            <div class="col-lg-3">
-                                <div class="categories__item set-bg"
-                                    data-setbg="{{ asset('storage/categories/' . $categorys->image) }}">
-                                    <h5><a
-                                            href="{{ route('frontend.products.index', $categorys->id) }}">{{ $categorys->name }}</a>
-                                    </h5>
-                                </div>
+                        <div class="col-lg-3">
+                            @foreach( $categorys->images as $image)
+                            <div class="categories__item set-bg" data-setbg="{{ asset('storage/categories/' . $image->image	) }}">
+                                <h5>
+                                    <a href="{{ route('frontend.products.index', $categorys->id) }}">{{ $categorys->name }}</a>
+                                </h5>
                             </div>
+                            @endforeach
+                        </div>
                         @endforeach
 
                     </div>
@@ -68,22 +69,22 @@
             <div class="container-fluid">
                 <div class="row featured__filter " data-masonry='{"percentPosition": true}'>
                     @foreach ($productall as $product)
-                        <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-                            <div class="featured__item">
-                                <div class="featured__item__pic set-bg"
-                                    data-setbg="{{ asset('storage/products/' . $product->image) }}">
-                                    <ul class="featured__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i> Add To Card</a></li>
-                                    </ul>
-                                </div>
-                                <div class="featured__item__text">
-                                    <h6><a href="#">{{ $product->name }}</a></h6>
-                                    <h5>৳{{ $product->price }}</h5>
-                                    <a href="{{ route('frontend.products.show', $product->id) }}"
-                                        class="btn btn-info">Show Detels</a>
-                                </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+                        <div class="featured__item">
+                            @foreach($product->images as $image)                      
+                            <div class="featured__item__pic set-bg" data-setbg="{{ asset('storage/products/'.$image->image) }}">
+                                <ul class="featured__item__pic__hover">
+                                    <li><a href="#" class="text-danger"><i class="fa fa-shopping-cart"></i> Add To Card</a></li>
+                                </ul>
+                            </div>
+                            @endforeach
+                            <div class="featured__item__text">
+                                <h6><a href="#">{{ $product->name }}</a></h6>
+                                <h5>৳{{ $product->price }}</h5>
+                                <a href="{{ route('frontend.products.show', $product->id) }}" class="btn btn-info">Show Detels</a>
                             </div>
                         </div>
+                    </div>
                     @endforeach
 
                 </div>
@@ -122,38 +123,35 @@
                             <h4>Latest Products</h4>
                             <div class="latest-product__slider owl-carousel">
                                 @foreach ($productall as $product)
-                                    <div class="latest-prdouct__slider__item">
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="{{ asset('storage/products/' . $product->image) }}"
-                                                    alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>৳700.00</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="{{ asset('storage/products/' . $product->image) }}"
-                                                    alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>৳700.00</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="{{ asset('storage/products/' . $product->image) }}"
-                                                    alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>৳700.00</span>
-                                            </div>
-                                        </a>
-                                    </div>
+                                <div class="latest-prdouct__slider__item">
+                                    <a href="#" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="{{ asset('storage/products/' . $product->image) }}" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>Crab Pool Security</h6>
+                                            <span>৳700.00</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="{{ asset('storage/products/' . $product->image) }}" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>Crab Pool Security</h6>
+                                            <span>৳700.00</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="{{ asset('storage/products/' . $product->image) }}" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>Crab Pool Security</h6>
+                                            <span>৳700.00</span>
+                                        </div>
+                                    </a>
+                                </div>
                                 @endforeach
                             </div>
                         </div>
@@ -163,38 +161,35 @@
                             <h4>Top Rated Products</h4>
                             <div class="latest-product__slider owl-carousel">
                                 @foreach ($productall as $product)
-                                    <div class="latest-prdouct__slider__item">
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="{{ asset('storage/products/' . $product->image) }}"
-                                                    alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>৳700.00</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="{{ asset('storage/products/' . $product->image) }}"
-                                                    alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>৳700.00</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="{{ asset('storage/products/' . $product->image) }}"
-                                                    alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>৳700.00</span>
-                                            </div>
-                                        </a>
-                                    </div>
+                                <div class="latest-prdouct__slider__item">
+                                    <a href="#" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="{{ asset('storage/products/' . $product->image) }}" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>Crab Pool Security</h6>
+                                            <span>৳700.00</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="{{ asset('storage/products/' . $product->image) }}" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>Crab Pool Security</h6>
+                                            <span>৳700.00</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="{{ asset('storage/products/' . $product->image) }}" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>Crab Pool Security</h6>
+                                            <span>৳700.00</span>
+                                        </div>
+                                    </a>
+                                </div>
                                 @endforeach
                             </div>
                         </div>
@@ -204,38 +199,35 @@
                             <h4>Review Products</h4>
                             <div class="latest-product__slider owl-carousel">
                                 @foreach ($productall as $product)
-                                    <div class="latest-prdouct__slider__item">
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="{{ asset('storage/products/' . $product->image) }}"
-                                                    alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>৳700.00</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="{{ asset('storage/products/' . $product->image) }}"
-                                                    alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>৳700.00</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="{{ asset('storage/products/' . $product->image) }}"
-                                                    alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>৳700.00</span>
-                                            </div>
-                                        </a>
-                                    </div>
+                                <div class="latest-prdouct__slider__item">
+                                    <a href="#" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="{{ asset('storage/products/' . $product->image) }}" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>Crab Pool Security</h6>
+                                            <span>৳700.00</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="{{ asset('storage/products/' . $product->image) }}" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>Crab Pool Security</h6>
+                                            <span>৳700.00</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="{{ asset('storage/products/' . $product->image) }}" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>Crab Pool Security</h6>
+                                            <span>৳700.00</span>
+                                        </div>
+                                    </a>
+                                </div>
                                 @endforeach
                             </div>
                         </div>
@@ -257,25 +249,25 @@
                 </div>
                 <div class="row">
                     @foreach ($blogs as $blog)
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="blog__item">
-                                        <div class="blog__item__pic">
-                                            <img src="{{ $blog->image }}" height="500" alt="">
-                                        </div>
-                                        <div class="blog__item__text">
-                                            <ul>
-                                                <li><i class="fa fa-calendar-o"></i> {{ $blog->created_at }}</li>
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="blog__item">
+                                    <div class="blog__item__pic">
+                                        <img src="{{ $blog->image }}" height="500" alt="">
+                                    </div>
+                                    <div class="blog__item__text">
+                                        <ul>
+                                            <li><i class="fa fa-calendar-o"></i> {{ $blog->created_at }}</li>
 
-                                            </ul>
-                                            <h5><a href="#">{{ $blog->title }}</a></h5>
-                                            <p>{{ $blog->blog }} </p>
-                                        </div>
+                                        </ul>
+                                        <h5><a href="#">{{ $blog->title }}</a></h5>
+                                        <p>{{ $blog->blog }} </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     @endforeach
                     <span>{{ $blogs->links() }}</span>
                 </div>
@@ -283,7 +275,7 @@
         </section>
 
         @push('script')
-            <!-- script -->
+        <!-- script -->
         @endpush
         <!-- ................................ -->
         <!-- fooder//////////////////////////////// -->

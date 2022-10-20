@@ -43,6 +43,7 @@ class ProductController extends Controller
     //
     public function store(ProductRequest $request)
     {
+       // dd($request);
         $data = [
 
             'name' => $request->name,
@@ -56,12 +57,13 @@ class ProductController extends Controller
         ];
 
         $product = Product::create($data);
+        foreach ($request->file('image') as $img) {
         $product->images()->create([
-            'image' =>  $this->uploadImage($request->file('image')),
+            'image' => $this->uploadImage($img),
             'uploated_by' => Auth::id()
         ]);
 
-
+    }
         $product->colors()->attach($request->colors);
         $product->sizes()->attach($request->sizes);
         return redirect()->route('product.index')->with('success', 'Product Created SuccessFully !!!');
