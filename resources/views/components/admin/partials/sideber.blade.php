@@ -98,7 +98,10 @@
                 <a href="#">
                     <i class="la la-table"></i>
                     <p class=" text-warning">Notification</p>
-                    <span class="badge badge-success"></span>
+                    @php
+                    $notifications = Auth::user()->unreadNotifications;
+                    @endphp
+                    <span class="badge badge-success">{{$notifications? $notifications->count() : 0 }}</span>
                 </a>
             </li>
             <li class="nav-item {{ Route::is('users.index') ? 'active' : '' }}">

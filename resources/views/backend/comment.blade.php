@@ -31,8 +31,8 @@
                                                         <thead>
                                                             <tr>
                                                                 <th scope="col">#</th>
-                                                                <th scope="col">Blog Id</th>
-                                                                <th scope="col">Blog Title</th>
+                                                                <th scope="col">Comentable Id</th>
+                                                                <th scope="col">Commentable Form</th>
                                                                 <th scope="col">List Comment</th>
                                                                 <th scope="col">User Name</th>
                                                                 <th scope="col">User Email</th>
@@ -45,13 +45,13 @@
                                                             @foreach ($comments as $comment)
                                                             <tr>
                                                                 <th scope="row">{{$loop->iteration}}</th>
-                                                                <td>{{$comment->blog_id}}</td>
-                                                                <td>{{$comment->blog_title}}</td>
-                                                                <td>{{$comment->comment}}</td>
-                                                                <td>{{$comment->email}}</td>
-                                                                <td>{{$comment->name}}</td>
-                                                                <td>{{$comment->created_at}}</td>
-                                                                <td><button class="btn-outline">{{$comment->is_read ? 'Yes' : 'No'}}</button></td>
+                                                                <td>{{$comment->commentable_id}}</td>
+                                                                <td>{{$comment->commentable_type}}</td>
+                                                                <td>{{$comment->body}}</td>
+                                                                <td>{{$comment->commentedBy->name}}</td>
+                                                                <td>{{$comment->commentedBy->email}}</td>
+                                                                <td>{{$comment->created_at->diffForHumans()}}</td>
+                                                                <td><button class="btn-outline">{{$comment->read_at? 'read_at->diffForHumans()' : 'No'}}</button></td>
                                                                   <td><a href="{{route('admin.commenttdelete',$comment->id)}}"><button type="submit" class="btn-sm btn-outline-danger w-100">delete</button></a></td>
                                                             </tr>
                                                            @endforeach

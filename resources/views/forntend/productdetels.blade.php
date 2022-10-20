@@ -5,8 +5,11 @@
         <div class="col-md-12 row text-center">
             <div class="col-md-2"></div>
             <div class="col-lg-8 col-md-7 order-md-1 order-1">
-                <div class="blog__details__text">
-                    <img src="{{ asset('storage/products/'.$product->image) }}" alt="">
+                <div class="blog__details__text mt-5">
+                    @foreach($product->images as $image)
+                    <img src="{{ asset('storage/products/'.$image->image) }}" alt="" width="400px">
+                    @endforeach
+
                     <h5>{{ $product->name }}</h5>
                     <span class="text-danger">{{ $product->price }}</span>
                     <p>{{ $product->description }}</p>
@@ -20,8 +23,11 @@
                                     <img src="https://th.bing.com/th/id/OIP.fsJIMUB57z_e-KHgDYVHWAHaHa?w=123&h=150&c=7&r=0&o=5&pid=1.7" alt="">
                                 </div>
                                 <div class="blog__details__author__text">
-                                    <h6>Shanto Bepary</h6>
-                                    <span>Admin</span>
+                                @foreach($product->images as $image)
+                                @endforeach
+                                    <h6>{{$image->uploatedBy->name}}</h6>
+                                    
+                                    <span>{{$image->uploatedBy->role->name}}</span>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +79,7 @@
         <section>
             <div class="card container">
                 <div class="card-body">
-                @foreach($product->comments as $comment)
+                    @foreach($product->comments as $comment)
 
                     <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
                         <div class="d-flex flex-start align-items-center">
@@ -87,7 +93,7 @@
                         </div>
 
                         <p class="mt-3 mb-4 pb-2">
-                        {{ $comment->body }}
+                            {{ $comment->body }}
                         </p>
 
                     </div>

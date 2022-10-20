@@ -19,6 +19,7 @@ return new class extends Migration
             // $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('commented_by');
             $table->text('body');
+            $table->timestamp('read_at')->nullable();
             $table->timestamps();
 
             // $table->foreign('product_id')->references('id')->on('products');
