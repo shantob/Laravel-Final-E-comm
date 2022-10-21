@@ -35,5 +35,9 @@ class Product extends Model
     {
         return $this->morphMany(Image::class, 'imageable')->orderby('id','desc');
     }
+    public function carts()
+    {
+        return $this->hasMany(Card::class);
+    }
 }
 

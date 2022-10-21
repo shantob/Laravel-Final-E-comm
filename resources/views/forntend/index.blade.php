@@ -71,11 +71,14 @@
                     @foreach ($productall as $product)
                     <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
                         <div class="featured__item">
-                            @foreach($product->images as $image)    
-                            @endforeach                  
+                            @foreach($product->images as $image)
+                            @endforeach
                             <div class="featured__item__pic set-bg" data-setbg="{{ asset('storage/products/'.$image->image) }}">
                                 <ul class="featured__item__pic__hover">
-                                    <li><a href="#" class="text-danger"><i class="fa fa-shopping-cart"></i> Add To Card</a></li>
+                                    <form action="{{route('product.cart.store',$product->id)}}" method="post">
+                                        @csrf
+                                        <li><button type="submit" class="text-light btn-warning"><i class="fa fa-shopping-cart"></i> Add To Card</button></li>
+                                    </form>
                                 </ul>
                             </div>
                             <div class="featured__item__text">

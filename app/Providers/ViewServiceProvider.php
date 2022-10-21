@@ -18,6 +18,7 @@ class ViewServiceProvider extends ServiceProvider
     {
         //dd('problem');
         View::composer('components.forntend.partials.header', ForntendComposer::class);
+        View::composer('components.forntend.partials.card', ForntendComposer::class);
 
     }
 }

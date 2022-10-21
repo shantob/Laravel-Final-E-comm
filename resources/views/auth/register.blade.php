@@ -27,6 +27,8 @@
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
 
+            <x-admin.forms.select name="district_id" label="Select district" :values="$districts" :selectedval="old('district_id')" class="form-control" />
+
             {{-- Present Address --}}
 
             <div class="mt-4">

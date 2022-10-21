@@ -136,6 +136,8 @@
                                 <label class="form-label" for="email">Type Email</label>
                                 <x-input-error :messages="$errors->get('email')" class=" form-label text-danger mx-5" />
                             </div>
+                            
+                            <x-admin.forms.select name="district_id" label="Select district" :values="$districts" :selectedval="old('district_id')" class="form-control" />
 
                             <!-- Email input -->
                             <div class="form-outline mb-4">

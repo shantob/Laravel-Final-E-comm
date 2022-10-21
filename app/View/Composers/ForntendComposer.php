@@ -2,6 +2,7 @@
 
 namespace App\View\Composers;
 
+use App\Models\Card;
 use App\Models\Category;
 use Illuminate\View\View;
 
@@ -19,6 +20,11 @@ class ForntendComposer
         $categories = Category::all();
         $view->with([
             'categories' => $categories
+        ]);
+        
+        $cards = Card::all();
+        $view->with([
+            'cards' => $cards
         ]);
     }
 }

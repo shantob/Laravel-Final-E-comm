@@ -11,6 +11,8 @@ use App\Http\Controllers\backend\ColorController as Color;
 use App\Http\Controllers\backend\BrandController as Brand;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\backend\UserController as User;
+use App\Http\Controllers\CardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -69,7 +71,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/product-pdf', [Product::class, 'downloadPdf'])->name('product.pdf');
         Route::patch('/restore/{product}', [Product::class, 'restore'])->where('id', '[0-9]+')->name('product.restore');
         Route::delete('/delete/{id}', [Product::class, 'delete'])->where('id', '[0-9]+')->name('product.delete');
-
+        
+        Route::post('/products/{product}/cart',[CardController::class,'store'])->name('product.cart.store');
         // Route::prefix('product')->group(function () {
 
         //     Route::get('/', [Product::class, 'index'])->name('product.index');
@@ -123,6 +126,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/', [BackendComment::class, 'commentlist'])->name('admin.commentlist');
             Route::get('/delete/{id}', [BackendComment::class, 'commenttdelete'])->name('admin.commenttdelete');
         });
+       
     });
 });
 Route::fallback(function () {
