@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Forntend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Card;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class HomeController extends Controller
       if ($key = request('product_name')) {
 
          $productall = Product::latest()
-            ->where('name', 'SOUNDS LIKE', $key."%")
+            ->where('name', 'SOUNDS LIKE', $key . "%")
             // ->where("SOUNDEX('name_am') = SOUNDEX($key)")
             ->paginate(2)
             ->fragment('productall');
@@ -81,9 +82,12 @@ class HomeController extends Controller
       return view("forntend/addtocard");
    }
 
-   public function checkout()
+   public function checkout(Card $card)
    {
-      return view("forntend/checkout");
+      $carts = Card::all();
+      $products = $card->products()->get();
+      //dd($products);
+      return view("forntend/checkout", compact('carts','products'));
    }
 
    public function productdetels()

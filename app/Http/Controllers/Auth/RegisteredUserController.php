@@ -38,6 +38,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+       // dd($request);
         try{
         
             $request->validate([
@@ -48,7 +49,7 @@ class RegisteredUserController extends Controller
             DB::beginTransaction();
             $user = User::create([
                 'role_id'=> 3,
-                'district_id' => $request->district_id,
+                'disrtict_id' => $request->district_id,
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
@@ -67,7 +68,7 @@ class RegisteredUserController extends Controller
     
             Auth::login($user);
     
-            return redirect(RouteServiceProvider::HOME);
+            return redirect('/');
         
         }catch(QueryException $e){
             DB::rollback();

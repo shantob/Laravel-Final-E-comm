@@ -54,7 +54,7 @@
                 <div class="col-lg-2">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="{{ route('checkout') }}"><i class="fa fa-shopping-bag"></i> <span>{{$cards->count()}}</span></a>
+                            <li><a href="{{ route('checkout') }}"><i class="fa fa-shopping-bag"></i><span>{{$cards->count()}}</span></a>
                             </li>
                         </ul>
 
